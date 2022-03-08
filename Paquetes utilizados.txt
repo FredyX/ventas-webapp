@@ -1,0 +1,26 @@
+NPM REACT-DOM: React Router DOM es un paquete npm que le permite implementar enrutamiento dinámico en una aplicación web. Le permite mostrar páginas y permitir que los usuarios naveguen por ellas. Es una biblioteca de enrutamiento del lado del servidor y del cliente con todas las funciones para React. React Router Dom se utiliza para crear aplicaciones de una sola página, es decir, aplicaciones que tienen muchas páginas o componentes, pero la página nunca se actualiza, sino que el contenido se obtiene dinámicamente en función de la URL. Este proceso se llama Enrutamiento y es posible con la ayuda de React Router Dom.
+
+NPM SASS:
+
+NPM REACT-ICON: Incluya íconos populares en sus proyectos de React fácilmente con react-icons, que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+npm i --save react-select
+
+Atlántida
+Choluteca
+Colón
+Comayagua
+Copán
+Cortés
+El Paraíso
+Francisco Morazán
+Gracias a Dios
+Intibucá
+Islas de la Bahía
+La Paz
+Lempira
+Ocotepeque
+Olancho
+Santa Bárbara
+Valle
+Yoro

@@ -1,0 +1,58 @@
+//FONT
+@import url("https://fonts.googleapis.com/css2?family=Arsenal&display=swap");
+
+:root {
+  --verde: rgb(18, 183, 0);
+  --negro: rgb(54, 54, 54);
+  --gris: rgb(196, 196, 196);
+  --amarillo: rgb(212, 253, 13);
+  --blanco: rgb(255, 255, 255);
+  --puronegro: rgb(0, 0, 0);
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Arsenal", sans-serif;
+  min-height: 100vh;
+
+  @media screen and (min-width: 1500px) {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+}
+
+main > * {
+  padding: 0 3rem;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 2rem;
+  }
+
+  @media screen and (max-width: 425px) {
+    padding: 0 1.5rem;
+  }
+}
+
+//Button
+.btn {
+  margin-top: 10px;
+  min-width: 200px;
+  font-size: 21px;
+  padding: 5px 20px;
+  border: 0;
+  background-color: rgb(18, 183, 0);
+  color: #fff;
+  border-radius: 3px;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(212, 253, 13);
+  }
+  &:focus {
+    outline: none;
+  }
+}
