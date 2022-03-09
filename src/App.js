@@ -7,8 +7,6 @@ import {Registro} from "./Components/Registro/Registro";
 //semana 1
 
 function App() {
-
-  
   return (
     <div className="App">
       <Routes>
@@ -19,8 +17,5 @@ function App() {
     </div>
   );
 } 
-
-
-
 
 export default App;
