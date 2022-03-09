@@ -40,6 +40,7 @@ main > * {
 //Button
 .btn {
   margin-top: 10px;
+  margin-bottom: 10px;
   min-width: 200px;
   font-size: 21px;
   padding: 5px 20px;
@@ -56,3 +57,22 @@ main > * {
     outline: none;
   }
 }
+.btn2 {
+  margin-top: 10px;
+  min-width: 150px;
+  font-size: 17px;
+  padding: 5px 20px;
+  border: 0;
+  background-color:#fff;
+  color: #12b700;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: #ffffff;
+    outline: solid rgb(18, 183, 0);
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
