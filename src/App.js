@@ -10,6 +10,7 @@ import {InicioSesion} from "./Components/InicioSesion/InicioSesion";
 function App() {
   return (
     <div className="App">
+
       <Routes>
       <Route path="/registro/" element= {<Registro />} />  
       <Route path="/iniciosesion/" element= {<InicioSesion />} />  
