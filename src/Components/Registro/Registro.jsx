@@ -72,9 +72,9 @@ export class Registro extends React.Component {
               <div className="form-group">
                 <input type="password" value={this.state.user_password} name="user_password" onChange={(e) => this.handleInputChange(e)} placeholder="Contraseña"/>
               </div>
-              <div class="caja">
+              <div className="caja">
                 <select name="department_id" value={this.state.department_id} onChange={(e) => this.handleInputChange(e)}>
-                  <label htmlfor="Departemento"></label>
+                  <option >Seleccione su departamento</option>
                   <option value={1}>Atlántida</option>
                   <option value={2}>Choluteca</option>
                   <option value={3}>Colón</option>
@@ -96,9 +96,7 @@ export class Registro extends React.Component {
                 </select>
               </div>
               <div className="form-check">
-                <input type="checkbox" name="Correo" />
-                <span >Quiero recibir comunicaciones sobre promociones y novedades a mi correo.</span>
-                <input type="checkbox" name="Terminos" />
+                <input type="checkbox" name="terms" />
                 <span >He leído y acepto las condiciones de uso y la Politica de privacidad.</span>
               </div>
             </div>
