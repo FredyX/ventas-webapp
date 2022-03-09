@@ -15,10 +15,7 @@
     "react-scripts": "5.0.0",
     "react-select": "^5.2.2",
     "sass": "^1.49.9",
-<<<<<<< HEAD
     "sass-loader": "^12.6.0",
-=======
->>>>>>> 6f984fb34c93dada019c79546fcb1c993dfffe66
     "web-vitals": "^2.1.4"
   },
   "scripts": {

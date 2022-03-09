@@ -71,7 +71,7 @@ export class Registro extends React.Component {
                 <input type="text" value={this.state.user_email} name="user_email" onChange={(e) => this.handleInputChange(e)} placeholder="Email" />
               </div>
               <div className="form-group">
-                <input type="password" value={this.state.user_password} name="user_password" onChange={(e) => this.handleInputChange(e)} placeholder="Contraseña"/>
+                <input type="password" value={this.state.user_password} name="user_password" onChange={(e) => this.handleInputChange(e)} placeholder="Contraseña" />
               </div>
               <div className="caja">
                 <select name="department_id" value={this.state.department_id} onChange={(e) => this.handleInputChange(e)}>
@@ -98,7 +98,9 @@ export class Registro extends React.Component {
               </div>
               <div className="form-check">
                 <input type="checkbox" name="terms" />
-                <span >He leído y acepto las condiciones de uso y la Politica de privacidad.</span>
+                <span>He leído y acepto los {<Link to={"/tos/"} target="_blank" className="link">
+                  <span>terminos y condiciones</span>
+                  </Link>} de uso.</span>
               </div>
             </div>
 
@@ -108,7 +110,7 @@ export class Registro extends React.Component {
               Crear cuenta
             </button>
             <span> Ya estas registrado, inicia sesión aqui:</span>
-            <Link to = {"/iniciosesion/"}><button type="button2" className="btn2" >
+            <Link to={"/iniciosesion/"}><button type="button2" className="btn2" >
               Iniciar Sesión
             </button>
             </Link>
