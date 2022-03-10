@@ -14,7 +14,7 @@ function App() {
 
       <Routes>
       <Route path="/registro/" element= {<Registro />} />  
-      <Route path="/iniciosesion/" element= {<InicioSesion />} />  
+      <Route path="/iniciosesion/" element= {<InicioSesion />} /> 
       <Route path="/" element= {<Home />} /> 
       <Route path="/tos/" element= {<TerminosDeServicio />} />
       </Routes>

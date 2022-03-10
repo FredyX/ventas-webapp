@@ -1,6 +1,8 @@
 import React from "react";
 import userDataService from "../../services/users.service";
 import { Link } from "react-router-dom";
+import { regularExp } from "../../helpers/regularExp";
+
 export class Registro extends React.Component {
 
   constructor(props) {
@@ -10,13 +12,19 @@ export class Registro extends React.Component {
       last_name: "",
       user_email: "",
       user_password: "",
-      department_id: ""
+      department_id: "",
+      errors:{}      
     };
-
+    this.style = {
+      fontWeight: "bold",
+      color:"#dc3545"
+    };    
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
+    this.isObjectEmpty = this.isObjectEmpty.bind(this);
   }
-
+  
   handleInputChange(event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -26,31 +34,75 @@ export class Registro extends React.Component {
       [name]: value
     });
   }
-
-  handleSubmit() {
-    let data = {
-      first_name: this.state.first_name,
-      last_name: this.state.last_name,
-      user_email: this.state.user_email,
-      user_password: this.state.user_password,
-      department_id: this.state.department_id,
-      is_company: false
+  isObjectEmpty(obj) {
+    for (let  prop in obj){
+      if(obj.hasOwnProperty(prop))return false;    
     }
 
-    userDataService.register(data)
-      .then(response => {
-        this.setState({
-          first_name: "",
-          last_name: "",
-          user_email: "",
-          user_password: "",
-          department_id: ""
+    return true;
+  }
+  handleSubmit() {
+    if(this.isObjectEmpty(this.state.errors)){
+    
+      let data = {
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        user_email: this.state.user_email,
+        user_password: this.state.user_password,
+        department_id: this.state.department_id,
+        is_company: false
+      }
+
+      userDataService.register(data)
+        .then(response => {
+          this.setState({
+            first_name: "",
+            last_name: "",
+            user_email: "",
+            user_password: "",
+            department_id: ""
+          });
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
         });
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+    }else{
+      alert('Campos incompletos no se puede crear la cuenta');
+    }
+  }
+
+  handleBlur(e) {
+    //this.handleInputChange(e);
+    const errores = this.validateForm();
+    const name  = 'errors';
+    this.setState({
+      [name]:errores
+    });
+    console.log(errores);
+  }
+  validateForm(){    
+    let errors = {};
+    if (!this.state.first_name.trim()){
+      errors.first_name = 'El campo del nombre es obligatorio';
+    }
+    if(!this.state.last_name.trim()){
+      errors.last_name = 'El campo apellido es obligatorio';
+    }
+    if(!this.state.user_email.trim()){
+      errors.user_email = 'El email es obligatorio';
+    }else{
+      const {email} = regularExp;
+      let arrayMatch = email.exec(this.state.user_email.trim());
+      console.log(arrayMatch);
+      if(!arrayMatch){
+        errors.user_email = 'El correo electrónico no es válido';        
+      }      
+    }
+    if(!this.state.user_password.trim()){
+      errors.user_password = 'La contraseña es obligatoria';
+    }
+    return errors;
   }
 
   render() {
@@ -62,16 +114,61 @@ export class Registro extends React.Component {
           <div className="content">
             <div className="form">
               <div className="form-group">
-                <input type="text" value={this.state.first_name} name="first_name" onChange={(e) => this.handleInputChange(e)} placeholder="Nombre" />
+                <input
+                  type="text"
+                  value={this.state.first_name}
+                  name="first_name"
+                  onChange={(e) => this.handleInputChange(e)}
+                  placeholder="Nombre" 
+                  onBlur={(e) => this.handleBlur(e)}
+                  />
+                  {
+                    this.state.errors.first_name &&
+                    <p style={this.style}> {this.state.errors.first_name}</p>
+                  }
               </div>
               <div className="form-group">
-                <input type="text" value={this.state.last_name} name="last_name" onChange={(e) => this.handleInputChange(e)} placeholder="Apellido" />
+                <input
+                 type="text" 
+                 value={this.state.last_name} 
+                 name="last_name" 
+                 onChange={(e) => this.handleInputChange(e)} 
+                 placeholder="Apellido"
+                 onBlur={(e) => this.handleBlur(e)}
+                 />
+                 {
+                    this.state.errors.last_name &&
+                    <p style={this.style}> {this.state.errors.last_name}</p>
+                 }
               </div>
               <div className="form-group">
-                <input type="text" value={this.state.user_email} name="user_email" onChange={(e) => this.handleInputChange(e)} placeholder="Email" />
+                <input 
+                  type="text" 
+                  value={this.state.user_email} 
+                  name="user_email" 
+                  onChange={(e) => this.handleInputChange(e)} 
+                  placeholder="Email"
+                  onBlur={(e) => this.handleBlur(e)}
+                />
+                {
+                    this.state.errors.user_email &&
+                    <p style={this.style}> {this.state.errors.user_email}</p>
+                 }
               </div>
               <div className="form-group">
-                <input type="password" value={this.state.user_password} name="user_password" onChange={(e) => this.handleInputChange(e)} placeholder="Contraseña" />
+                <input 
+                  type="password" 
+                  value={this.state.user_password} 
+                  name="user_password" 
+                  onChange={(e) => this.handleInputChange(e)} 
+                  placeholder="Contraseña"
+                  onBlur={(e) => this.handleBlur(e)} 
+                />
+
+                {
+                    this.state.errors.user_password &&
+                    <p style={this.style}> {this.state.errors.user_password}</p>
+                 }
               </div>
               <div className="caja">
                 <select name="department_id" value={this.state.department_id} onChange={(e) => this.handleInputChange(e)}>
