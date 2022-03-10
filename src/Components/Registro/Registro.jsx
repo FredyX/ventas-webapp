@@ -1,6 +1,7 @@
 import React from "react";
 import userDataService from "../../services/users.service";
 import { Link } from "react-router-dom";
+
 export class Registro extends React.Component {
 
   constructor(props) {

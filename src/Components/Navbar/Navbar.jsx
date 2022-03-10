@@ -1,50 +1,102 @@
 import styles from "./Navbar.module.scss";
 import { NavLink, Link } from "react-router-dom";
-import { BsArrowRight } from "react-icons/bs";
+import Box from '@mui/material/Box';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import { TextField } from "@mui/material";
+
+import { BsArrowRight, BsSearch } from "react-icons/bs";
 import { FaBars, FaTimes } from "react-icons/fa";
+
 import { useState } from "react";
+import useClickOutside from "../CustomHooks/ClickOutside";
+import { width } from "@mui/system";
 
 const Navbar = ({ BurgerColour }) => {
-
-    const MenuLink = ({ url, path }) => {
-        return <li className={styles.NavLink}>
-            <NavLink to={`${url}`} className={({ isActive }) => (isActive ? styles.active : undefined)}>
-                {`${path}`}
-            </NavLink>
-        </li>
-    }
-
-    const [isNavOpen, setisNavOpen] = useState(false);
+  const MenuLink = ({ url, path }) => {
     return (
-        <div className={styles.navbar_container}>
-            <nav>
-                {/* LOGO */}
-                <div className={styles.brand_logo}>
-                    <Link to="/">Real</Link>
-                </div>
+      <li className={styles.navlink}>
+        <NavLink
+          to={`/${url}`}
+          className={({ isActive }) => (isActive ? styles.active : undefined)}
+        >
+          {`${path}`}
+        </NavLink>
+      </li>
+    );
+  };
 
-                {/* NAV-BURGER */}
-                <div className={styles.mobile_menu}
-                    style={{ color: BurgerColour }}
-                    onClick={() => setisNavOpen(!isNavOpen)}
-                >
-                    <FaBars />
-                </div>
+  const [isNavOpen, setisNavOpen] = useState(false);
+  let domNode = useClickOutside(() => {
+    setisNavOpen(false);
+  });
 
-                {/* NAV */}
-                <ul className={`${isNavOpen ? styles.ul_active : undefined} ${styles.navbar_ul}`}>
+  const ColoredLine = ({ color }) => (
+    <hr
+      style={{
+        color,
+        backgroundColor: color,
+        height: 3,
+        marginTop: 15
+      }}
+    />
+  );
 
-                    <div className={styles.mobile_close} OnClick={() => setisNavOpen(!isNavOpen)}>
-                        <FaTimes />
-                    </div>
-
-                    {/* LI - MENULINK*/}
-                    <MenuLink url="" path="Home" />
-                    <MenuLink url="" path="Home" />
-                </ul>
-            </nav>
+  return (
+    <div className={styles.navbar_container}>
+      <nav>
+        {/* LOGO */}
+        <div className={styles.brand_logo}>
+          <Link to="/">SWAPPER</Link>
         </div>
-    )
-}
 
+        {/* NAV-BURGER */}
+        <div
+          className={styles.mobile_menu}
+          style={{ color: BurgerColour }}
+          onClick={() => setisNavOpen(!isNavOpen)}
+        >
+          <FaBars />
+        </div>
+
+        {/* NAV */}
+        <ul
+          className={`${isNavOpen ? styles.ul_active : undefined} ${
+            styles.navbar_ul
+          }`}
+          ref={domNode}
+        >
+          <div
+            className={styles.mobile_close}
+            onClick={() => setisNavOpen(!isNavOpen)}
+          >
+            <FaTimes />
+          </div>
+          
+          <div className="Buscar" >
+          <Box sx={{  width: 300, backgroundColor: 'grey', display: 'flex', alignItems: 'flex-end' }}>
+        <SearchOutlinedIcon sx={{ color: "green", mr: 1, my: 0.5 }} />
+        <TextField id="Buscar"  fullWidth label="Buscar" variant="standard" color="success" focused />
+      </Box>
+
+      </div>
+
+          <Link to="/iniciosesion/" className={styles.login}>
+            <span>Iniciar Sesión</span>
+          </Link>
+        </ul>
+
+        {/* Login */}
+        <Link to="/iniciosesion/" className={styles.login_container}>
+          <span style={{ color: BurgerColour }}>Iniciar Sesión</span>
+          <BsArrowRight style={{ color: BurgerColour }} />
+        </Link>
+      </nav>
+      <ColoredLine color="black" />
+    </div>
+  );
+};
+
+Navbar.defaultProps = {
+  BurgerColour: "rgb(26, 55, 58)",
+};
 export default Navbar;
