@@ -4,7 +4,7 @@ export class TerminosDeServicio extends React.Component {
   render() {
     return (
       <div className="base-container" >
-        <div className="registro-form" >
+        <div className="tos" >
           <div className="header">Terminos y condiciones</div>
           <p>(Nombre de la página) es una sociedad comercial domiciliada en la República de Honduras que pone a disposición en su sitio web (Dominio de la página )( “El Sitio”) una plataforma (“Marketplace”), que permite la exhibición y comercialización de bienes (“los Productos”) por parte de vendedores nacionales que actúan a título personal y que por tanto son independientes a (Nombre de la página) (“los Vendedores”), para la adquisición en línea de los mismos por parte de los consumidores ( “Clientes o Usuarios”). (Nombre de la página), no es distribuidor de los Productos ofrecidos por los Vendedores, no tiene ninguna posición contractual dentro de la transacción efectuada entre Clientes y Vendedores, y tampoco podrá ser calificado como revendedor de los productos ofrecidos por los Vendedores en la Marketplace.</p>
           <h1>Ámbito de aplicación de las Condiciones de Uso</h1>

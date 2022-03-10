@@ -10,17 +10,12 @@
   --puronegro: rgb(0, 0, 0);
 }
 
-html,
-body {
-  overflow-x: hidden;
-}
 
 body {
   font-family: "Arsenal", sans-serif;
   min-height: 100vh;
-
+  position: relative;
   @media screen and (min-width: 1500px) {
-    max-width: 1500px;
     margin: 0 auto;
   }
 }
@@ -36,6 +31,19 @@ main > * {
     padding: 0 1.5rem;
   }
 }
+
+.tos {
+  margin-top: 50px;
+  margin-bottom: 300px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  outline: solid rgb(18, 183, 0);
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 
 //Button
 .btn {

@@ -65,7 +65,7 @@ export class InicioSesion extends React.Component {
             <button type="button" className="btn" onClick={this.handleSubmitLogin}>
               Iniciar Sesión
             </button>
-            <span className="header2">¿No tienes cuenta?, puedes crear una en:</span>
+            <span className="content">¿No tienes cuenta?, puedes crear una en:</span>
             <Link to ={"/registro/"}>
             <button type="button" className="btn2" >
               Registro

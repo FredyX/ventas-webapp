@@ -6,7 +6,7 @@ import {Home} from "./Components/Pages/Home/Home";
 import {Registro} from "./Components/Registro/Registro";
 import {InicioSesion} from "./Components/InicioSesion/InicioSesion";
 import {TerminosDeServicio} from "./Components/Pages/ToS/TerminosDeServicio";
-import {Footer} from "./Components/Footer/Footer";
+
 //semana 1
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
       <Route path="/" element= {<Home />} /> 
       <Route path="/tos/" element= {<TerminosDeServicio />} />
       </Routes>
-      <Footer />
+
     </div>
   );
 } 

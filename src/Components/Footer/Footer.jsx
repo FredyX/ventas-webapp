@@ -1,7 +1,5 @@
 import React from "react";
-import userDataService from "../../services/users.service";
 import { Link } from "react-router-dom";
-import styles from ".//footer.scss";
 import styled from 'styled-components';
 
 const Column = styled.div`
@@ -12,15 +10,15 @@ const Column = styled.div`
 `;
 
 const Row = styled.div`
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   grid-gap: 20px;
   box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.19);
   outline: solid rgb(18, 183, 0);
-  background-color: #1b1b1b;
-  @media (max-width: 1000px) {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
+  background-color: #1b1b1b; 
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 `;
 
 const FooterLink = styled.a`
@@ -41,35 +39,34 @@ const Heading = styled.p`
   font-weight: bold;
 `;
 export class Footer extends React.Component {
-  render(){
-    return(
-    <footer classname="foot">
-      <div classname="conteiner">
-        <Row classname="ro">
-          <Column/>
-          <Column classname="col">
-            <Heading>Acerca de nosotros</Heading>
-            <FooterLink href="#">Seguridad</FooterLink>
-            <FooterLink href="#">Privacidad</FooterLink>
-            <FooterLink href="#">Terminos y condiciones</FooterLink>
-            <FooterLink/>
-          </Column>
+  render() {
+    return (
+      <footer classname="foot">
+        <div classname="conteiner">
+          <Row classname="ro">
+            <Column classname="col">
+              <Heading>Acerca de nosotros</Heading>
+              <FooterLink href="#">Seguridad</FooterLink>
+              <FooterLink href="#">Privacidad</FooterLink>
+              <FooterLink href="/tos">Terminos y condiciones</FooterLink>
+              <FooterLink />
+            </Column>
 
-          <Column classname="col">
-            <Heading classname="he">Contacto</Heading>
-            <FooterLink href="#">Contactenos</FooterLink>
-            <FooterLink href="#">Preguntas frecuentes</FooterLink>
-          </Column>
+            <Column classname="col">
+              <Heading classname="he">Contacto</Heading>
+              <FooterLink href="#">Contactenos</FooterLink>
+              <FooterLink href="#">Preguntas frecuentes</FooterLink>
+            </Column>
 
-          <Column classname="col">
-            <Heading>Mi cuenta</Heading>
-            <FooterLink href="#">Iniciar Sesion</FooterLink>
-            <FooterLink href="#">Registro</FooterLink>
-          </Column>
+            <Column classname="col">
+              <Heading>Mi cuenta</Heading>
+              <FooterLink href="/iniciosesion">Iniciar Sesion</FooterLink>
+              <FooterLink href="/registro">Registro</FooterLink>
+            </Column>
 
-        </Row>
-      </div>
-    </footer>
-);
-}
+          </Row>
+        </div>
+      </footer>
+    );
+  }
 }
