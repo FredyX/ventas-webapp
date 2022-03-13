@@ -6,6 +6,7 @@ import {Home} from "./Components/Pages/Home/Home";
 import {Registro} from "./Components/Registro/Registro";
 import {InicioSesion} from "./Components/InicioSesion/InicioSesion";
 import {TerminosDeServicio} from "./Components/Pages/ToS/TerminosDeServicio";
+import {AgregarProducto} from "./Components/AgregarProducto/AgregarProducto";
 
 //semana 1
 
@@ -15,7 +16,8 @@ function App() {
 
       <Routes>
       <Route path="/registro/" element= {<Registro />} />  
-      <Route path="/iniciosesion/" element= {<InicioSesion />} />  
+      <Route path="/iniciosesion/" element= {<InicioSesion />} /> 
+      <Route path="/agregarproducto/" element= {<AgregarProducto />} />   
       <Route path="/" element= {<Home />} /> 
       <Route path="/tos/" element= {<TerminosDeServicio />} />
       </Routes>

@@ -85,11 +85,22 @@ const Navbar = ({ BurgerColour }) => {
           </Link>
         </ul>
 
+
+
+        {/* TEMPORAL ----- Agregar producto */}
+        <Link to="/agregarproducto/" className={styles.login_container}>
+        <span style={{ color: BurgerColour }}>Agregar producto</span>
+        <BsArrowRight style={{ color: BurgerColour }} />
+        </Link>
+
+ 
         {/* Login */}
         <Link to="/iniciosesion/" className={styles.login_container}>
           <span style={{ color: BurgerColour }}>Iniciar Sesión</span>
           <BsArrowRight style={{ color: BurgerColour }} />
         </Link>
+
+
       </nav>
       <ColoredLine color="black" />
     </div>

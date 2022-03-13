@@ -59,8 +59,8 @@ export class InicioSesion extends React.Component {
                 <input type="password" value={this.state.user_password} name="user_password" onChange={(e) => this.handleInputChange(e)} placeholder="Contraseña" />
               </div>
             </div>
-
           </div>
+          
           <div className="footer">
             <button type="button" className="btn" onClick={this.handleSubmitLogin}>
               Iniciar Sesión
@@ -72,8 +72,6 @@ export class InicioSesion extends React.Component {
             </button>
             </Link>
           </div>
-
-
         </div>
       </div>
     );
