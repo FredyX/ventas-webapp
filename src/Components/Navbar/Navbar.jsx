@@ -88,7 +88,7 @@ const Navbar = ({ BurgerColour }) => {
 
 
         {/* TEMPORAL ----- Agregar producto */}
-        <Link to="/agregarproducto/" className={styles.login_container}>
+        <Link to="/AgregarProducto/" className={styles.login_container}>
         <span style={{ color: BurgerColour }}>Agregar producto</span>
         <BsArrowRight style={{ color: BurgerColour }} />
         </Link>
