@@ -1,12 +1,12 @@
 import http from "../http-common";
-
+import authHeader from "./auth-header";
 class userDataService {
   getAllUsers() {
     return http.get("/users");
   }
 
   get(id) {
-    return http.get(`/users/${id}`);
+    return http.get(`/users/${id}`, { headers: authHeader() });
   }
 
   getToProfile(id) {
@@ -22,16 +22,13 @@ class userDataService {
   }
 
   update(id, data) {
-    return http.put(`/users/${id}`, data);
+    return http.put(`/users/${id}`, data , { headers: authHeader() });
   }
 
   delete(id) {
-    return http.delete(`/users/${id}`);
+    return http.delete(`/users/${id}`, { headers: authHeader() });
   }
-  
-  login(data) {
-    return http.post(`/users/login`, data);
-  }
+
 }
 
 export default new userDataService();
