@@ -5,6 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemButton from '@mui/material/ListItemButton';
 import Checkbox from '@mui/material/Checkbox';
 
+import styles from "./AgregarProducto.scss";
 
 export default function PinnedSubheaderList() {
     const [checked, setChecked] = React.useState([0]);
@@ -26,7 +27,7 @@ export default function PinnedSubheaderList() {
 
 
 
-    <List
+    <List className='estilotexto'
       sx={{
         marginTop: 1,
         width: '150%',
@@ -38,32 +39,24 @@ export default function PinnedSubheaderList() {
         maxHeight: 110,
         display: 'flex',
         fontSize: 20,
-        fontFamily: [
-            'sans-serif',
-          ],
         background: '#f3f3f3',
         border: 0,
         borderRadius: 1.5,
-        color: 'dark',
+        color: '#5a5a5a',
         padding: '0 50px',
-        typography: {
-            fontFamily: [
-              'sans-serif',
-            ].join(','),
-          },
       }}
     >
-        
+    
+
           <ul>
            
             {[0, 1, 2, 3, 4, 5].map((value) => {
             const labelId = `checkbox-list-label-${value}`;
     
             return (
-             
                 <ListItemButton role={undefined} onClick={handleToggle(value)} dense>
                   
-                    <Checkbox
+                    <Checkbox 
                       edge="start"
                       checked={checked.indexOf(value) !== -1}
                     />
