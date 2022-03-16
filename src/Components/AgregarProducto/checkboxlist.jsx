@@ -37,7 +37,10 @@ export default function PinnedSubheaderList() {
         overflow: 'auto',
         maxHeight: 110,
         display: 'flex',
-        fontFamily: 'Arsenal',
+        fontSize: 20,
+        fontFamily: [
+            'sans-serif',
+          ],
         background: '#f3f3f3',
         border: 0,
         borderRadius: 1.5,
@@ -45,7 +48,7 @@ export default function PinnedSubheaderList() {
         padding: '0 50px',
         typography: {
             fontFamily: [
-              'Arsenal',
+              'sans-serif',
             ].join(','),
           },
       }}

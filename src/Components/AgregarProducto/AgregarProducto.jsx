@@ -216,7 +216,7 @@ export class AgregarProducto extends React.Component {
                               console.log(e.tarjet.files);
                             }}
                           />
-                          <div className="textoimagen"> Puede arrastrar y soltar las imagenes o click para seleccionar</div>
+                          <div className="textoimagen"> Puede arrastrar y soltar las imagenes o dar click para seleccionar</div>
                         </div>
                       </div>
                     </div>
@@ -228,5 +228,5 @@ export class AgregarProducto extends React.Component {
         );
         
     }
-        }
+  }
 
