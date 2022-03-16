@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import userDataService from "../../services/users.service";
-import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 import styles from "./AgregarProducto.scss";
+
 
 const Column = styled.div`
 display: flex;
@@ -24,6 +24,8 @@ bottom: 0;
 width: 100%;
 `;
   
+
+
 export class AgregarProducto extends React.Component {
 
     constructor(props) {
@@ -201,33 +203,26 @@ export class AgregarProducto extends React.Component {
                 <div className="base-container2">
 
                   <div className="imageproduct-form" >
-                  <div className="header2">Imagenes añadidas</div>
-                  <div className="content">
+                  <div className="header2">Imagenes del producto</div>
                     <div className="form">
-                
                       <div className="cajaimagen">
-                        
-                      </div>
 
-
-                      <div className="form-group">
-                          <input
-                              type="file"
-                              accept="image/*"
-                              style={{ display: 'none' }}
-                              id="contained-button-file"
+                      </div>                    
+                      <div className="image-upload-wrap">
+                          <input   
+                            className='file-upload-input'
+                            type="file"
+                            accept='image/'
+                            multiple
+                            onChange={e=> {
+                              console.log(e.tarjet.files);
+                            }}
                           />
-                          <label htmlFor="contained-button-file">
-                              <Button type="button2" variant="contained" className="btn2" component="span">
-                              Cargar imagenes
-                              </Button>
-                          </label>
+                          <div className="textoimagen"> Puede arrastrar y soltar las imagenes o click para seleccionar</div>
                         </div>
-
                       </div>
                     </div>
                   </div>
-                </div>
                 </Column>
               </Row>
             </div>
