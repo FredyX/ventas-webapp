@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import userDataService from "../../services/users.service";
 import styled from 'styled-components';
 import styles from "./AgregarProducto.scss";
-
+import CheckboxList from './checkboxlist';
+import PinnedSubheaderList from './checkboxlist';
 
 const Column = styled.div`
 display: flex;
@@ -23,7 +24,7 @@ position: center;
 bottom: 0;
 width: 100%;
 `;
-  
+
 
 
 export class AgregarProducto extends React.Component {
@@ -45,6 +46,7 @@ export class AgregarProducto extends React.Component {
       }
   
   
+      
       handleInputChange(event) {
           const target = event.target;
           const value = target.value;
@@ -114,8 +116,7 @@ export class AgregarProducto extends React.Component {
           }
           return errors;
         }
-  
-        
+
 
     render() {
         return (
@@ -156,15 +157,6 @@ export class AgregarProducto extends React.Component {
                       </div>
 
                       <div className="caja">
-                        <select name="category" value={this.state.category} onChange={(e) => this.handleInputChange(e)}>
-                          <option >Categoría</option>
-                          <option value={1}>Ropa</option>
-                          <option value={2}>Cocina</option>
-                          <option value={3}>Repuestos</option>
-                        </select>
-                      </div>
-
-                      <div className="caja">
                         <select name="state" value={this.state.state} onChange={(e) => this.handleInputChange(e)}>
                           <option >Estado</option>
                           <option value={1}>Nuevo</option>
@@ -172,7 +164,7 @@ export class AgregarProducto extends React.Component {
                         </select>
                       </div>
 
-                      <div className="form-group">
+                      <div className="form-group2">
                         <input 
                           type="text" 
                           value={this.state.description} 
@@ -182,6 +174,12 @@ export class AgregarProducto extends React.Component {
                           onBlur={(e) => this.handleBlur(e)}
                         />
                       </div>
+
+
+                      
+                      <span>Seleccione una o varias categorías</span>
+                      <PinnedSubheaderList/>                 
+                    
 
                       </div>
                           <div className="footer">
@@ -230,6 +228,5 @@ export class AgregarProducto extends React.Component {
         );
         
     }
-}
-
+        }
 
