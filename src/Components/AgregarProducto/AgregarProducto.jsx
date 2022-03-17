@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import styles from "./AgregarProducto.scss";
 import CheckboxList from './checkboxlist';
 import PinnedSubheaderList from './checkboxlist';
+import DragArea from './imagenprevious';
+
 
 const Column = styled.div`
 display: flex;
@@ -179,7 +181,6 @@ export class AgregarProducto extends React.Component {
                       
                       <span>Seleccione una o varias categorías</span>
                       <PinnedSubheaderList/>                 
-                    
 
                       </div>
                           <div className="footer">
@@ -203,21 +204,11 @@ export class AgregarProducto extends React.Component {
                   <div className="imageproduct-form" >
                   <div className="header2">Imagenes del producto</div>
                     <div className="form">
-                      <div className="cajaimagen">
-
-                      </div>                    
-                      <div className="image-upload-wrap">
-                          <input   
-                            className='file-upload-input'
-                            type="file"
-                            accept='image/'
-                            multiple
-                            onChange={e=> {
-                              console.log(e.tarjet.files);
-                            }}
-                          />
-                          <div className="textoimagen"> Puede arrastrar y soltar las imagenes o dar click para seleccionar</div>
-                        </div>
+                      
+                      
+                      <DragArea/>
+                                   
+                     
                       </div>
                     </div>
                   </div>

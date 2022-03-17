@@ -3,6 +3,7 @@
     --white: #ffffff;
     --black: rgb(0, 0, 0);
     --gris: #c4c4c4;
+    --grisoscuro: #5a5a5a;
   }
 
   .base-container1 {
@@ -273,19 +274,48 @@
 }
 
 .base-container2 {
-    width: 160%;
+    position: relative;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: center;
 
+    
+  .grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1efef;
+    border-radius: 4px;
+    transition: transform 0.3s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+  }
+  
+  .grid-item:hover {
+    filter: opacity(0.9);
+    transform: scale(1.04);
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: (250px 250px 250px);
+    grid-auto-rows: (200px 200px 200px);
+    gap: 20px;
+    padding: 20px;
+    grid-auto-flow: dense;
+  }
+  
     
       .imageproduct-form {
         margin-top: 50px;
-        margin-bottom: 300px;
+        margin-bottom: 290px;
         background-color: white;
         padding: 2rem;
         border-radius: 1px;
-        outline: solid rgb(196, 196, 196);
+        outline: solid #c4c4c4;
         box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   
       }
@@ -360,7 +390,7 @@
         cursor: pointer;
       }
       .cajaimagen {
-        margin-top: 10px;
+        margin-top: 0px;
         height: 480px;
         width: 100;
         margin-bottom: 20px;
@@ -384,12 +414,7 @@
         align-items: center;
       }
 
-    
-  .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+
   .file-upload-content {
     display: none;
     text-align: center;
@@ -405,23 +430,38 @@
     cursor: pointer;
   }
   .image-upload-wrap {
-    position: relative;
-    height: 100px;
+    position: center;
+    width: 100%;
     border: 4px solid #d0d7de;
     margin-left: 10px;
     margin-right: 10px;
+    border-radius: 5px;
+  }
+  
+  .image-upload-wrap2 {
+    position: center;
+    width: 100%;
+    border: 4px solid #d0d7de;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+  
+  .image-upload-wrap3 {
+    position: center;
+    width: 100%;
+    border: 4px solid #d0d7de;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
   }
   .image-upload-wrap:hover {
     background-color: transparent;
     border: 4px dashed #12b700;
   }
 
-
-
 }
 
-
-    
 .estilotexto {
     font-size: 10px;
     font-weight: lighter;
@@ -430,5 +470,7 @@
     flex-direction: column;
     align-items: center;
   }
+
+
 
 

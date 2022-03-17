@@ -8,7 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import styles from "./AgregarProducto.scss";
 
 export default function PinnedSubheaderList() {
-    const [checked, setChecked] = React.useState([0]);
+    const [checked, setChecked] = React.useState([-1]);
 
     const handleToggle = (value) => () => {
       const currentIndex = checked.indexOf(value);
