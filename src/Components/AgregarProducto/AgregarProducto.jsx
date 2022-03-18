@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import styles from "./AgregarProducto.scss";
 import CheckboxList from './checkboxlist';
 import PinnedSubheaderList from './checkboxlist';
-import DragArea from './imagenprevious';
+import DragAreaPrincipal from './imagenprevious';
 
 
 const Column = styled.div`
@@ -206,7 +206,7 @@ export class AgregarProducto extends React.Component {
                     <div className="form">
                       
                       
-                      <DragArea/>
+                      <DragAreaPrincipal/>
                                    
                      
                       </div>

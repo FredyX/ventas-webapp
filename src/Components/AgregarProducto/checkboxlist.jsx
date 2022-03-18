@@ -36,7 +36,7 @@ export default function PinnedSubheaderList() {
         bgcolor: 'gris',
         position: 'center',
         overflow: 'auto',
-        maxHeight: 110,
+        maxHeight: 80,
         display: 'flex',
         fontSize: 20,
         background: '#f3f3f3',
