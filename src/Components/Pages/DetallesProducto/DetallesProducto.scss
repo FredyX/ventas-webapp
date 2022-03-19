@@ -1,0 +1,65 @@
+:root {
+    --form-control-color: rgb(18, 183, 0);
+    --white: #ffffff;
+    --black: rgb(0, 0, 0);
+    --gris: #c4c4c4;
+    --grisoscuro: #5a5a5a;
+  }
+
+.Titulo{
+    margin-top: auto;
+    font-weight: bold;
+    font-size: 50px;
+    font-family: "Arsenal", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(0, 0, 0);
+}
+
+.Precio{
+    color: rgb(18, 183, 0);
+    font-weight: bold;
+    font-size: 30px;
+    font-family: "Arsenal", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.Descripcion{
+    color: #5a5a5a;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: "Arsenal", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Estado{
+    color: #cf0606;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: "Arsenal", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.base-container1{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: #c4c4c4;
+
+}
+
+.base-container2{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
