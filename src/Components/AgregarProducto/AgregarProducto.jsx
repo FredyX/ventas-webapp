@@ -30,7 +30,6 @@ width: 100%;
 
 
 export class AgregarProducto extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
