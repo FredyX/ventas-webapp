@@ -7,6 +7,8 @@ import {Registro} from "./Components/Registro/Registro";
 import {InicioSesion} from "./Components/InicioSesion/InicioSesion";
 import {TerminosDeServicio} from "./Components/Pages/ToS/TerminosDeServicio";
 import {AgregarProducto} from "./Components/AgregarProducto/AgregarProducto";
+import {DetallesProducto} from "./Components/Pages/DetallesProducto/DetallesProducto";
+
 
 //semana 1
 
@@ -20,6 +22,7 @@ function App() {
       <Route path="/agregarproducto/" element= {<AgregarProducto />} />   
       <Route path="/" element= {<Home />} /> 
       <Route path="/tos/" element= {<TerminosDeServicio />} />
+      <Route path="/detalles/" element= {<DetallesProducto />} />
       </Routes>
 
     </div>
