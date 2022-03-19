@@ -1,25 +1,26 @@
 import React from "react";
-import userDataService from "../../services/users.service";
+import AuthService from "../../services/auth.service";
 import { Link } from "react-router-dom";
 
-export class InicioSesion extends React.Component {
 
+
+export class InicioSesion extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {
       user_email: "",
       user_password: ""
     };
-
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
   }
-
+  
   handleInputChange(event) {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-
+    
     this.setState({
       [name]: value
     });
@@ -30,13 +31,13 @@ export class InicioSesion extends React.Component {
       user_email: this.state.user_email,
       user_password: this.state.user_password
     }
-
-    userDataService.login(data)
-      .then(response => {
-        this.setState({
-          user_email: "",
-          user_password: ""
-        });
+    
+    AuthService.login(data)
+    .then(response => {
+      this.setState({
+        user_email: "",
+        user_password: ""
+      });
         console.log(response.data);
       })
       .catch(e => {

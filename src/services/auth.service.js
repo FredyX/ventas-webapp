@@ -1,13 +1,8 @@
-import axios from "axios";
-
-const API_URL = "http://localhost:3001/api/auth";
-
+import http from "../http-common";
+import {useNavigate} from "react-router-dom";
 class AuthService{
-    login(user_email, user_password){
-        return axios.post(`${API_URL}/login`, {
-            user_email,
-            user_password
-        })
+    login(data){
+        return http.post(`/auth/login`, data )
         .then(response=>{
             if(response.data.token){
                 localStorage.setItem("user", JSON.stringify(response.data));
@@ -15,9 +10,11 @@ class AuthService{
             return response.data;
         });
     }
+
     logout(){
         localStorage.removeItem("user");
     }
+    
     getCurrentUser(){
         return JSON.parse(localStorage.getItem("user"));
     }
