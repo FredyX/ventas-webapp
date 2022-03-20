@@ -5,31 +5,38 @@ import styles from "./AgregarProducto.scss";
 import CheckboxList from './checkboxlist';
 import PinnedSubheaderList from './checkboxlist';
 import DragAreaPrincipal from './imagenprevious';
+import DragArea from "./images.jsx/imagen1";
+import { useForm } from  "../../hooks/useFormRegistro";
 
 
 export const AgregarProducto = (props) => {
 
-const Column = styled.div`
-display: flex;
-flex-direction: column;
-text-align: left;
-margin-left: 2000 px;
-`;
+  const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 2000 px;
+  `;
 
-const Row = styled.div`
-display: flex;
-grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-grid-gap: 50px;
-box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.19);
-outline: solid rgb(18, 183, 0);
-background-color: #ffffff; 
-position: center;
-bottom: 0;
-width: 100%;
-`;
+  const Row = styled.div`
+  display: flex;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-gap: 50px;
+  box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.19);
+  outline: solid rgb(18, 183, 0);
+  background-color: #ffffff; 
+  position: center;
+  bottom: 0;
+  width: 100%;
+  `;
+
         return (
-    
-            <div classname="conteiner">
+          <div>
+          <br />
+          <div className="cajaimagen">
+              <div class="grid-container">
+              <div class="grid-item tall">                                                   
+              <div classname="conteiner">
               <Row classname="ro">
               <Column classname="col">
                 
@@ -97,16 +104,26 @@ width: 100%;
 
                   <div className="imageproduct-form" >
                   <div className="header2">Imagenes del producto</div>
-                    <div className="form">
-
-                      <DragAreaPrincipal/>
-
+                    <div className="form">                      
+                    <DragArea />
                       </div>
                     </div>
                   </div>
                 </Column>
               </Row>
             </div>
-        );
+ 
+              </div>
+              <div class="grid-item tall">
+                             
+              </div>
+              <div class="grid-item tall">
+              
+              
+              </div>              
+          </div>
+          </div>
+      </div>
+                   );
  
 }
