@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-export const useForm = (form = {}, validateForm, productDataService) => {
+export const useFormProducts = (form = {}, validateForm, productDataService) => {
 	
 	const [stateForm, setForm] = useState(form);
 	const [errors, setErrors] = useState({});
@@ -32,7 +32,7 @@ export const useForm = (form = {}, validateForm, productDataService) => {
 				is_company: false
 			}
 
-			productDataService.product(data)
+			productDataService.add(data)
 				.then(response => {
 					setForm({
 						title: '',

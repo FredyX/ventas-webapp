@@ -1,4 +1,4 @@
-
+/*
 import { faCropSimple } from "@fortawesome/free-solid-svg-icons";
 import { ConstructionOutlined } from "@mui/icons-material";
 import { render } from "@testing-library/react";
@@ -67,3 +67,4 @@ export const DetallesProducto = () => {
             </div>
             )
         }   
+*/

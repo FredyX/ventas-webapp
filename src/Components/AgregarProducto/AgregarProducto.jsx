@@ -6,7 +6,9 @@ import CheckboxList from './checkboxlist';
 import PinnedSubheaderList from './checkboxlist';
 import DragAreaPrincipal from './imagenprevious';
 import DragArea from "./images.jsx/imagen1";
-import { useForm } from  "../../hooks/useFormRegistro";
+import { validateForm } from "../../helpers/validateForm";
+import { useFormProducts } from '../../hooks/useFormProducts';
+import  productDataService  from "../../services/product.service";
 
 
 export const AgregarProducto = (props) => {
@@ -29,6 +31,29 @@ export const AgregarProducto = (props) => {
   bottom: 0;
   width: 100%;
   `;
+
+  
+const {
+  stateForm,
+  errors,
+  handleInputChange,
+  handleBlur,
+  handleSubmit,
+  handleClick
+} = useFormProducts({
+  title: '',
+	price: '',
+	category: '',
+	state: '',
+	description: '',
+	imagen: '',
+}, validateForm, productDataService);
+
+const style = {
+  fontWeight: "bold",
+  color: "#dc3545"
+};
+
 
         return (
           <div>
@@ -54,7 +79,14 @@ export const AgregarProducto = (props) => {
                           type="text"
                           name="title"
                           placeholder="Título" 
+                          value={stateForm.title}
+                          onChange={handleInputChange}
+                          onBlur={handleBlur}
                           />
+                           {
+                          errors.title &&
+                          <p style={style}> {errors.title}</p>
+                        }
                       </div>
 
                       <div className="form-group">
@@ -62,11 +94,18 @@ export const AgregarProducto = (props) => {
                         type="text" 
                         name="price" 
                         placeholder="Precio"
+                        value={stateForm.price}
+                        onChange={handleInputChange}
+                        onBlur={handleBlur}
                         />
+                        {
+                          errors.price &&
+                          <p style={style}> {errors.price}</p>
+                        }
                       </div>
 
                       <div className="caja">
-                        <select name="state"  >
+                      <select name="state"  value={stateForm.state} onChange={handleInputChange}>
                           <option >Estado</option>
                           <option value={1}>Nuevo</option>
                           <option value={2}>Usado</option>
@@ -78,18 +117,25 @@ export const AgregarProducto = (props) => {
                           type="text" 
                           name="description" 
                           placeholder="Descripción"
+                          value={stateForm.description}
+                          onChange={handleInputChange}
+                          onBlur={handleBlur}
                         />
+                        {
+                            errors.description &&
+                            <p style={style}> {errors.description}</p>
+                          }
                       </div>
 
                       <span>Seleccione una o varias categorías</span>
                       <PinnedSubheaderList/>                 
                       </div>
                           <div className="footer">
-                          <button type="button" className="btn" >
+                          <button type="button" className="btn" onClick={handleSubmit}>
                               Agregar producto
                           </button>
                           <Link to ={"/"}>
-                          <button type="button" className="btn2" >
+                          <button type="button" className="btn2" onClick={handleSubmit}>
                           Cancelar
                           </button>
                           </Link>
