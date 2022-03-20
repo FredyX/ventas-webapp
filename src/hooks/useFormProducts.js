@@ -28,19 +28,19 @@ export const useForm = (form = {}, validateFormProducts, productDataService) => 
 	const handleSubmit = (e) => {
 		if (isObjectEmpty(errors) && stateCheck) {
 			let data = {
-				...stateForm,
-				is_company: false
+				...stateForm
+				
 			}
 
-			productDataService.register(data)
+			productDataService.add(data)
 				.then(response => {
 					setForm({
-						title: '',
+						product_name: '',
 						price: '',
 						category: '',
 						state: '',
-						description: '',
-						imagen: '',
+						product_description: '',
+						images: '',
                         
 					});
 					setCheck(false);

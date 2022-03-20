@@ -6,7 +6,7 @@ import CheckboxList from './checkboxlist';
 import PinnedSubheaderList from './checkboxlist';
 import DragAreaPrincipal from './imagenprevious';
 import DragArea from "./images.jsx/imagen1";
-import { validateFormProducts } from "../../helpers/validateFormProducts";
+import { validateFormProducts } from "../../helpers/validateForm";
 import { useForm } from '../../hooks/useFormProducts';
 import  productDataService  from "../../services/product.service";
 
@@ -38,15 +38,16 @@ const {
   errors,
   handleInputChange,
   handleBlur,
-  handleSubmit,
-  handleClick
+  handleSubmit
+  
 } = useForm({
-  title: '',
+  product_name: '',
 	price: '',
 	category: '',
 	state: '',
-	description: '',
-	imagen: '',
+	product_description: '',
+	images: '',
+
 }, validateFormProducts, productDataService);
 
 const styles = {
@@ -77,15 +78,15 @@ const styles = {
                       <div className="form-group">
                         <input
                           type="text"
-                          name="title"
-                          placeholder="Título" 
-                          value={stateForm.title}
+                          name="product_name"
+                          placeholder="Nombre del producto" 
+                          value={stateForm.product_name}
                           onChange={handleInputChange}
                           onBlur={handleBlur}
                           />
                            {
-                          errors.title &&
-                          <p style={styles}> {errors.title}</p>
+                          errors.product_name &&
+                          <p style={styles}> {errors.product_name}</p>
                         }
                       </div>
 
@@ -115,15 +116,15 @@ const styles = {
                       <div className="form-group2">
                         <input 
                           type="text" 
-                          name="description" 
-                          placeholder="Descripción"
-                          value={stateForm.description}
+                          name="product_description" 
+                          placeholder="Descripción del producto"
+                          value={stateForm.product_description}
                           onChange={handleInputChange}
                           onBlur={handleBlur}
                         />
                         {
-                            errors.description &&
-                            <p style={styles}> {errors.description}</p>
+                            errors.product_description &&
+                            <p style={styles}> {errors.product_description}</p>
                           }
                       </div>
 
