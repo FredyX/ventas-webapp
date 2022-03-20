@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
 export const useForm = (form = {}, validateFormProducts, productDataService) => {
 	
 	const [stateForm, setForm] = useState(form);

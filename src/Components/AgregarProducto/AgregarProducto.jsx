@@ -47,7 +47,6 @@ const {
 	state: '',
 	product_description: '',
 	images: '',
-
 }, validateFormProducts, productDataService);
 
 const styles = {

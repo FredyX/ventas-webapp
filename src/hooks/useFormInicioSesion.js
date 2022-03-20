@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export const useForm = (form = {},validateFormLogin, AuthService) => {
-	
+export const useForm = (form = {}, validateFormLogin, AuthService) => {
+
 	const [stateForm, setForm] = useState(form);
 	const [errors, setErrors] = useState({});
 	const navigate = useNavigate();
@@ -25,14 +25,15 @@ export const useForm = (form = {},validateFormLogin, AuthService) => {
 			let data = {
 				...stateForm
 			}
-
 			AuthService.login(data)
 				.then(() => {
 					setForm({
 						user_email: '',
 						user_password: ''
 					});
+					
 					navigate("/agregarproducto");
+
 				})
 				.catch(e => {
 					console.log(e);

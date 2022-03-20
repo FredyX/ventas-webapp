@@ -1,11 +1,7 @@
-
-import { faCropSimple } from "@fortawesome/free-solid-svg-icons";
-import { ConstructionOutlined } from "@mui/icons-material";
-import { render } from "@testing-library/react";
 import React,{useEffect,useState} from "react";
 import styled from 'styled-components';
 import "./DetallesProducto.scss";
-import productDataService from "/Users/Jonathan/Documents/Proyecto_IS/ventas-webapp/src/services/product.service.js"
+import productDataService from "../../../services/product.service"
 
 const Column = styled.div`
     display: flex;

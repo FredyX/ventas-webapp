@@ -1,5 +1,4 @@
 import http from "../http-common";
-import {useNavigate} from "react-router-dom";
 class AuthService{
     login(data){
         return http.post(`/auth/login`, data )

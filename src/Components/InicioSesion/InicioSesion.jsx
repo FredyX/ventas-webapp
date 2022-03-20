@@ -17,10 +17,12 @@ export const InicioSesion = (props) => {
     user_password: '',
   }, validateFormLogin, AuthService);
 
+
   const style = {
     fontWeight: "bold",
     color: "#dc3545"
   };
+
 
   return (
     <div className="base-container" >

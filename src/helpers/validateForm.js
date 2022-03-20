@@ -52,7 +52,6 @@ const validateFormLogin = (stateForm) => {
   return errors;
 }
 
-export { validateForm, validateFormLogin };
 
 
 const validateFormProducts = (stateForm, check = null) => {
@@ -69,13 +68,13 @@ const validateFormProducts = (stateForm, check = null) => {
     errors.product_description = 'El campo descripción es obligatorio';
   }
 
-  if (!(check === null)) { 
-    if (!check) {
-      errors.categories = 'Necesita seleccionar al menos una categoría';
-    }
-  }
+  // if (!(check === null)) { 
+  //   if (!check) {
+  //     errors.categories = 'Necesita seleccionar al menos una categoría';
+  //   }
+  // }
   return errors;
 }
 
 
-export { validateFormProducts };
+export { validateFormProducts ,validateForm, validateFormLogin };
