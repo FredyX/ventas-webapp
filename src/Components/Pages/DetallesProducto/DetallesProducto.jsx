@@ -1,4 +1,4 @@
-/*
+
 import { faCropSimple } from "@fortawesome/free-solid-svg-icons";
 import { ConstructionOutlined } from "@mui/icons-material";
 import { render } from "@testing-library/react";
@@ -32,18 +32,24 @@ export const DetallesProducto = () => {
     const [precio, setPrecio] = useState(' ');
     const [estado, setEstado] = useState(' ');
     const [descripcion, setDescripcion] = useState(' ');
+    const [id, setId] = useState(' ');
+
 
     useEffect( ()=> {
         ProductsApi();
     })
 
     const ProductsApi = async () => {
-        const response = await productDataService.get(5);
+        const response = await productDataService.get(12);
+        const response2 = await productDataService.getImagen(12);
+        console.log(response2.data);
         console.log(response.status);
-        setTitulo(response.data.productoRespuesta.product.product_name);
+        console.log(response.data)
+        setTitulo(response.data.productoRespuesta.product.id);
         setPrecio(response.data.productoRespuesta.product.price);
         setEstado(response.data.productoRespuesta.product.state);
         setDescripcion(response.data.productoRespuesta.product.product_description);
+        setId(response.data.productoRespuesta.product.id)
         }
         
        return(
@@ -51,7 +57,7 @@ export const DetallesProducto = () => {
                     <Row className="ro">
                         <Column className="col1">
                             <div className="base-container1"> 
-                                        <img src="" alt="" height="400px" width="400px" />
+                                        <img src="http://localhost:3001/ea70e8310340866105e2efcfea60b4c5.jpg" alt="" height="400px" width="400px" />
                             </div>
                         </Column>
                         <Column className="col2">
@@ -67,4 +73,3 @@ export const DetallesProducto = () => {
             </div>
             )
         }   
-*/

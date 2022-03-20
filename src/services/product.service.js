@@ -14,6 +14,10 @@ class productDataService {
     return http.post("/products/", data, { headers: authHeader() });
   }
 
+  getImagen(id) {
+    return http.get(`/products/images/${id}`, { headers: authHeader() })
+  }
+
 }
 
 export default new productDataService();
