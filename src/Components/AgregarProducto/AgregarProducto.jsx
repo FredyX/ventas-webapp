@@ -6,8 +6,8 @@ import CheckboxList from './checkboxlist';
 import PinnedSubheaderList from './checkboxlist';
 import DragAreaPrincipal from './imagenprevious';
 import DragArea from "./images.jsx/imagen1";
-import { validateForm } from "../../helpers/validateForm";
-import { useFormProducts } from '../../hooks/useFormProducts';
+import { validateFormProducts } from "../../helpers/validateFormProducts";
+import { useForm } from '../../hooks/useFormProducts';
 import  productDataService  from "../../services/product.service";
 
 
@@ -40,16 +40,16 @@ const {
   handleBlur,
   handleSubmit,
   handleClick
-} = useFormProducts({
+} = useForm({
   title: '',
 	price: '',
 	category: '',
 	state: '',
 	description: '',
 	imagen: '',
-}, validateForm, productDataService);
+}, validateFormProducts, productDataService);
 
-const style = {
+const styles = {
   fontWeight: "bold",
   color: "#dc3545"
 };
@@ -85,7 +85,7 @@ const style = {
                           />
                            {
                           errors.title &&
-                          <p style={style}> {errors.title}</p>
+                          <p style={styles}> {errors.title}</p>
                         }
                       </div>
 
@@ -100,7 +100,7 @@ const style = {
                         />
                         {
                           errors.price &&
-                          <p style={style}> {errors.price}</p>
+                          <p style={styles}> {errors.price}</p>
                         }
                       </div>
 
@@ -123,7 +123,7 @@ const style = {
                         />
                         {
                             errors.description &&
-                            <p style={style}> {errors.description}</p>
+                            <p style={styles}> {errors.description}</p>
                           }
                       </div>
 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-export const useFormProducts = (form = {}, validateForm, productDataService) => {
+export const useForm = (form = {}, validateFormProducts, productDataService) => {
 	
 	const [stateForm, setForm] = useState(form);
 	const [errors, setErrors] = useState({});
@@ -18,7 +18,7 @@ export const useFormProducts = (form = {}, validateForm, productDataService) => 
 
 	const handleBlur = (e) => {
 		handleInputChange(e);
-		setErrors(validateForm(stateForm));
+		setErrors(validateFormProducts(stateForm));
 	}
 
 	const handleClick = ({ target }) => {
@@ -32,7 +32,7 @@ export const useFormProducts = (form = {}, validateForm, productDataService) => 
 				is_company: false
 			}
 
-			productDataService.add(data)
+			productDataService.register(data)
 				.then(response => {
 					setForm({
 						title: '',

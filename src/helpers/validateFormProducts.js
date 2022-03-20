@@ -13,9 +13,6 @@ const validateFormProducts = (stateForm, check = null) => {
   if (!stateForm.description) {
     errors.description = 'El campo descripción es obligatorio';
   }
-  if (!stateForm.price) {
-    errors.last_name = 'El campo apellido es obligatorio';
-  }
 
   if (!(check === null)) { 
     if (!check) {
