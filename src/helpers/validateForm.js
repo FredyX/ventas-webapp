@@ -53,3 +53,29 @@ const validateFormLogin = (stateForm) => {
 }
 
 export { validateForm, validateFormLogin };
+
+
+const validateFormProducts = (stateForm, check = null) => {
+
+  let errors = {};
+  
+  if (!stateForm.product_name) {
+    errors.product_name = 'El campo del título es obligatorio';
+  }
+  if (!stateForm.price) {
+    errors.price = 'El campo precio es obligatorio';
+  }
+  if (!stateForm.product_description) {
+    errors.product_description = 'El campo descripción es obligatorio';
+  }
+
+  if (!(check === null)) { 
+    if (!check) {
+      errors.categories = 'Necesita seleccionar al menos una categoría';
+    }
+  }
+  return errors;
+}
+
+
+export { validateFormProducts };
