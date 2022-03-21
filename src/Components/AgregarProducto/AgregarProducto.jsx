@@ -16,14 +16,14 @@ export const AgregarProducto = (props) => {
   const Column = styled.div`
   display: flex;
   flex-direction: column;
-  text-align: left;
+  text-align: center;
   margin-left: 2000 px;
   `;
 
   const Row = styled.div`
   display: flex;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  grid-gap: 50px;
+  grid-template-columns: repeat(auto-fill, minmax(5000px, 1fr));
+  grid-gap: 100px;
   box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.19);
   outline: solid rgb(18, 183, 0);
   background-color: #ffffff; 
@@ -39,7 +39,7 @@ const {
   handleInputChange,
   handleBlur,
   handleSubmit
-  
+
 } = useForm({
   product_name: '',
 	price: '',
@@ -47,6 +47,7 @@ const {
 	state: '',
 	product_description: '',
 	images: '',
+
 }, validateFormProducts, productDataService);
 
 const styles = {
@@ -67,6 +68,10 @@ const styles = {
                 
               </Column>
               <Column classname="col">
+                
+              </Column>
+             
+              <Column classname="col">
                 <div className="base-container1">
          
                   <div className="agregarproducto-form" >
@@ -82,6 +87,8 @@ const styles = {
                           value={stateForm.product_name}
                           onChange={handleInputChange}
                           onBlur={handleBlur}
+
+
                           />
                            {
                           errors.product_name &&
@@ -149,7 +156,7 @@ const styles = {
                 <div className="base-container2">
 
                   <div className="imageproduct-form" >
-                  <div className="header2">Imagenes del producto</div>
+                  <div className="header2">Imagen del producto</div>
                     <div className="form">                      
                     <DragArea />
                       </div>

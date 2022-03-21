@@ -1,30 +1,33 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { useSearchParams } from "react-router-dom";
-import "./DetallesProducto.scss";
+import styles from "./DetallesProducto.scss";
 import productDataService from "../../../services/product.service"
 import usersService from "../../../services/users.service";
 import categoriesService from "../../../services/categories.service";
 import  departmentService from "../../../services/departments.service";
 
-const Column = styled.div`
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    margin-left: 60px;
-`;
 
-const Row = styled.div`
-    display: flex;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    grid-gap: 20px;
-    box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.19);
-    outline: solid rgb(18, 183, 0);
-    background-color: ##ffffff; 
-    position: relative;
-    bottom: 0;
-    width: 100%;
-`;
+
+  const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 200 px;
+  position: center;
+  width: 100%;
+  `;
+
+  const Row = styled.div`
+  display: flex;
+  grid-template-columns: auto-fill;
+  grid-gap: 0px;
+  background-color: #ffffff; 
+  position: center;
+  bottom: 0;
+  width: 100%;
+  `;
+
 const setState = (state, callback) => {
     if (state === "N") {
         return callback("Nuevo");
@@ -80,20 +83,38 @@ export const DetallesProducto = () => {
         setImagen(`http://localhost:3001/${imagenes.data[0]}`);
     }
 
+    
     return (
         <div>
             <Row className="ro">
-                <Column className="col1">
-                    <div className="base-container1">
-                        <img src={imagen} alt="" height="400px" width="400px" />
+
+                <Column className="col">
+                    <div className="basecontainer1">
+                    <div className="imageproductform" >
+                        <img src={imagen} 
+                        alt="" 
+                        height="100%"
+                        width="100%"/>
+                        
+                
+                        </div>
                     </div>
                 </Column>
-                <Column className="col2">
-                    <div className="base-container2">
+                <Column className="col">
+                <div className="basecontainer2" >
+                    <div className="basecontainer2">
+                    <div className="detalleproductoform" >
+                    <div className="caja0" >
                         <p className="Titulo">{titulo}</p>
+                        </div>
                         <p className="Estado">{estado}</p>
+                        <div className="caja1" >
                         <p className="Precio">Precio: {precio}</p>
+                        </div>
+                        <div className="caja2" >
                         <p className="Descripcion">{descripcion}</p>
+                        </div>
+                        <div className="caja3" >
                         <p className="Categorias">Categorias:</p>
                         <ul>
                             {categorias && categorias.map((categoria,index) =>
@@ -102,12 +123,24 @@ export const DetallesProducto = () => {
                                 </li>
                             )}
                         </ul>
-
+                        </div>
+                        <div className="caja3">
                         <p className="Departamento">Departamento: {departamento}</p>
+                        </div>
+                        </div>
+                        </div>
+                        
+                        <div className="basecontainer3">
+                        <div className="detallevendedorform" >
+                        
                         <p className="NombreUsuario">Nombre del vendedor: {nombreUsuario}</p>
+                        
+                        
                         <p className="Score">Puntuacion del Vendedor: {score}</p>
-
-                    </div>
+                        
+                        </div>
+                        </div>
+                        </div>
                 </Column>
             </Row>
         </div>
