@@ -58,7 +58,28 @@
     align-items: flex-start;
 }
 
+.Categorias{
+    font-size: 16px;
+    font-family: "Arsenal", sans-serif;
+    display: flex;
+    position: initial;
+}
 
+.Categorias2{
+    line-height: 1.5;
+    padding-left: 0.4rem;
+    font-size: 16px;
+    font-family: "Arsenal", sans-serif;
+    display: inline-table;
+    list-style-type: square;
+    
+  
+}
+.ul{
+    
+    list-style-type: lower-alpha;
+  
+}
 .Score{
     
     font-weight: bold;
@@ -69,23 +90,40 @@
     align-items: flex-start;
 }
 
-.basecontainer1{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    background-color: #ffffff;
-
-}
 
 .imageproductform {
+    height: 570px;
+    width: 800px;
     margin-top: 50px;
     background-color: white;
     padding: 2rem;
     border-radius: 5px;
     outline: solid #c4c4c4;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.image {
+    
+    height: 100%;
+    width: auto;
+    max-width: 730px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+   
+}
+
+
+.basecontainer1{
+  
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+ 
 }
 
 .basecontainer2{
@@ -217,17 +255,19 @@
     display: flex   
   }
   .caja4 {
-    margin-top: 0px;
-    height: 10px;
+    margin-top: 1px;
+    height: auto;
     width: 100%;
-    margin-bottom: 5px;
+    max-height: 20px;
     align-items: center;
+    margin-bottom: 20px;
     margin-left: 0px;
     margin-right: 0px;
+    border: 1px solid #d9d9d9;
     border-radius: 5px;
     background-color: white;
     padding: 2rem;
     border-radius: 5px;
-    position: relative;
-    display: flex   
+    position: center;
+    display: flex;
   }

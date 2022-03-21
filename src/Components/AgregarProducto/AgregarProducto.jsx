@@ -118,7 +118,7 @@ const styles = {
                           <option value={2}>Usado</option>
                         </select>
                       </div>
-
+                       
                       <div className="form-group2">
                         <input 
                           type="text" 
@@ -133,10 +133,34 @@ const styles = {
                             <p style={styles}> {errors.product_description}</p>
                           }
                       </div>
-
+    
+                      <div className="caja">
+                          <select name="department_id" value={stateForm.department_id} onChange={handleInputChange}>
+                            <option >Ubicación del producto</option>
+                            <option value={1}>Atlántida</option>
+                            <option value={2}>Choluteca</option>
+                            <option value={3}>Colón</option>
+                            <option value={4}>Comayagua</option>
+                            <option value={5}>Copán</option>
+                            <option value={6}>Cortés</option>
+                            <option value={7}>El Paraíso</option>
+                            <option value={8}>Francisco Morazán</option>
+                            <option value={9}>Gracias a Dios</option>
+                            <option value={10}>Intibucá</option>
+                            <option value={11}>Islas de la Bahía</option>
+                            <option value={12}>La Paz</option>
+                            <option value={13}>Lempira</option>
+                            <option value={14}>Ocotepeque</option>
+                            <option value={15}>Olancho</option>
+                            <option value={16}>Santa Bárbara</option>
+                            <option value={17}>Valle</option>
+                            <option value={18}>Yoro </option>
+                          </select>
+                        </div>
                       <span>Seleccione una o varias categorías</span>
                       <PinnedSubheaderList/>                 
                       </div>
+                      
                           <div className="footer">
                           <button type="button" className="btn" onClick={handleSubmit}>
                               Agregar producto

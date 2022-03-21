@@ -91,10 +91,9 @@ export const DetallesProducto = () => {
                 <Column className="col">
                     <div className="basecontainer1">
                     <div className="imageproductform" >
-                        <img src={imagen} 
-                        alt="" 
-                        height="100%"
-                        width="100%"/>
+                        <img src={imagen} className="image"
+                        
+                        />
                         
                 
                         </div>
@@ -107,21 +106,27 @@ export const DetallesProducto = () => {
                     <div className="caja0" >
                         <p className="Titulo">{titulo}</p>
                         </div>
+                        <div className="caja3" >
                         <p className="Estado">{estado}</p>
+                        </div>
                         <div className="caja1" >
                         <p className="Precio">Precio: {precio}</p>
                         </div>
                         <div className="caja2" >
                         <p className="Descripcion">{descripcion}</p>
                         </div>
-                        <div className="caja3" >
-                        <p className="Categorias">Categorias:</p>
-                        <ul>
+                        <div className="caja4" >
+                        <p className="Categorias">Categorias:  </p>
+                        <ul className="ul">
+                            <div>
+
                             {categorias && categorias.map((categoria,index) =>
-                                <li key={index}>
+                                <li key={index} className="Categorias2">
                                     <p>{categoria[1]}</p>
                                 </li>
                             )}
+                            </div>
+                           
                         </ul>
                         </div>
                         <div className="caja3">

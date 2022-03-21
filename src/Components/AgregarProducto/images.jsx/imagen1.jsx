@@ -25,8 +25,8 @@ function DragArea() {
           <img
             src={ImageSelectedPrevious}
             alt=""
-            height="455px"
-            width="420px"
+            height="500px"
+            width="600px"
           />
         </div>
         <div className="image-upload-wrap">
