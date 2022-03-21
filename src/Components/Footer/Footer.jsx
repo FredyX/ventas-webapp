@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
 const Column = styled.div`
@@ -41,10 +40,10 @@ const Heading = styled.p`
 export class Footer extends React.Component {
   render() {
     return (
-      <footer classname="foot">
-        <div classname="conteiner">
-          <Row classname="ro">
-            <Column classname="col">
+      <footer >
+        <div >
+          <Row >
+            <Column >
               <Heading>Acerca de nosotros</Heading>
               <FooterLink href="#">Seguridad</FooterLink>
               <FooterLink href="#">Privacidad</FooterLink>
@@ -52,13 +51,13 @@ export class Footer extends React.Component {
               <FooterLink />
             </Column>
 
-            <Column classname="col">
-              <Heading classname="he">Contacto</Heading>
+            <Column >
+              <Heading >Contacto</Heading>
               <FooterLink href="#">Contactenos</FooterLink>
               <FooterLink href="#">Preguntas frecuentes</FooterLink>
             </Column>
 
-            <Column classname="col">
+            <Column >
               <Heading>Mi cuenta</Heading>
               <FooterLink href="/iniciosesion">Iniciar Sesion</FooterLink>
               <FooterLink href="/registro">Registro</FooterLink>
