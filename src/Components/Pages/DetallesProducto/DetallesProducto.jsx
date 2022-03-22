@@ -5,11 +5,11 @@ import styles from "./DetallesProducto.scss";
 import productDataService from "../../../services/product.service"
 import usersService from "../../../services/users.service";
 import categoriesService from "../../../services/categories.service";
-import  departmentService from "../../../services/departments.service";
+import departmentService from "../../../services/departments.service";
 
 
 
-  const Column = styled.div`
+const Column = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -18,7 +18,7 @@ import  departmentService from "../../../services/departments.service";
   width: 100%;
   `;
 
-  const Row = styled.div`
+const Row = styled.div`
   display: flex;
   grid-template-columns: auto-fill;
   grid-gap: 0px;
@@ -52,7 +52,7 @@ export const DetallesProducto = () => {
     const [score, setScore] = useState('');
     const [categorias, setCategorias] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
-    
+
 
     useEffect(() => {
         setCategorias([1]);
@@ -60,8 +60,8 @@ export const DetallesProducto = () => {
     }, [])
 
     const ProductsApi = async () => {
-        let cat=[];
-        let id= searchParams.get('id');
+        let cat = [];
+        let id = searchParams.get('id');
         const producto = await productDataService.get(id);
         const imagenes = await productDataService.getImagen(producto.data.productoRespuesta.product.id);
         const usuario = await usersService.getToProfile(producto.data.productoRespuesta.product.user_seller_id);
@@ -83,69 +83,65 @@ export const DetallesProducto = () => {
         setImagen(`http://localhost:3001/${imagenes.data[0]}`);
     }
 
-    
+
     return (
         <div>
             <Row className="ro">
 
                 <Column className="col">
                     <div className="basecontainer1">
-                    <div className="imageproductform" >
-                        <img src={imagen} className="image"
-                        
-                        />
-                        
-                
+                        <div className="imageproductform" >
+                            <img src={imagen} className="image"/>
                         </div>
                     </div>
                 </Column>
                 <Column className="col">
-                <div className="basecontainer2" >
-                    <div className="basecontainer2">
-                    <div className="detalleproductoform" >
-                    <div className="caja0" >
-                        <p className="Titulo">{titulo}</p>
-                        </div>
-                        <div className="caja3" >
-                        <p className="Estado">{estado}</p>
-                        </div>
-                        <div className="caja1" >
-                        <p className="Precio">Precio: {precio}</p>
-                        </div>
-                        <div className="caja2" >
-                        <p className="Descripcion">{descripcion}</p>
-                        </div>
-                        <div className="caja4" >
-                        <p className="Categorias">Categorias:  </p>
-                        <ul className="ul">
-                            <div>
+                    <div className="basecontainer2" >
+                        <div className="basecontainer2">
+                            <div className="detalleproductoform" >
+                                <div className="caja0" >
+                                    <p className="Titulo">{titulo}</p>
+                                </div>
+                                <div className="caja3" >
+                                    <p className="Estado">{estado}</p>
+                                </div>
+                                <div className="caja1" >
+                                    <p className="Precio">Precio: {precio}</p>
+                                </div>
+                                <div className="caja2" >
+                                    <p className="Descripcion">{descripcion}</p>
+                                </div>
+                                <div className="caja4" >
+                                    <p className="Categorias">Categorias:  </p>
+                                    <ul className="ul">
+                                        <div>
 
-                            {categorias && categorias.map((categoria,index) =>
-                                <li key={index} className="Categorias2">
-                                    <p>{categoria[1]}</p>
-                                </li>
-                            )}
+                                            {categorias && categorias.map((categoria, index) =>
+                                                <li key={index} className="Categorias2">
+                                                    <p>{categoria[1]}</p>
+                                                </li>
+                                            )}
+                                        </div>
+
+                                    </ul>
+                                </div>
+                                <div className="caja3">
+                                    <p className="Departamento">Departamento: {departamento}</p>
+                                </div>
                             </div>
-                           
-                        </ul>
                         </div>
-                        <div className="caja3">
-                        <p className="Departamento">Departamento: {departamento}</p>
-                        </div>
-                        </div>
-                        </div>
-                        
+
                         <div className="basecontainer3">
-                        <div className="detallevendedorform" >
-                        
-                        <p className="NombreUsuario">Nombre del vendedor: {nombreUsuario}</p>
-                        
-                        
-                        <p className="Score">Puntuacion del Vendedor: {score}</p>
-                        
+                            <div className="detallevendedorform" >
+
+                                <p className="NombreUsuario">Nombre del vendedor: {nombreUsuario}</p>
+
+
+                                <p className="Score">Puntuacion del Vendedor: {score}</p>
+
+                            </div>
                         </div>
-                        </div>
-                        </div>
+                    </div>
                 </Column>
             </Row>
         </div>

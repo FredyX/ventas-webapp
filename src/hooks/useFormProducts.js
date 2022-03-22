@@ -28,7 +28,6 @@ export const useForm = (form = {}, validateFormProducts, productDataService) => 
 		if (isObjectEmpty(errors) && stateCheck) {
 			let data = {
 				...stateForm
-				
 			}
 
 			productDataService.add(data)
@@ -40,7 +39,7 @@ export const useForm = (form = {}, validateFormProducts, productDataService) => 
 						state: '',
 						product_description: '',
 						images: '',
-                        
+                        department_id: ''
 					});
 					setCheck(false);
 					navigate("/");
@@ -50,7 +49,6 @@ export const useForm = (form = {}, validateFormProducts, productDataService) => 
 				});
 		} else {
 			alert('Error los campos tienen que ser completados');
-
 		}
 	}
 
