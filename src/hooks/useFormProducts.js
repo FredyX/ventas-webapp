@@ -17,18 +17,18 @@ export const useForm = (form = {}, validateFormProducts, productDataService) => 
 	}
 
 	const handleCategories = (categories) => {
+		console.log(categories);
 		setForm({
 			...stateForm,
 			categories
 		});
 	}
-	const handleImages = (images) => {
+	const handleFile = (file) => {
 		setForm({
 			...stateForm,
-			images
+			file
 		});
 	}
-
 	const handleBlur = (e) => {
 		handleInputChange(e);
 		setErrors(validateFormProducts(stateForm));
@@ -50,7 +50,8 @@ export const useForm = (form = {}, validateFormProducts, productDataService) => 
 			data.append('user_seller_id', AuthService.getCurrentUser().user.user_id);
 			data.append('date_added', new Date());
 			data.append('categories', stateForm.categories);
-			data.append('image', stateForm.images);
+			data.append('file', stateForm.file);
+
 
 			productDataService.add(data)
 				.then(response => {
@@ -60,7 +61,7 @@ export const useForm = (form = {}, validateFormProducts, productDataService) => 
 						categories: '',
 						state: '',
 						product_description: '',
-						images: '',
+						file: '',
                         department_id: ''
 					});
 					setCheck(false);
@@ -90,7 +91,7 @@ export const useForm = (form = {}, validateFormProducts, productDataService) => 
 		handleSubmit,
 		handleClick,
 		handleCategories,
-		handleImages,
+		handleFile,
 		stateCheck
 	};
 }

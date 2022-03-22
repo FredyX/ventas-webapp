@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemButton from '@mui/material/ListItemButton';
 import Checkbox from '@mui/material/Checkbox';
@@ -9,8 +8,8 @@ import categoriesService from "../../services/categories.service.js"
 
 import styles from "./AgregarProducto.scss";
 
-export default function PinnedSubheaderList({passCategoriesChange}) {
-  const [cate, setCate] = useState([])
+export default function PinnedSubheaderList({ passCategoriesChange }) {
+  const [cate, setCate] = useState({});
   const [checked, setChecked] = React.useState([]);
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
@@ -21,27 +20,24 @@ export default function PinnedSubheaderList({passCategoriesChange}) {
     } else {
       newChecked.splice(currentIndex, 1);
     }
-
     setChecked(newChecked);
     passCategoriesChange(newChecked);
   };
-  
+
   useEffect(() => {
-  getCategorias();
+    getCategorias();
   }, [])
 
   const getCategorias = async () => {
     const categoria = await categoriesService.getAll();
-    console.log(categoria.data[1]);
-    let cat = [];
-    for (let index = 0; index < categoria.data.length; index++) {
-      cat[index] = categoria.data[index].categorie_name;
-    }
+    let cat = {};
+    categoria.data.map(c => {
+      cat[c.id] = c.categorie_name;
+    })
     setCate(cat);
   }
 
   return (
-
     <List className='estilotexto'
       sx={{
         marginTop: 1,
@@ -61,26 +57,21 @@ export default function PinnedSubheaderList({passCategoriesChange}) {
         padding: '0 50px',
       }}
     >
-
-
       <ul>
         {
-         cate.map((value) => {
-          const labelId = `checkbox-list-label-${value}`;
-          console.log(labelId);
-          return (
-            <ListItemButton role={undefined} onClick={handleToggle(value)} dense>
-    
-              <Checkbox
-                edge="start"
-                checked={checked.indexOf(value) !== -1}
-              />
-    
-              <ListItemText id={labelId} primary={value} />
-            </ListItemButton>
-    
-          );
-        })  
+          Object.keys(cate).map(key => {
+            let label = cate[key];
+            let value = key;
+            return (
+              <ListItemButton role={undefined} onClick={handleToggle(Number(value))} dense>
+                <Checkbox
+                  edge="start"
+                  checked={checked.indexOf(Number(value)) !== -1}
+                />
+                <ListItemText id={value} primary={label} />
+              </ListItemButton>
+            )
+          })
         }
       </ul>
     </List>
