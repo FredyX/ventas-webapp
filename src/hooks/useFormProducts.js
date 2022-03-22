@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AuthService from '../services/auth.service';
 
 export const useForm = (form = {}, validateFormProducts, productDataService) => {
 	
@@ -15,6 +16,19 @@ export const useForm = (form = {}, validateFormProducts, productDataService) => 
 		});
 	}
 
+	const handleCategories = (categories) => {
+		setForm({
+			...stateForm,
+			categories
+		});
+	}
+	const handleImages = (images) => {
+		setForm({
+			...stateForm,
+			images
+		});
+	}
+
 	const handleBlur = (e) => {
 		handleInputChange(e);
 		setErrors(validateFormProducts(stateForm));
@@ -25,17 +39,25 @@ export const useForm = (form = {}, validateFormProducts, productDataService) => 
 	}
 
 	const handleSubmit = (e) => {
-		if (isObjectEmpty(errors) && stateCheck) {
-			let data = {
-				...stateForm
-			}
+		if (isObjectEmpty(errors)) {
+
+			let data = new FormData();
+			data.append('product_name', stateForm.product_name);
+			data.append('product_description', stateForm.product_description);
+			data.append('price', stateForm.price);
+			data.append('department_id', stateForm.department_id);
+			data.append('state', stateForm.state);
+			data.append('user_seller_id', AuthService.getCurrentUser().user.user_id);
+			data.append('date_added', new Date());
+			data.append('categories', stateForm.categories);
+			data.append('image', stateForm.images);
 
 			productDataService.add(data)
 				.then(response => {
 					setForm({
 						product_name: '',
 						price: '',
-						category: '',
+						categories: '',
 						state: '',
 						product_description: '',
 						images: '',
@@ -67,6 +89,8 @@ export const useForm = (form = {}, validateFormProducts, productDataService) => 
 		handleBlur,
 		handleSubmit,
 		handleClick,
+		handleCategories,
+		handleImages,
 		stateCheck
 	};
 }

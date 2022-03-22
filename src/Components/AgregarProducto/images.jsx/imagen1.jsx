@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 
-function DragArea() {
+function DragArea({ passImages }) {
   const [ImageSelectedPrevious, setImageSelectedPrevious] = useState(null);
   const changeImage = (e) => {
     console.log(e.target.files);
@@ -12,6 +12,7 @@ function DragArea() {
       reader.onload = (e) => {
         e.preventDefault();
         setImageSelectedPrevious(e.target.result); // le damos el binario de la imagen para mostrarla en pantalla
+        passImages(e.target.result);
       };
     }
   };
@@ -19,13 +20,13 @@ function DragArea() {
     <div>
       <StyleDragArea>
         <br />
-        
+
 
         <div className="center">
           <img
             src={ImageSelectedPrevious}
             alt=""
-            height="500px"
+            height="505px"
             width="600px"
           />
         </div>
@@ -40,13 +41,13 @@ function DragArea() {
             }}
           />
           <div className="text-information">
-          <div className="textoimagen"> Seleccionar imagen 1</div>
+            <div className="textoimagen"> Seleccionar imagen 1</div>
           </div>
-       
+
         </div>
-        
+
       </StyleDragArea>
-         
+
     </div>
   );
 }
@@ -83,5 +84,4 @@ const StyleDragArea = styled.div`
     background-color: transparent;
     border: 4px dashed #12b700;
   }
-}
 `;

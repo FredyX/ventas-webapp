@@ -5,7 +5,7 @@ import CheckboxList from './checkboxlist';
 import PinnedSubheaderList from './checkboxlist';
 import DragAreaPrincipal from './imagenprevious';
 import DragArea from "./images.jsx/imagen1";
-import { validateForm } from "../../helpers/validateForm";
+import { validateFormProducts } from "../../helpers/validateForm";
 import { useForm } from '../../hooks/useFormProducts';
 import productDataService from "../../services/product.service";
 
@@ -17,15 +17,17 @@ export const AgregarProducto = (props) => {
     handleInputChange,
     handleBlur,
     handleSubmit,
+    handleCategories,
+    handleImages
   } = useForm({
-    title: '',
+    product_name: '',
     price: '',
-    category: '',
+    categories: '',
     state: '',
-    description: '',
+    product_description: '',
     department_id: '',
-    imagen: '',
-  }, validateForm, productDataService);
+    images: '',
+  }, validateFormProducts, productDataService);
 
   const style = {
     fontWeight: "bold",
@@ -48,7 +50,7 @@ export const AgregarProducto = (props) => {
                     <div className="form-group">
                       <input
                         type="text"
-                        name="title"
+                        name="product_name"
                         placeholder="Título"
                         value={stateForm.title}
                         onChange={handleInputChange}
@@ -77,14 +79,16 @@ export const AgregarProducto = (props) => {
                     <div className="caja">
                       <select name="state" value={stateForm.state} onChange={handleInputChange}>
                         <option >Estado</option>
-                        <option value={1}>Nuevo</option>
-                        <option value={2}>Usado</option>
+                        <option value={"N"}>Nuevo</option>
+                        <option value={"U"}>Usado</option>
+                        <option value={"R"}>Reacondicionado</option>
+                        <option value={"D"}>Dañado</option>
                       </select>
                     </div>
                     <div className="form-group2">
                       <input
                         type="text"
-                        name="description"
+                        name="product_description"
                         placeholder="Descripción"
                         value={stateForm.description}
                         onChange={handleInputChange}
@@ -97,7 +101,7 @@ export const AgregarProducto = (props) => {
                     </div>
 
                     <span>Seleccione una o varias categorías</span>
-                    <PinnedSubheaderList />
+                    <PinnedSubheaderList passCategoriesChange = {handleCategories}/>
                     <div className="caja">
                       <select name="department_id" value={stateForm.department_id} onChange={handleInputChange}>
                         <option >Seleccione la ubicacio del producto</option>
@@ -142,7 +146,7 @@ export const AgregarProducto = (props) => {
                 <div className="imageproduct-form" >
                   <div className="header2">Imagenes del producto</div>
                   <div className="form">
-                    <DragArea />
+                    <DragArea passImages={handleImages}/>
                   </div>
                 </div>
               </div>
