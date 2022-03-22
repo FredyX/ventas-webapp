@@ -1,13 +1,16 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemButton from '@mui/material/ListItemButton';
 import Checkbox from '@mui/material/Checkbox';
+import categoriesService from "../../services/categories.service.js"
 
 import styles from "./AgregarProducto.scss";
 
 export default function PinnedSubheaderList({passCategoriesChange}) {
+  const [cate, setCate] = useState([])
   const [checked, setChecked] = React.useState([]);
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
@@ -22,6 +25,20 @@ export default function PinnedSubheaderList({passCategoriesChange}) {
     setChecked(newChecked);
     passCategoriesChange(newChecked);
   };
+  
+  useEffect(() => {
+  getCategorias();
+  }, [])
+
+  const getCategorias = async () => {
+    const categoria = await categoriesService.getAll();
+    console.log(categoria.data[1]);
+    let cat = [];
+    for (let index = 0; index < categoria.data.length; index++) {
+      cat[index] = categoria.data[index].categorie_name;
+    }
+    setCate(cat);
+  }
 
   return (
 
@@ -47,25 +64,25 @@ export default function PinnedSubheaderList({passCategoriesChange}) {
 
 
       <ul>
-
-        {[0, 1, 2, 3, 4, 5].map((value) => {
+        {
+         cate.map((value) => {
           const labelId = `checkbox-list-label-${value}`;
-
+          console.log(labelId);
           return (
             <ListItemButton role={undefined} onClick={handleToggle(value)} dense>
-
+    
               <Checkbox
                 edge="start"
                 checked={checked.indexOf(value) !== -1}
               />
-
-              <ListItemText id={labelId} primary={`Categoría ${value + 1}`} />
+    
+              <ListItemText id={labelId} primary={value} />
             </ListItemButton>
-
+    
           );
-        })}
+        })  
+        }
       </ul>
-
     </List>
   );
 }
