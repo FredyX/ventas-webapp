@@ -48,10 +48,10 @@ export const useForm = (form = {}, validateFormProducts, productDataService) => 
 			data.append('department_id', stateForm.department_id);
 			data.append('state', stateForm.state);
 			data.append('user_seller_id', AuthService.getCurrentUser().user.user_id);
+			data.append('ext', stateForm.file.name.split('.')[1]);
 			data.append('date_added', new Date());
 			data.append('categories', stateForm.categories);
 			data.append('file', stateForm.file);
-
 
 			productDataService.add(data)
 				.then(response => {
@@ -65,7 +65,7 @@ export const useForm = (form = {}, validateFormProducts, productDataService) => 
                         department_id: ''
 					});
 					setCheck(false);
-					navigate("/");
+					navigate(`/detalles/?id=${response.data.product.id}`);
 				})
 				.catch(e => {
 					console.log(e);

@@ -27,7 +27,6 @@ export const AgregarProducto = (props) => {
     product_description: '',
     department_id: '',
     file: '',
-    fileName: ''
   }, validateFormProducts, productDataService);
 
   const style = {
