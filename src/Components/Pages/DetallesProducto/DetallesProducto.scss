@@ -19,7 +19,7 @@
 
 .Precio{
     color: rgb(18, 183, 0);
-    font-weight: bold;
+    
     font-size: 30px;
     font-family: "Arsenal", sans-serif;
     display: flex;
@@ -38,7 +38,7 @@
 }
 
 .Estado{
-    color: #cf0606;
+   
     font-weight: bold;
     font-size: 16px;
     font-family: "Arsenal", sans-serif;
@@ -63,6 +63,7 @@
     font-family: "Arsenal", sans-serif;
     display: flex;
     position: initial;
+    display: inline-table;
 }
 
 .Categorias2{
@@ -78,7 +79,7 @@
 .ul{
     
     list-style-type: lower-alpha;
-  
+    display: inline-table;
 }
 .Score{
     
@@ -92,8 +93,8 @@
 
 
 .imageproductform {
-    height: 570px;
-    width: 800px;
+    height: 388px;
+    width: 700px;
     margin-top: 50px;
     background-color: white;
     padding: 2rem;
@@ -101,6 +102,45 @@
     outline: solid #c4c4c4;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+}
+
+.detallevendedorform {
+
+  width: 700px;
+  margin-bottom: 1px;
+  margin-top: 20px;
+  margin-left: 0px;
+  margin-right: 20px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
+  outline: solid #d9d9d9;
+}
+
+
+.detalleproductoform {
+    
+    margin-bottom: 1px;
+    margin-top: 50px;
+    margin-left: 0px;
+    margin-right: 20px;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+    outline: solid #12b700;
+  }
+
+.descriptionform {
+
+  margin-bottom: 1px;
+  margin-top: 20px;
+  margin-left: 0px;
+  margin-right: 20px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
+  background-color: #ebe7e7;
+  height: 235px;
 }
 
 .image {
@@ -118,25 +158,26 @@
 .basecontainer1{
   
     width: 100%;
-    height: 100%;
+    height: 388px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     background-color: #ffffff;
- 
+    margin-bottom: 50px;
 }
 
 .basecontainer2{
-   
+    
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: left;
     background-color: #ffffff;
+
 }
 
 .basecontainer3{
-    
+   
     width: 100%;
     margin-bottom: 300px;
     display: flex;
@@ -145,29 +186,15 @@
    
 }
 
-.detallevendedorform {
-    margin-bottom: 1px;
-    margin-top: 20px;
-    margin-left: 0px;
-    margin-right: 20px;
-    background-color: white;
-    padding: 3rem;
-    border-radius: 5px;
-    outline: solid #d9d9d9;
-  }
-
-.detalleproductoform {
+.basecontainer4{
     
-    margin-bottom: 1px;
-    margin-top: 50px;
-    margin-left: 0px;
-    margin-right: 20px;
-    background-color: white;
-    padding: 2rem;
-    border-radius: 5px;
-    outline: solid #12b700;
-  }
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  background-color: #ffffff;
 
+}
 
   
   .cajaimagen01 {
