@@ -11,7 +11,9 @@ class productDataService {
   }
 
   add(data) {
-    return http.post("/products/", data, { headers: authHeader() });
+    let headers = authHeader()
+    headers["Content-Type"] = "multipart/form-data"
+    return http.post("/products/", data, { headers: headers});
   }
 
   getImagen(id) {

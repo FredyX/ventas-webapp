@@ -2,18 +2,17 @@ import { useState } from "react";
 import styled from "styled-components";
 
 
-function DragArea({ passImages }) {
+function DragArea({ passFile }) {
   const [ImageSelectedPrevious, setImageSelectedPrevious] = useState(null);
   const changeImage = (e) => {
-    console.log(e.target.files);
     if (e.target.files[0] !== undefined) {
       const reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
       reader.onload = (e) => {
         e.preventDefault();
         setImageSelectedPrevious(e.target.result); // le damos el binario de la imagen para mostrarla en pantalla
-        passImages(e.target.result);
       };
+      passFile(e.target.files[0]);
     }
   };
   return (

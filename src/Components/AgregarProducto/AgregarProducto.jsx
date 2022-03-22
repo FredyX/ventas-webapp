@@ -18,7 +18,7 @@ export const AgregarProducto = (props) => {
     handleBlur,
     handleSubmit,
     handleCategories,
-    handleImages
+    handleFile, 
   } = useForm({
     product_name: '',
     price: '',
@@ -26,7 +26,8 @@ export const AgregarProducto = (props) => {
     state: '',
     product_description: '',
     department_id: '',
-    images: '',
+    file: '',
+    fileName: ''
   }, validateFormProducts, productDataService);
 
   const style = {
@@ -101,7 +102,7 @@ export const AgregarProducto = (props) => {
                     </div>
 
                     <span>Seleccione una o varias categorías</span>
-                    <PinnedSubheaderList passCategoriesChange = {handleCategories}/>
+                    <PinnedSubheaderList passCategoriesChange={handleCategories} />
                     <div className="caja">
                       <select name="department_id" value={stateForm.department_id} onChange={handleInputChange}>
                         <option >Seleccione la ubicacio del producto</option>
@@ -137,21 +138,15 @@ export const AgregarProducto = (props) => {
                     </Link>
                   </div>
                 </div>
-
               </div>
-
-
-
               <div className="base-container2">
                 <div className="imageproduct-form" >
                   <div className="header2">Imagenes del producto</div>
                   <div className="form">
-                    <DragArea passImages={handleImages}/>
+                    <DragArea passFile={handleFile}/>
                   </div>
                 </div>
               </div>
-
-
             </div>
 
           </div>
