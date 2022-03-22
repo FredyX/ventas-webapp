@@ -23,6 +23,17 @@ export const InicioSesion = (props) => {
     color: "#dc3545"
   };
 
+  const ColoredLine = ({ color }) => (
+    <hr
+      style={{
+        color,
+        backgroundColor: color,
+        height: 3,
+        marginTop: 15
+      }}
+    />
+  );
+
 
   return (
     <div className="base-container" >
