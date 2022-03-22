@@ -13,7 +13,6 @@ const Column = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-  margin-left: 200 px;
   position: center;
   width: 100%;
   `;
@@ -89,58 +88,52 @@ export const DetallesProducto = () => {
             <Row className="ro">
 
                 <Column className="col">
+                <div className="basecontainer4" >
                     <div className="basecontainer1">
                         <div className="imageproductform" >
                             <img src={imagen} className="image"/>
                         </div>
                     </div>
-                </Column>
-                <Column className="col">
-                    <div className="basecontainer2" >
-                        <div className="basecontainer2">
-                            <div className="detalleproductoform" >
-                                <div className="caja0" >
-                                    <p className="Titulo">{titulo}</p>
-                                </div>
-                                <div className="caja3" >
-                                    <p className="Estado">{estado}</p>
-                                </div>
-                                <div className="caja1" >
-                                    <p className="Precio">Precio: {precio}</p>
-                                </div>
-                                <div className="caja2" >
-                                    <p className="Descripcion">{descripcion}</p>
-                                </div>
-                                <div className="caja4" >
-                                    <p className="Categorias">Categorias:  </p>
-                                    <ul className="ul">
-                                        <div>
-
-                                            {categorias && categorias.map((categoria, index) =>
-                                                <li key={index} className="Categorias2">
-                                                    <p>{categoria[1]}</p>
-                                                </li>
-                                            )}
-                                        </div>
-
-                                    </ul>
-                                </div>
-                                <div className="caja3">
-                                    <p className="Departamento">Departamento: {departamento}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="basecontainer3">
+                    <div className="basecontainer3">
                             <div className="detallevendedorform" >
 
                                 <p className="NombreUsuario">Nombre del vendedor: {nombreUsuario}</p>
 
 
                                 <p className="Score">Puntuacion del Vendedor: {score}</p>
-
+                                </div>
+                            </div>
+                  </div>
+                </Column>
+                <Column className="col">
+                    <div className="basecontainer2" >
+                        <div className="basecontainer2">
+                            <div className="detalleproductoform" >
+                               
+                                    <p className="Titulo">{titulo}</p>
+                                
+                                    <p className="Estado">Estado: {estado}</p>
+                              
+                                    <p className="Precio">Precio: {precio}</p>
+                               
+                                    <p className="Categorias">Categorias:  </p>
+                                    <ul className="ul">
+                                            {categorias && categorias.map((categoria, index) =>
+                                                <li key={index} className="Categorias2">
+                                                    <p>{categoria[1]}</p>
+                                                </li>
+                                            )}
+                                    </ul>
+                                    <p className="Departamento">Departamento: {departamento}</p>
                             </div>
                         </div>
+                        <div className="basecontainer3">
+                            <div className="descriptionform" >
+
+                            <p className="Descripcion">Descripción: {descripcion}</p>
+                            
+                                </div>
+                            </div>
                     </div>
                 </Column>
             </Row>
