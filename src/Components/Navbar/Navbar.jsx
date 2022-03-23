@@ -12,6 +12,7 @@ import useClickOutside from "../CustomHooks/ClickOutside";
 import { width } from "@mui/system";
 
 const Navbar = ({ BurgerColour }) => {
+  const [loggedIn, setLoggedIn] = useState(false);
   const MenuLink = ({ url, path }) => {
     return (
       <li className={styles.navlink}>
@@ -40,6 +41,7 @@ const Navbar = ({ BurgerColour }) => {
       }}
     />
   );
+
 
   return (
     <div className={styles.navbar_container}>
@@ -93,7 +95,6 @@ const Navbar = ({ BurgerColour }) => {
         <BsArrowRight style={{ color: BurgerColour }} />
         </Link>
 
- 
         {/* Login */}
         <Link to="/iniciosesion/" className={styles.login_container}>
           <span style={{ color: BurgerColour }}>Iniciar Sesión</span>

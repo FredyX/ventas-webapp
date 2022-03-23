@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { useSearchParams } from "react-router-dom";
-import styles from "./DetallesProducto.scss";
+import  "./DetallesProducto.scss";
 import productDataService from "../../../services/product.service"
-import usersService from "../../../services/users.service";
-import categoriesService from "../../../services/categories.service";
-import departmentService from "../../../services/departments.service";
 
 
 
@@ -61,25 +58,23 @@ export const DetallesProducto = () => {
     const ProductsApi = async () => {
         let cat = [];
         let id = searchParams.get('id');
-        const producto = await productDataService.get(id);
-        const imagenes = await productDataService.getImagen(producto.data.productoRespuesta.product.id);
-        const usuario = await usersService.getToProfile(producto.data.productoRespuesta.product.user_seller_id);
-        const departamento = await departmentService.get(producto.data.productoRespuesta.product.department_id);
-        for (let i = 0; i < producto.data.productoRespuesta.categorias.length; i++) {
-            let nuevaCategoria = await categoriesService.get(producto.data.productoRespuesta.categorias[i]);
-            nuevaCategoria = [nuevaCategoria.data.id, nuevaCategoria.data.categorie_name];
+        const response = await productDataService.getDetalle(id)
+        const {producto,categorias,imagenesRes} = response.data;
+
+        for (let i = 0; i < categorias.length; i++) {
+            let nuevaCategoria = [categorias[i].id, categorias[i].categorie_name];
             cat.push(nuevaCategoria);
         }
         setCategorias(cat);
 
-        setNombreUsuario(usuario.data.first_name + " " + usuario.data.last_name);
-        setScore(usuario.data.score);
-        setTitulo(producto.data.productoRespuesta.product.product_name);
-        setPrecio(producto.data.productoRespuesta.product.price);
-        setDepartamento(departamento.data.department_name);
-        setState(producto.data.productoRespuesta.product.state, setEstado);
-        setDescripcion(producto.data.productoRespuesta.product.product_description);
-        setImagen(`http://localhost:3001/${imagenes.data[0]}`);
+        setNombreUsuario(producto[0].first_name + " " + producto[0].last_name);
+        setScore(producto[0].score);
+        setTitulo(producto[0].product_name);
+        setPrecio(producto[0].price);
+        setDepartamento(producto[0].department_name);
+        setState(producto[0].state, setEstado);
+        setDescripcion(producto[0].product_description);
+        setImagen(`http://localhost:3001/${imagenesRes[0]}`);
     }
 
 
@@ -100,7 +95,7 @@ export const DetallesProducto = () => {
                                 <p className="NombreUsuario">Nombre del vendedor: {nombreUsuario}</p>
 
 
-                                <p className="Score">Puntuacion del Vendedor: {score}</p>
+                                <p className="Score">Puntuación del Vendedor: {score}</p>
                                 </div>
                             </div>
                   </div>

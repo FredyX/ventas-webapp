@@ -7,7 +7,10 @@ class productDataService {
   }
 
   get(id) {
-    return http.get(`/products/${id}`, { headers: authHeader() });
+    return http.get(`/products/${id}`);
+  }
+  getDetalle(id) {
+    return http.get(`/products/detalle/${id}`);
   }
 
   add(data) {
