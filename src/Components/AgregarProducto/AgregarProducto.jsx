@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Link } from "react-router-dom";
 import "./AgregarProducto.scss";
@@ -86,18 +87,22 @@ export const AgregarProducto = (props) => {
                       </select>
                     </div>
                     <div className="form-group2">
-                      <input
-                        type="text"
+                      <textarea
+
                         name="product_description"
                         placeholder="Descripción"
                         value={stateForm.description}
                         onChange={handleInputChange}
                         onBlur={handleBlur}
-                      />
-                      {
+                        rows = "3"
+                        cols = "52"
+                      >
+                         {
                         errors.description &&
                         <p style={style}> {errors.description}</p>
                       }
+                     
+                      </textarea>
                     </div>
 
                     <span>Seleccione una o varias categorías</span>
