@@ -63,7 +63,7 @@ export default function PinnedSubheaderList({ passCategoriesChange }) {
             let label = cate[key];
             let value = key;
             return (
-              <ListItemButton role={undefined} onClick={handleToggle(Number(value))} dense>
+              <ListItemButton key={value} role={undefined} onClick={handleToggle(Number(value))} dense>
                 <Checkbox
                   edge="start"
                   checked={checked.indexOf(Number(value)) !== -1}

@@ -3,9 +3,9 @@ import React from 'react'
 import styles from "../../Components/Navbar/Navbar.module.scss"
 import { Link } from "react-router-dom";
 import "./AgregarProducto.scss";
-import CheckboxList from './checkboxlist';
+//import CheckboxList from './checkboxlist';
 import PinnedSubheaderList from './checkboxlist';
-import DragAreaPrincipal from './imagenprevious';
+//import DragAreaPrincipal from './imagenprevious';
 import DragArea from "./images.jsx/imagen1";
 import { validateFormProducts } from "../../helpers/validateForm";
 import { useForm } from '../../hooks/useFormProducts';
@@ -52,7 +52,6 @@ export const AgregarProducto = (props) => {
 
   return (
     <div>
-      <br />
       <div className={styles.navbar_container}>
       <nav>
         {/* LOGO */}
@@ -62,10 +61,11 @@ export const AgregarProducto = (props) => {
         </nav>
       <ColoredLine color="black" />
       </div>
+      <br />
       <div className="cajaimagen">
-        <div class="grid-container">
-          <div class="grid-item tall">
-            <div class="columns">
+        <div className="grid-container">
+          <div className="grid-item tall">
+            <div className="columns">
               <div className="base-container1">
                 <div className="header">Agregar producto</div>
                 <div className="header2">Porfavor ingresa la información de tu producto</div>
@@ -80,12 +80,7 @@ export const AgregarProducto = (props) => {
                         onChange={handleInputChange}
                         onBlur={handleBlur}
                       />
-                      {
-                        errors.title &&
-                        <p style={style}> {errors.title}</p>
-                      }
                     </div>
-
                     <div className="form-group">
                       <input
                         type="text"
@@ -95,10 +90,6 @@ export const AgregarProducto = (props) => {
                         onChange={handleInputChange}
                         onBlur={handleBlur}
                       />
-                      {
-                        errors.price &&
-                        <p style={style}> {errors.price}</p>
-                      }
                     </div>
                     <div className="caja">
                       <select name="state" value={stateForm.state} onChange={handleInputChange}>
@@ -120,11 +111,6 @@ export const AgregarProducto = (props) => {
                         rows = "3"
                         cols = "52"
                       >
-                         {
-                        errors.description &&
-                        <p style={style}> {errors.description}</p>
-                      }
-                     
                       </textarea>
                     </div>
 
@@ -177,10 +163,10 @@ export const AgregarProducto = (props) => {
             </div>
 
           </div>
-          <div class="grid-item tall">
+          <div className="grid-item tall">
 
           </div>
-          <div class="grid-item tall">
+          <div className="grid-item tall">
 
 
           </div>

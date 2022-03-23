@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { useSearchParams } from "react-router-dom";
 import  "./DetallesProducto.scss";
 import productDataService from "../../../services/product.service"
-import usersService from "../../../services/users.service";
-import categoriesService from "../../../services/categories.service";
-import departmentService from "../../../services/departments.service";
+// import usersService from "../../../services/users.service";
+// import categoriesService from "../../../services/categories.service";
+// import departmentService from "../../../services/departments.service";
 import Navbar from "../../Navbar/Navbar"
 
 
@@ -69,6 +69,7 @@ export const DetallesProducto = () => {
             let nuevaCategoria = [categorias[i].id, categorias[i].categorie_name];
             cat.push(nuevaCategoria);
         }
+        
         setCategorias(cat);
 
         setNombreUsuario(producto[0].first_name + " " + producto[0].last_name);
