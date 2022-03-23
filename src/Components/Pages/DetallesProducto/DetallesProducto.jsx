@@ -7,6 +7,13 @@ import productDataService from "../../../services/product.service"
 // import categoriesService from "../../../services/categories.service";
 // import departmentService from "../../../services/departments.service";
 import Navbar from "../../Navbar/Navbar"
+import { NavLink, Link } from "react-router-dom";
+import Box from '@mui/material/Box';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import { TextField } from "@mui/material";
+import styles from "../../Navbar/Navbar.module.scss";
+import { BsArrowRight, BsSearch } from "react-icons/bs";
+import { blueGrey, green, grey, lightGreen } from "@mui/material/colors";
 
 
 
@@ -42,6 +49,20 @@ const setState = (state, callback) => {
 
 
 export const DetallesProducto = () => {
+
+    const ColoredLine = ({ color }) => (
+        <hr
+          style={{
+            color,
+            backgroundColor: color,
+            height: 3,
+            marginTop: 15,
+            marginLeft: 20,
+            marginRight: 20,
+          }}
+        />
+      );
+
     const [titulo, setTitulo] = useState(' ');
     const [precio, setPrecio] = useState(' ');
     const [estado, setEstado] = useState(' ');
@@ -85,7 +106,28 @@ export const DetallesProducto = () => {
 
     return (
         <div>
-            <Navbar></Navbar>   
+               <div className={styles.navbar_container}>
+      <nav>
+        {/* LOGO */}
+        <div className={styles.brand_logob}>
+          <Link to="/">SWAPPER</Link>
+          
+        </div>          
+          <div className="Buscar" >
+          <Box sx={{  width: 300, backgroundColor: 'grey', display: 'flex', alignItems: 'flex-end' }}>
+        <SearchOutlinedIcon sx={{ color: "green", mr: 1, my: 0.5 }} />
+        <TextField id="Buscar"  fullWidth label="Buscar" variant="standard" color="success" focused/>
+      </Box>
+      {}
+      </div>
+                  {/* TEMPORAL ----- Agregar producto */}
+                  <Link to="/AgregarProducto/" className={styles.login_containerb}>
+        <span style={{ color: "#000000" }}>Agregar producto</span>
+        <BsArrowRight style={{ color: "#000000" }} />
+        </Link>  
+      </nav>
+      <ColoredLine color="black" />
+    </div>
             <Row className="ro">
                 <Column className="col">
                 <div className="basecontainer4" >

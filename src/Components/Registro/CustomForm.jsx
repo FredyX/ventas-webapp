@@ -3,8 +3,22 @@ import userDataService from "../../services/users.service";
 import { Link } from "react-router-dom";
 import { validateForm } from "../../helpers/validateForm";
 import { useForm } from '../../hooks/useFormRegistro';
+import styles from "../../Components/Navbar/Navbar.module.scss"
 
 export const CustomForm = (props) => {
+
+  const ColoredLine = ({ color }) => (
+    <hr
+      style={{
+        color,
+        backgroundColor: color,
+        height: 3,
+        marginTop: 15,
+        marginLeft: 20,
+        marginRight: 20,
+      }}
+    />
+  );
 
   const {
     stateForm,
@@ -28,6 +42,16 @@ export const CustomForm = (props) => {
   };
 
   return (
+    
+    <div className={styles.navbar_container}>
+    <nav>
+      {/* LOGO */}
+      <div className={styles.brand_logob}>
+        <Link to="/">SWAPPER</Link>
+      </div>
+      </nav>
+    <ColoredLine color="black" />
+    
     <div className="base-container" >
       <div className="registro-form" >
         <div className="header">Creación de cuenta</div>
@@ -153,6 +177,7 @@ export const CustomForm = (props) => {
           </Link>
         </div>
       </div>
+    </div>
     </div>
   );
 }
