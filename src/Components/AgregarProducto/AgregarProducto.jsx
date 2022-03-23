@@ -83,7 +83,7 @@ export const AgregarProducto = (props) => {
                     </div>
                     <div className="form-group">
                       <input
-                        type="text"
+                        type="number"
                         name="price"
                         placeholder="Precio"
                         value={stateForm.price}
