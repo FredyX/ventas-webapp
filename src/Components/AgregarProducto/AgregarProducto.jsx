@@ -1,5 +1,6 @@
 
 import React from 'react'
+import styles from "../../Components/Navbar/Navbar.module.scss"
 import { Link } from "react-router-dom";
 import "./AgregarProducto.scss";
 import CheckboxList from './checkboxlist';
@@ -12,6 +13,19 @@ import productDataService from "../../services/product.service";
 
 
 export const AgregarProducto = (props) => {
+  const ColoredLine = ({ color }) => (
+    <hr
+      style={{
+        color,
+        backgroundColor: color,
+        height: 3,
+        marginTop: 15,
+        marginLeft: 20,
+        marginRight: 20,
+      }}
+    />
+  );
+
   const {
     stateForm,
     errors,
@@ -39,6 +53,15 @@ export const AgregarProducto = (props) => {
   return (
     <div>
       <br />
+      <div className={styles.navbar_container}>
+      <nav>
+        {/* LOGO */}
+        <div className={styles.brand_logob}>
+          <Link to="/">SWAPPER</Link>
+        </div>
+        </nav>
+      <ColoredLine color="black" />
+      </div>
       <div className="cajaimagen">
         <div class="grid-container">
           <div class="grid-item tall">

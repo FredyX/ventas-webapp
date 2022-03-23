@@ -21,6 +21,7 @@ nav {
   font-size: 1.3rem;
   color: var(--dark-green);
   font-weight: 600;
+  margin-left: auto;
 }
 
 .navbar_ul {
@@ -137,4 +138,11 @@ nav {
 
 .Buscar {
   width: 100%;
+}
+
+.brand_logob a {
+  font-size: 2rem;
+  color: var(--dark-green);
+  font-weight: 600;
+  margin-left: 20px;
 }

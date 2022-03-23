@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { useSearchParams } from "react-router-dom";
 import  "./DetallesProducto.scss";
 import productDataService from "../../../services/product.service"
+import usersService from "../../../services/users.service";
+import categoriesService from "../../../services/categories.service";
+import departmentService from "../../../services/departments.service";
+import Navbar from "../../Navbar/Navbar"
 
 
 
@@ -80,8 +84,8 @@ export const DetallesProducto = () => {
 
     return (
         <div>
+            <Navbar></Navbar>   
             <Row className="ro">
-
                 <Column className="col">
                 <div className="basecontainer4" >
                     <div className="basecontainer1">
