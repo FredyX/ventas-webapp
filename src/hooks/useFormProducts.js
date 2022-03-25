@@ -62,7 +62,7 @@ export const useForm = (form = {}, validateFormProducts, productDataService) => 
 						state: '',
 						product_description: '',
 						file: '',
-                        department_id: ''
+                        department_id: '',
 					});
 					setCheck(false);
 					navigate(`/detalles/?id=${response.data.product.id}`);

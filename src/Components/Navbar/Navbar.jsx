@@ -9,9 +9,11 @@ import { FaBars, FaTimes } from "react-icons/fa";
 
 import { useState } from "react";
 import useClickOutside from "../CustomHooks/ClickOutside";
-import { width } from "@mui/system";
+
 
 const Navbar = ({ BurgerColour }) => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [searchTerm, SetsearchTerm] = useState('')
   const MenuLink = ({ url, path }) => {
     return (
       <li className={styles.navlink}>
@@ -40,6 +42,7 @@ const Navbar = ({ BurgerColour }) => {
       }}
     />
   );
+
 
   return (
     <div className={styles.navbar_container}>
@@ -75,8 +78,10 @@ const Navbar = ({ BurgerColour }) => {
           <div className="Buscar" >
           <Box sx={{  width: 300, backgroundColor: 'grey', display: 'flex', alignItems: 'flex-end' }}>
         <SearchOutlinedIcon sx={{ color: "green", mr: 1, my: 0.5 }} />
-        <TextField id="Buscar"  fullWidth label="Buscar" variant="standard" color="success" focused />
+        <TextField id="Buscar"  fullWidth label="Buscar" variant="standard" color="success" focused onChange={(event)=>{SetsearchTerm(event.target.value)}}/>
       </Box>
+
+      {}
 
       </div>
 
@@ -93,7 +98,6 @@ const Navbar = ({ BurgerColour }) => {
         <BsArrowRight style={{ color: BurgerColour }} />
         </Link>
 
- 
         {/* Login */}
         <Link to="/iniciosesion/" className={styles.login_container}>
           <span style={{ color: BurgerColour }}>Iniciar Sesión</span>

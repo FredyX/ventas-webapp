@@ -3,6 +3,7 @@ import AuthService from "../../services/auth.service";
 import { Link } from "react-router-dom";
 import { validateFormLogin } from "../../helpers/validateForm";
 import { useForm } from '../../hooks/useFormInicioSesion';
+import styles from "../../Components/Navbar/Navbar.module.scss"
 
 export const InicioSesion = (props) => {
 
@@ -29,13 +30,26 @@ export const InicioSesion = (props) => {
         color,
         backgroundColor: color,
         height: 3,
-        marginTop: 15
+        marginTop: 15,
+        marginLeft: 20,
+        marginRight: 20,
       }}
     />
   );
 
 
   return (
+    <div>
+      <div className={styles.navbar_container}>
+      <nav>
+        {/* LOGO */}
+        <div className={styles.brand_logob}>
+          <Link to="/">SWAPPER</Link>
+        </div>
+        </nav>
+      <ColoredLine color="black" />
+      </div>
+      
     <div className="base-container" >
       <div className="registro-form" >
         <div className="header">Inicio de Sesión</div>
@@ -85,6 +99,7 @@ export const InicioSesion = (props) => {
           </Link>
         </div>
       </div>
+    </div>
     </div>
   );
 }

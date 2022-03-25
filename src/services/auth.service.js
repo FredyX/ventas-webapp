@@ -3,10 +3,12 @@ class AuthService{
     login(data){
         return http.post(`/auth/login`, data )
         .then(response=>{
-            if(response.data.token){
-                localStorage.setItem("user", JSON.stringify(response.data));
+            console.log(response);	
+            if(response.data.data.token){
+
+                localStorage.setItem("user", JSON.stringify(response.data.data));
             }
-            return response.data;
+            return response.data.data;
         });
     }
 

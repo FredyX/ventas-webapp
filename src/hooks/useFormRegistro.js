@@ -42,7 +42,7 @@ export const useForm = (form = {}, validateForm, userDataService) => {
 						department_id: '',
 					});
 					setCheck(false);
-					navigate("/");
+					navigate("/iniciosesion");
 				})
 				.catch(e => {
 					console.log(e);

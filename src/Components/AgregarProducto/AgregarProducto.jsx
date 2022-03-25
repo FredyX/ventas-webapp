@@ -1,10 +1,11 @@
 
 import React from 'react'
+import styles from "../../Components/Navbar/Navbar.module.scss"
 import { Link } from "react-router-dom";
 import "./AgregarProducto.scss";
-import CheckboxList from './checkboxlist';
+//import CheckboxList from './checkboxlist';
 import PinnedSubheaderList from './checkboxlist';
-import DragAreaPrincipal from './imagenprevious';
+//import DragAreaPrincipal from './imagenprevious';
 import DragArea from "./images.jsx/imagen1";
 import { validateFormProducts } from "../../helpers/validateForm";
 import { useForm } from '../../hooks/useFormProducts';
@@ -12,6 +13,19 @@ import productDataService from "../../services/product.service";
 
 
 export const AgregarProducto = (props) => {
+  const ColoredLine = ({ color }) => (
+    <hr
+      style={{
+        color,
+        backgroundColor: color,
+        height: 3,
+        marginTop: 15,
+        marginLeft: 20,
+        marginRight: 20,
+      }}
+    />
+  );
+
   const {
     stateForm,
     errors,
@@ -38,11 +52,20 @@ export const AgregarProducto = (props) => {
 
   return (
     <div>
+      <div className={styles.navbar_container}>
+      <nav>
+        {/* LOGO */}
+        <div className={styles.brand_logob}>
+          <Link to="/">SWAPPER</Link>
+        </div>
+        </nav>
+      <ColoredLine color="black" />
+      </div>
       <br />
       <div className="cajaimagen">
-        <div class="grid-container">
-          <div class="grid-item tall">
-            <div class="columns">
+        <div className="grid-container">
+          <div className="grid-item tall">
+            <div className="columns">
               <div className="base-container1">
                 <div className="header">Agregar producto</div>
                 <div className="header2">Porfavor ingresa la información de tu producto</div>
@@ -57,29 +80,34 @@ export const AgregarProducto = (props) => {
                         onChange={handleInputChange}
                         onBlur={handleBlur}
                       />
+<<<<<<< HEAD
                       {
                         errors.title !== null ? 
                         <p style={style}> {errors.product_name}</p>
                         :
                         <p></p>
                       }
+=======
+>>>>>>> 3276fc5d4a47f7463a84d6df96555224a6cf9d29
                     </div>
-
                     <div className="form-group">
                       <input
-                        type="text"
+                        type="number"
                         name="price"
                         placeholder="Precio"
                         value={stateForm.price}
                         onChange={handleInputChange}
                         onBlur={handleBlur}
                       />
+<<<<<<< HEAD
                       {
                         errors.price  !== null ?
                         <p style={style}> {errors.price}</p>
                         :
                         <p></p>
                       }
+=======
+>>>>>>> 3276fc5d4a47f7463a84d6df96555224a6cf9d29
                     </div>
                     <div className="caja">
                       <select name="state" value={stateForm.state} onChange={handleInputChange}>
@@ -100,6 +128,7 @@ export const AgregarProducto = (props) => {
                         rows = "3"
                         cols = "52"
                       >
+<<<<<<< HEAD
                          {
                         errors.product_description !== null ? 
                         <p style={style}> {errors.product_description}</p>
@@ -107,6 +136,8 @@ export const AgregarProducto = (props) => {
                         <p></p>
                       }
                      
+=======
+>>>>>>> 3276fc5d4a47f7463a84d6df96555224a6cf9d29
                       </textarea>
                     </div>
 
@@ -159,10 +190,10 @@ export const AgregarProducto = (props) => {
             </div>
 
           </div>
-          <div class="grid-item tall">
+          <div className="grid-item tall">
 
           </div>
-          <div class="grid-item tall">
+          <div className="grid-item tall">
 
 
           </div>
