@@ -102,7 +102,7 @@ export const DetallesProducto = () => {
 
                                 <p className="Score">Puntuacion del Vendedor: {score}</p>
                                 </div>
-                            </div>
+                    </div>
                   </div>
                 </Column>
                 <Column className="col">

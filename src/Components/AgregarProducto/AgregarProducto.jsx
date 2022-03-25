@@ -53,13 +53,15 @@ export const AgregarProducto = (props) => {
                         type="text"
                         name="product_name"
                         placeholder="Título"
-                        value={stateForm.title}
+                        value={stateForm.product_name}
                         onChange={handleInputChange}
                         onBlur={handleBlur}
                       />
                       {
-                        errors.title &&
-                        <p style={style}> {errors.title}</p>
+                        errors.title !== null ? 
+                        <p style={style}> {errors.product_name}</p>
+                        :
+                        <p></p>
                       }
                     </div>
 
@@ -73,8 +75,10 @@ export const AgregarProducto = (props) => {
                         onBlur={handleBlur}
                       />
                       {
-                        errors.price &&
+                        errors.price  !== null ?
                         <p style={style}> {errors.price}</p>
+                        :
+                        <p></p>
                       }
                     </div>
                     <div className="caja">
@@ -88,18 +92,19 @@ export const AgregarProducto = (props) => {
                     </div>
                     <div className="form-group2">
                       <textarea
-
                         name="product_description"
                         placeholder="Descripción"
-                        value={stateForm.description}
+                        value={stateForm.product_description}
                         onChange={handleInputChange}
                         onBlur={handleBlur}
                         rows = "3"
                         cols = "52"
                       >
                          {
-                        errors.description &&
-                        <p style={style}> {errors.description}</p>
+                        errors.product_description !== null ? 
+                        <p style={style}> {errors.product_description}</p>
+                        :
+                        <p></p>
                       }
                      
                       </textarea>
@@ -132,7 +137,7 @@ export const AgregarProducto = (props) => {
                     </div>
                   </div>
                   <div className="footer">
-                    <button type="button" className="btn" onClick={handleSubmit}>
+                    <button type="button" className="btn">
                       Agregar producto
                     </button>
                     <Link to={"/"}>
