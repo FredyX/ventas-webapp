@@ -1,0 +1,262 @@
+:root {
+    --form-control-color: rgb(18, 183, 0);
+    --white: #ffffff;
+    --black: rgb(0, 0, 0);
+    --gris: #c4c4c4;
+    --grisoscuro: #5a5a5a;
+  }
+  
+  .form-group {
+    display: flex;
+
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+
+    label {
+      font-size: 20px;
+    }
+    input {
+      margin-top: 6px;
+      min-width: 25em;
+      height: 37px;
+      font-size: 16px;
+      text-align: center;
+      font-family: "Arsenal", sans-serif;
+      background-color: #f3f3f3;
+      border: 0;
+      border-radius: 5px;
+      margin-bottom: 5px;
+
+      &:hover {
+        background-color: #ffffff;
+        outline: solid #12b700;
+      }
+
+      &:focus {
+        outline: none;
+        outline: solid rgb(18, 183, 0);
+      }
+    }
+  }
+
+  
+
+
+.imageproductform1 {
+    margin-bottom: 5px;
+    height: 300px;
+    width: 400px;
+    margin-top: 135px;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+    outline: solid #c4c4c4;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.detallevendedorform1 {
+height: 90px;
+  width: 400px;
+  margin-top: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
+  outline: solid #d9d9d9;
+
+}
+
+
+.detalleperfil {
+    height: 20px;
+      width: 400px;
+      margin-top: 0px;
+      margin-left: 0px;
+      margin-right: 0px;
+      margin-bottom: 0px;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 5px;
+    
+    
+    }
+    
+.formbotons {
+    margin-bottom: 0px;
+    margin-top: 5px;
+    margin-left: 0px;
+    margin-right: 20px;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+    outline: solid #ffffff;
+    align-items: center;
+  }
+
+  .formbotons2 {
+    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+    align-items: center;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+    outline: solid #ffffff;
+    align-items: center;
+  }
+
+  .formbotons3 {
+    margin-bottom: 0px;
+    margin-top: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+    align-items: center;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+    outline: solid #ffffff;
+    align-items: center;
+  }
+
+.detalleuser {
+   width: 100%;
+   height: 400px;
+    margin-bottom: 350px;
+    margin-top: 50px;
+    margin-left: 0px;
+    margin-right: 20px;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+    outline: solid #12b700;
+}
+
+.image {
+    max-height: 280px;
+    height: 100%;
+    width: auto;
+    max-width: 380px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+  
+}
+
+.titulo1 {
+    margin-top: auto;
+    font-weight: bold;
+    font-size: 50px;
+    font-family: "Arsenal", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.basecontainer2{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: #ffffff;
+
+}
+
+.basecontainer3{
+    width: 100%;
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: #ffffff;
+}
+
+.basecontainer5{
+    
+    width: 100%;
+    height: 100%;
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+
+}
+
+  
+ 
+  .btn3 {
+  margin-left: 70px;
+  margin-top: 20px;
+  margin-bottom: 20;
+    margin-right: 3px;
+    min-width: 200px;
+    font-size: 21px;
+    padding: 5px 20px;
+    border: 0;
+    background-color: rgb(18, 183, 0);
+    color: #fff;
+    border-radius: 5px;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(212, 253, 13);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .btn7 {
+    
+    margin-right: 3px;
+    min-width: 200px;
+    font-size: 21px;
+    padding: 5px 20px;
+  border: 0;
+  background-color:#fff;
+  color: #12b700;
+  border-radius: 5px;
+  outline: solid rgb(18, 183, 0);
+  cursor: pointer;
+  &:hover {
+    background-color: #b7ffaf;
+   
+  }
+  &:focus {
+    outline: none;
+  }
+  }
+
+  .btn6 {
+    
+    margin-right: 3px;
+    min-width: 200px;
+    font-size: 21px;
+    padding: 5px 20px;
+    border: 0;
+    outline: solid rgb(183, 0, 0);
+    background-color: #fff;
+    color: rgb(158, 1, 1);
+    border-radius: 5px;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(167, 40, 40);
+    }
+    &:focus {
+      outline: none;
+    }
+  
+  }
+  
