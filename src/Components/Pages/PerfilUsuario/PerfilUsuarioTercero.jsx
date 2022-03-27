@@ -35,29 +35,50 @@ const Row = styled.div`
 
 
 
-export const PerfilUsuario = () => {
+export const PerfilUsuarioTercero = () => {
     
-    const MensajeEliminar = (e) => {
-		Swal.fire({
-            title: '¿Estas seguro que deseas eliminar el perfil?',
-            text: "Si no estas seguro, click en cancelar",
+    const MensajeDenuncia = (e) => {
+        
+          Swal.fire({
+            title: '¿Estas seguro que quieres denunciar al usuario?',
             icon: 'warning',
             showCancelButton: true,
+            confirmButtonText: 'Si, denunciar!',
             confirmButtonColor: '#12b700',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, deseo eliminarlo!'
-        }).then((result) => {
+            cancelButtonText: 'No, cancelar!',
+            cancelButtonColor: '#b70000',
+            reverseButtons: true
+          }).then((result) => {
             if (result.isConfirmed) {
-            Swal.fire({
-                    title: 'Eliminado',
+                Swal.fire({
+                    title: 'Escribe el motivo de tu denuncia',
+                    input: 'text',
+                    inputAttributes: {
+                      autocapitalize: 'off'
+                    },
+                    showCancelButton: true,
+                    confirmButtonText: 'Enviar',
+                    confirmButtonColor: '#12b700',
+                    showLoaderOnConfirm: true,
+                    
+                    allowOutsideClick: () => !Swal.isLoading()
+                  })
+              
+            } else if (
+              /* Read more about handling dismissals below */
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+                Swal.fire({
+               title: 'Denuncia Cancelada',
                     text: "Tu perfil ha sido eliminado!",
-                    icon: 'success',
+                    icon: 'error',
                     confirmButtonColor: '#12b700',
                     confirmButtonText: 'Listo'
+              })
             }
-            )
-            } 
-    })
+          })
+
+
 	}
     
 
@@ -130,14 +151,14 @@ export const PerfilUsuario = () => {
                         </div>
                     
                             <div className="detallevendedorform1" >
-                                <p className="score">Puntuación: {score}</p>
+                                <p className="score">Puntuación de vendedor: {score}</p>
                             </div>
                     
                   </div>
                 </Column>
                 <Column className="col">
                     <div className="basecontainer2" >
-                    <div className="titulo1">Mi perfil</div> 
+                    <div className="titulo1">Perfil de Usuario</div> 
                         <div className="basecontainer2">
                             <div className="detalleuser" >
                             <div className="detalleperfil" >
@@ -152,16 +173,8 @@ export const PerfilUsuario = () => {
                               
                                 <div className="detalleperfil" >
                                 <p className="departamento">Departamento: {departamento}</p>
-                                </div>  
-                                <div className="formbotons2">
-                                    <Link to={"/modificarusuario"}>
-                                    <button type="button" className="btn3">
-                                    Modificar perfil
-                                    </button>
-                                    </Link>
-                                </div>                       
+                                </div>             
                                 </div>
-                            
                             </div>
                         </div>
                         </Column>
@@ -170,36 +183,25 @@ export const PerfilUsuario = () => {
                         <div className="formbotons3" >
                         <div className="formbotons" >
                        
-                                    <Link to={"/AgregarProducto"}>
+                                    
                                     <button type="button" className="btn7">
-                                    Agregar producto
+                                    Calificar
                                     </button>
-                                    </Link>
+                               
                                     </div>
                             <div className="formbotons" >
-                                    <button type="button" className="btn7">
-                                    Mis productos
+                                    <button type="button" className="btn6" onClick={MensajeDenuncia}>
+                                    Denunciar
                                     </button>
                                     </div>
-                            <div className="formbotons" >
-                                    <button type="button" className="btn7">
-                                    Suscripciones
-                                    </button>
+                            
                                   
                              
                             </div>
-                            <div className="formbotons" >
-                       
-                                
-                                <button type="button" className="btn6" onClick={MensajeEliminar}>
-                                Eliminar perfil
-                                </button>
-                             
-                                </div>
+                            
                             
                             </div>
                            
-                            </div>
                     
                 </Column>
             </Row>
