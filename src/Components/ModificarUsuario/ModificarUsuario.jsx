@@ -25,15 +25,18 @@ const Row = styled.div`
   `;
 
   //const [searchParams, setSearchParams] = useSearchParams();
+  export const ModificarUsuario = () => {
 
-  export const ModificarUsuario = async () => {
+    useEffect(() => {
+        getDatos();
+    }, [])
 
     //let id = searchParams.get('id');
-    const response = await userDataService.getAllUsers(15);
-    console.log(response.status);
-    console.log(response.data);
-
-
+    
+    const getDatos  = async () => {
+        const response = await userDataService.getProfileModificate(15);
+        console.log(response.data);
+    } 
 
     return(
         <div>

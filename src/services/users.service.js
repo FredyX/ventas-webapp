@@ -30,8 +30,7 @@ class userDataService {
   }
 
   getProfileModificate(id) {
-    let headers = authHeader()
-    return http.get(`/users/personal/${id}`, { headers: headers });
+    return http.get(`/users/personal/${id}`, { headers: authHeader()});
   }
 
 }
