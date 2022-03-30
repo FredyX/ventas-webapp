@@ -31,8 +31,8 @@ function App() {
       <Route path="/modificarusuario/" element= {<ModificarUsuario />} />
       <Route path="/perfilusuario/" element= {<PerfilUsuario />} />
       <Route path="/perfilusuario/visitante/" element= {<PerfilUsuarioTercero />} />
-      <Route path="/inisiosesion/recuperacioncuenta/" element={<RecuperacionCuenta/>} />
-      <Route path="/inisiosesion/recuperacioncuenta/cambiocontrasena/" element={<CambioContrasena/>} />
+      <Route path="/iniciosesion/recuperacioncuenta/" element={<RecuperacionCuenta/>} />
+      <Route path="/iniciosesion/recuperacioncuenta/cambiocontrasena/" element={<CambioContrasena/>} />
       </Routes>
 
     </div>

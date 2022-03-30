@@ -97,7 +97,8 @@ export const InicioSesion = (props) => {
             Registro
           </button>
           </Link>
-          <span>¿No recuerdas tu contraseña?, Click para {<Link to={"/inisiosesion/recuperacioncuenta/"} target="_blank" className="link">
+          <span> </span>
+          <span>¿No recuerdas tu contraseña?, {<Link to={"/iniciosesion/recuperacioncuenta/"} target="_blank" className="link">
                 <span>Recuperar Cuenta</span>
               </Link>}</span>
         </div>

@@ -173,7 +173,9 @@ export const PerfilUsuarioTercero = () => {
                               
                                 <div className="detalleperfil" >
                                 <p className="departamento">Departamento: {departamento}</p>
-                                </div>             
+                                </div>  
+                                
+                                           
                                 </div>
                             </div>
                         </div>
@@ -181,14 +183,7 @@ export const PerfilUsuarioTercero = () => {
                         <Column className="col">
                         <div className="basecontainer5">
                         <div className="formbotons3" >
-                        <div className="formbotons" >
-                       
-                                    
-                                    <button type="button" className="btn7">
-                                    Calificar
-                                    </button>
-                               
-                                    </div>
+                        
                             <div className="formbotons" >
                                     <button type="button" className="btn6" onClick={MensajeDenuncia}>
                                     Denunciar

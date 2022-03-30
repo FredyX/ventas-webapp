@@ -156,12 +156,11 @@ export const PerfilUsuario = () => {
                                 <div className="formbotons2">
                                     <Link to={"/modificarusuario"}>
                                     <button type="button" className="btn3">
-                                    Modificar perfil
+                                    Configurar perfil
                                     </button>
                                     </Link>
                                 </div>                       
                                 </div>
-                            
                             </div>
                         </div>
                         </Column>
