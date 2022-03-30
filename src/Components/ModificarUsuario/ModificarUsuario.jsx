@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
-import { useSearchParams } from "react-router-dom";
+//import { useSearchParams } from "react-router-dom";
 import "./ModificarUsuario.scss";
+import userDataService from "../../services/users.service";
+
 
 
 const Column = styled.div`
@@ -22,7 +24,15 @@ const Row = styled.div`
   width: 100%;
   `;
 
-  export const ModificarUsuario = () => {
+  //const [searchParams, setSearchParams] = useSearchParams();
+
+  export const ModificarUsuario = async () => {
+
+    //let id = searchParams.get('id');
+    const response = await userDataService.getAllUsers(15);
+    console.log(response.status);
+    console.log(response.data);
+
 
 
     return(
@@ -56,7 +66,7 @@ const Row = styled.div`
                               
                                     <input type="text" placeholder="Correo" className="info"/>
                                
-                                    <input type="text" placeholder="Pass" className="info"/>
+                                    <input type="text" placeholder="Contraseña" className="info"/>
                                    
                                     <input type="text" placeholder="Departamento" className="info"/>
                             </div>

@@ -29,6 +29,11 @@ class userDataService {
     return http.delete(`/users/${id}`, { headers: authHeader() });
   }
 
+  getProfileModificate(id) {
+    let headers = authHeader()
+    return http.get(`/users/personal/${id}`, { headers: headers });
+  }
+
 }
 
 export default new userDataService();
