@@ -1,30 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "../../Navbar/Navbar.module.scss";
+import  userDataService  from '../../../services/users.service';
+import { regularExp } from "../../../helpers/regularExp";
 import {useState} from 'react';
 
 export const RecuperacionCuenta = (props) => {
-    const [user_email, setUserEmail] = useState({});
+    const [user_email, setUserEmail] = useState(null);
     
     const handleChange = ({target})=>{
-      setUserEmail({
-        [target.name] : target.value
-      });
+      setUserEmail(target.value);
     }
-    const enviar = ({target}) => {
-      let formData = new FormData();
-      formData.append('user_email', user_email.user_email);
-
-      fetch('http://192.168.0.6:3001/api/forgot_password',{
-        headers:{
-          "Content-Type": "application/x-www-form-urlencoded",
-          //"Content-Type": "multipart/form-data"
-        },
-        method: "post",
-
-      })
-        .then( res => console.log('Hola'))
-        .catch(res => console.log(res));
+    const validatEmail = () =>{
+      const {email} = regularExp;
+      let arrayMatch = email.exec(user_email);      
+      return !arrayMatch ? false : true;
+    }
+    
+    const enviar = ({target}) => {      
+        if(validatEmail()){
+          userDataService.forgotPassword({user_email})
+            .then( res =>{
+              alert('Revise su correo electrónico');
+              setUserEmail('');
+            })
+            .catch(err => console.log(err));
+        }else{
+          alert('Correo invalido');
+        }
+      
     }
     const style = {
       fontWeight: "bold",

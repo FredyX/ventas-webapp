@@ -19,25 +19,7 @@ export const useFormCambio = (inicial, token, user_email, validateForm, userData
 	}
 
     const handleSubmit = ({target}) => {
-        if(isObjectEmpty(errors)){
-           /* 
-            let formData = new FormData();
-            formData.append('user_email',user_email);
-            formData.append('user_password', stateForm.user_password);
-			formData.append('token', token);
-            fetch(`http://localhost:3001/api/users/reset_password`,{
-                method: 'put',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'x-token': `${token}`
-                },
-                body: formData
-            })
-                .then( res => alert('Contraseña modificada con exito'))
-                .catch( err => alert(`error en la petición ${err}`));
-        }else{
-            alert('Los campos estan incompletos');
-        }*/
+        if(isObjectEmpty(errors)){           
         const {user_password} = stateForm;
         userDataService.resetPassword(
             {

@@ -32,6 +32,9 @@ class userDataService {
   resetPassword(data, token){
     return http.put("/users/reset_password",data,{ headers: {'x-token': token} });
   }
+  forgotPassword(data){
+    return http.put("/users/forgot_password",data, { headers: authHeader() }); 
+  }
 }
 
 export default new userDataService();
