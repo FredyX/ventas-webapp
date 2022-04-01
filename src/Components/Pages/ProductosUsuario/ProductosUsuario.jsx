@@ -31,29 +31,42 @@ const ProductosUsuario = () => {
     const [fecha, setDate] = useState('');
     const [estadoVenta, setIsSelling] = useState('');
     const [searchParams, setSearchParams] = useSearchParams();
+    const [ProductosUsuario, setProductosUsuario] = useState([]);
 
 
     useEffect(() => {
+        setProductosUsuario([]);
         ProductsApi();
     }, [])
 
     const ProductsApi = async () => {
+        let dat = [];
         let id = searchParams.get('id');
         let page = searchParams.get('page')
         const response = await productDataService.getProductUser(id,page)
-        const {producto,imagenesRes} = response.data;
+        console.log(response);
+        const {data} = response.data;
 
+        for (let i = 0; i < data.length; i++) {
+          let nuevadata = [data[i].date_added,data[i].is_selling,data[i].first_name + " " + data[i].last_name,
+          data[i].score,data[i].product_name,data[i].price,data[i].department_name,
+          data[i].state,data[i].product_description,data[i].image_name];
+          dat.push(nuevadata);
 
-        setDate(producto[0].date_added);
-        setIsSelling(producto[0].is_selling);
-        setNombreUsuario(producto[0].first_name + " " + producto[0].last_name);
-        setScore(producto[0].score);
-        setTitulo(producto[0].product_name);
-        setPrecio(producto[0].price);
-        setDepartamento(producto[0].department_name);
-        setState(producto[0].state, setEstado);
-        setDescripcion(producto[0].product_description);
-        setImagen(`http://localhost:3001/${imagenesRes[0]}`);
+        setDate(data[i].date_added);
+        setIsSelling(data[i].is_selling);
+        setNombreUsuario(data[i].first_name + " " + data[i].last_name);
+        setScore(data[i].score);
+        setTitulo(data[i].product_name);
+        setPrecio(data[i].price);
+        setDepartamento(data[i].department_name);
+        setState(data[i].state, setEstado);
+        setDescripcion(data[i].product_description);
+        setImagen(data[i].image_name);       
+      }
+      
+      setProductosUsuario(dat);
+      console.log(dat);
     }
 
   return (
@@ -65,23 +78,27 @@ const ProductosUsuario = () => {
       </div>
 
       <div className={styles.ProductoContainer}>
-      <div className={styles.cards}>
-          <Card
-           info= {{
-              id: undefined,
-              imageSource: imagen,
-              descripcion: descripcion,
-              estado: estado,
-              fecha: fecha,
-              estadoVenta: estadoVenta,
-              departamento: departamento,
-              precio: precio,
-              titulo: titulo,
-              score: score,
-              nombreUsuario: nombreUsuario,
-            }}
-            />
-      </div>
+        {ProductosUsuario.map((id)=>{
+          return(
+            <div key={id} className={styles.cards}>
+                <Card
+                  info= {{
+                  id: undefined,
+                  imageSource: imagen,
+                  descripcion: descripcion,
+                  estado: estado,
+                  fecha: fecha,
+                  estadoVenta: estadoVenta,
+                  departamento: departamento,
+                  precio: precio,
+                  titulo: titulo,
+                  score: score,
+                  nombreUsuario: nombreUsuario,
+                }}
+                />
+          </div>
+          );
+          })}
       </div>
     </section>
     <Footer/>

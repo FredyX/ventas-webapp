@@ -85,6 +85,7 @@ export const DetallesProducto = () => {
         let cat = [];
         let id = searchParams.get('id');
         const response = await productDataService.getDetalle(id)
+        console.log(response);
         const {producto,categorias,imagenesRes} = response.data;
 
         for (let i = 0; i < categorias.length; i++) {
@@ -93,6 +94,7 @@ export const DetallesProducto = () => {
         }
         
         setCategorias(cat);
+        console.log(cat);
 
         setNombreUsuario(producto[0].first_name + " " + producto[0].last_name);
         setScore(producto[0].score);
@@ -149,8 +151,7 @@ export const DetallesProducto = () => {
                     </div>
                   </div>
                 </Column>
-                <Column className="col">
-                    <div className="basecontainer2" >
+                        <div className="basecontainer2" >
                         <div className="basecontainer2">
                             <div className="detalleproductoform" >
                                
@@ -179,8 +180,7 @@ export const DetallesProducto = () => {
                                 </div>
                             </div>
                     </div>
-                </Column>
-            </Row>
+                            </Row>
         </div>
         <Footer/>
         </main>
