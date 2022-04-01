@@ -10,6 +10,7 @@ import DragArea from "./images.jsx/imagen1";
 import { validateFormProducts } from "../../helpers/validateForm";
 import { useForm } from '../../hooks/useFormProducts';
 import productDataService from "../../services/product.service";
+import Footer from "../../Components/Footer/Footer";
 
 
 export const AgregarProducto = (props) => {
@@ -51,6 +52,7 @@ export const AgregarProducto = (props) => {
 
 
   return (
+    <main>
     <div>
       <div className={styles.navbar_container}>
       <nav>
@@ -80,15 +82,12 @@ export const AgregarProducto = (props) => {
                         onChange={handleInputChange}
                         onBlur={handleBlur}
                       />
-<<<<<<< HEAD
                       {
                         errors.title !== null ? 
                         <p style={style}> {errors.product_name}</p>
                         :
                         <p></p>
                       }
-=======
->>>>>>> 3276fc5d4a47f7463a84d6df96555224a6cf9d29
                     </div>
                     <div className="form-group">
                       <input
@@ -99,15 +98,12 @@ export const AgregarProducto = (props) => {
                         onChange={handleInputChange}
                         onBlur={handleBlur}
                       />
-<<<<<<< HEAD
                       {
                         errors.price  !== null ?
                         <p style={style}> {errors.price}</p>
                         :
                         <p></p>
                       }
-=======
->>>>>>> 3276fc5d4a47f7463a84d6df96555224a6cf9d29
                     </div>
                     <div className="caja">
                       <select name="state" value={stateForm.state} onChange={handleInputChange}>
@@ -128,7 +124,6 @@ export const AgregarProducto = (props) => {
                         rows = "3"
                         cols = "52"
                       >
-<<<<<<< HEAD
                          {
                         errors.product_description !== null ? 
                         <p style={style}> {errors.product_description}</p>
@@ -136,8 +131,6 @@ export const AgregarProducto = (props) => {
                         <p></p>
                       }
                      
-=======
->>>>>>> 3276fc5d4a47f7463a84d6df96555224a6cf9d29
                       </textarea>
                     </div>
 
@@ -200,7 +193,8 @@ export const AgregarProducto = (props) => {
         </div>
       </div>
     </div>
-
+    <Footer/>
+    </main>
   );
 
 }

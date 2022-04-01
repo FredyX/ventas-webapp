@@ -9,6 +9,7 @@ import {TerminosDeServicio} from "./Components/Pages/ToS/TerminosDeServicio";
 import {AgregarProducto} from "./Components/AgregarProducto/AgregarProducto";
 import {DetallesProducto} from "./Components/Pages/DetallesProducto/DetallesProducto";
 import {ModificarUsuario} from "./Components/ModificarUsuario/ModificarUsuario";
+import ProductosUsuario from "./Components/Pages/ProductosUsuario/ProductosUsuario";
 
 
 //semana 1
@@ -25,7 +26,7 @@ function App() {
       <Route path="/tos/" element= {<TerminosDeServicio />} />
       <Route path="/detalles/" element= {<DetallesProducto />} />
       <Route path="/modificarusuario/" element= {<ModificarUsuario />} />
-      
+      <Route path="/productosusuario/" element= {<ProductosUsuario />} />
       </Routes>
 
     </div>

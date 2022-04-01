@@ -1,0 +1,32 @@
+.ProductosUsuario {
+  margin-top: 2rem;
+  overflow-x: hidden;
+
+  .ProductosUsuario_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    h1 {
+      color: rgb(18, 183, 0);
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.cards {
+  padding-block: 1rem;
+  cursor: pointer;
+}
+
+.ProductoContainer{
+  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
+  outline: solid rgb(18, 183, 0);
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }

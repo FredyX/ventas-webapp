@@ -14,6 +14,7 @@ import { TextField } from "@mui/material";
 import styles from "../../Navbar/Navbar.module.scss";
 import { BsArrowRight, BsSearch } from "react-icons/bs";
 import { blueGrey, green, grey, lightGreen } from "@mui/material/colors";
+import Footer from "../../Footer/Footer";
 
 
 
@@ -105,6 +106,7 @@ export const DetallesProducto = () => {
 
 
     return (
+        <main> 
         <div>
                <div className={styles.navbar_container}>
       <nav>
@@ -180,5 +182,7 @@ export const DetallesProducto = () => {
                 </Column>
             </Row>
         </div>
+        <Footer/>
+        </main>
     )
 }   

@@ -3,7 +3,8 @@ import AuthService from "../../services/auth.service";
 import { Link } from "react-router-dom";
 import { validateFormLogin } from "../../helpers/validateForm";
 import { useForm } from '../../hooks/useFormInicioSesion';
-import styles from "../../Components/Navbar/Navbar.module.scss"
+import styles from "../../Components/Navbar/Navbar.module.scss";
+import Footer from "../../Components/Footer/Footer";
 
 export const InicioSesion = (props) => {
 
@@ -39,6 +40,7 @@ export const InicioSesion = (props) => {
 
 
   return (
+    <main>
     <div>
       <div className={styles.navbar_container}>
       <nav>
@@ -101,5 +103,7 @@ export const InicioSesion = (props) => {
       </div>
     </div>
     </div>
+    <Footer/>
+    </main>
   );
 }
