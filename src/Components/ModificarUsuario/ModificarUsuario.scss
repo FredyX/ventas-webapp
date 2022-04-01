@@ -11,6 +11,24 @@
 
 }
 
+.col{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    position: center;
+    width: 100%;
+}
+
+.ro{
+    display: flex;
+    grid-template-columns: auto-fill;
+    grid-gap: 0px;
+    background-color: #ffffff; 
+    position: center;
+    bottom: 0;
+    width: 100%;
+}
+
 .image {
     
     height: 100%;
@@ -113,3 +131,60 @@
     border-radius: 5px;
     outline: solid rgb(18, 183, 0);
   }
+
+  .caja {
+    margin-top: 6px;
+    min-width: 25em;
+    border: 0px solid #d9d9d9;
+    border-radius: 5px;
+    background-color: #f3f3f3;
+    padding: 0px 10px;
+    height: 37px;
+    overflow: hidden;
+    width: 230px;
+    position: relative;
+    &:hover {
+      background-color: #ffffff;
+      outline: solid rgb(18, 183, 0);
+    }
+
+    &:focus {
+      background-color: #f3f3f3;
+      outline: none;
+      outline: solid rgb(18, 183, 0);
+    }
+  }
+  select {
+    margin-top: 3px;
+    background: transparent;
+    border: none;
+    font-family: "Arsenal", sans-serif;
+    text-align: center;
+    text-indent: 20px;
+    min-width: 23.5em;
+    font-size: 16px;
+    height: 30px;
+    width: 250px;
+  }
+  select:focus {
+    outline: none;
+  }
+
+  .Titulo{
+   
+    font-weight: bold;
+    font-size: 30px;
+    font-family: "Arsenal", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #12b700;
+}
+
+.Datos{
+  font-size: 20px;
+  font-family: "Arsenal", sans-serif;
+  display: flex;
+  position: initial;
+  display: inline-table;
+}
