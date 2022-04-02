@@ -48,25 +48,25 @@ const ProductosUsuario = () => {
         const {data} = response.data;
 
         for (let i = 0; i < data.length; i++) {
-          let nuevadata = [data[i].date_added,data[i].is_selling,data[i].first_name + " " + data[i].last_name,
+          let nuevadata = [setDate(data[i].date_added),data[i].is_selling,data[i].first_name + " " + data[i].last_name,
           data[i].score,data[i].product_name,data[i].price,data[i].department_name,
           data[i].state,data[i].product_description,data[i].image_name];
-          dat.push(nuevadata);
-
-        setDate(data[i].date_added);
-        setIsSelling(data[i].is_selling);
-        setNombreUsuario(data[i].first_name + " " + data[i].last_name);
-        setScore(data[i].score);
-        setTitulo(data[i].product_name);
-        setPrecio(data[i].price);
-        setDepartamento(data[i].department_name);
-        setState(data[i].state, setEstado);
-        setDescripcion(data[i].product_description);
-        setImagen(data[i].image_name);       
+          dat.push(nuevadata);    
       }
       
       setProductosUsuario(dat);
       console.log(dat);
+
+      setDate(data[0].date_added);
+      setIsSelling(data[0].is_selling);
+      setNombreUsuario(data[0].first_name + " " + data[0].last_name);
+      setScore(data[0].score);
+      setTitulo(data[0].product_name);
+      setPrecio(data[0].price);
+      setDepartamento(data[0].department_name);
+      setState(data[0].state, setEstado);
+      setDescripcion(data[0].product_description);
+      setImagen(data[0].image_name); 
     }
 
   return (
@@ -78,9 +78,9 @@ const ProductosUsuario = () => {
       </div>
 
       <div className={styles.ProductoContainer}>
-        {ProductosUsuario.map((id)=>{
+        {ProductosUsuario.map((index)=>{
           return(
-            <div key={id} className={styles.cards}>
+            <div key={index} className={styles.cards}>
                 <Card
                   info= {{
                   id: undefined,
