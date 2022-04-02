@@ -1,0 +1,4 @@
+1. Card.js // Componente de tarjeta para mostrar detalles
+2. SearchList.js // Componente para enumerar las tarjetas
+3. Scroll.js // Componente para hacer que la lista se pueda desplazar
+4. Search.js // Componente de búsqueda principal
