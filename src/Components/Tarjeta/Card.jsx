@@ -10,21 +10,20 @@ const Card = ({info}) => {
       <div className={styles.image_container}>
         <img src={info.imageSource} alt="producto" className="image"/>
       </div>
-      <h3>{`${info.titulo} `}</h3>
+      <h3>{info.titulo}</h3>
       <h4>
-        <p className={styles.descripcion}>{`Descripcion: ${info.descripcion}`}</p>
+        <p className={styles.descripcion}>{info.descripcion}</p>
       </h4>
       <div className={styles.info}>
         <div className={styles.row_1}>
           <div className={styles.desc}>
             
-            <span>{`Estado: ${info.estado} `}</span>
-            <span>{`ID: ${info.id} `}</span>
+            <span>{info.estado}</span>
           </div>
 
           <div className={styles.desc}>
             
-            <span>{`Departamento: ${info.departamento}`}</span>
+            <span>{info.departamento}</span>
           </div>
         </div>
 
@@ -36,7 +35,7 @@ const Card = ({info}) => {
 
           <div className={styles.desc}>
             
-            <span>{`: ${info.nombreUsuario}`}</span>
+            <span>{info.nombreUsuario}</span>
           </div>
         </div>
       </div>
