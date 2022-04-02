@@ -1,0 +1,179 @@
+:root {
+    --form-control-color: rgb(18, 183, 0);
+    --white: #ffffff;
+    --black: rgb(0, 0, 0);
+    --gris: rgb(196, 196, 196);
+  }
+  .base-containersearch {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-bottom: auto;
+}
+
+       .busqueda-form {
+        display: flex;
+        background-color: white;
+        flex-direction: column;
+        align-items: flex-start;
+        width: fit-content;
+height: fit-content;
+margin-bottom: 5;
+        label {
+          font-size: 20px;
+        }
+        input {
+          margin-top: 6px;
+          min-width: 25em;
+          height: 37px;
+          font-size: 16px;
+          text-align: center;
+          font-family: "Arsenal", sans-serif;
+          background-color: rgb(196, 196, 196);
+          border: 0;
+          border-radius: 5px;
+          margin-bottom: 5px;
+
+          &:hover {
+            background-color: #ffffff;
+            outline: solid #12b700;
+          }
+
+          &:focus {
+            outline: none;
+            outline: solid rgb(18, 183, 0);
+          }
+        }
+      }
+
+  .header {
+    margin-top: auto;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: "Arsenal", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .subheader {
+    margin-top: auto;
+    font-size: 17px;
+    font-family: "Arsenal", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  
+  .form-check1{
+    margin-top: 0px;
+    width: 2px;
+    min-width: fit-content;
+    display: block;
+    place-content: center;
+    align-items: center;
+    font-family: "Arsenal", sans-serif;
+    font-size: 12px;
+    font-weight: lighter;
+    line-height: 1.1;
+    grid-template-columns: 1em auto;
+    gap: 1em;
+  }
+  .busqueda-form1 {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
+    position: center;
+    align-items: flex-start;
+    width: fit-content;
+height:  700px;
+margin-bottom: 5;
+    label {
+      font-size: 37px;
+    }
+    input {
+      margin-top: 6px;
+      min-width: 25em;
+      height: 37px;
+      font-size: 20px;
+      text-align: center;
+      font-family: "Arsenal", sans-serif;
+      background-color: rgb(196, 196, 196);
+      border: 0;
+      border-radius: 5px;
+      margin-bottom: 5px;
+
+      &:hover {
+        background-color: #ffffff;
+        outline: solid #12b700;
+      }
+
+      &:focus {
+        outline: none;
+        outline: solid rgb(18, 183, 0);
+      }
+    }
+  }
+
+  
+.base-containerSerch1 {
+    outline: solid rgb(255, 255, 255);
+    background-color: #ffffff;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.resultados-form1 {
+    display: flex;
+    background-color: rgb(245, 245, 245);
+    flex-direction: column;
+    position: center;
+    align-items: flex-start;
+    height:  750px;
+    margin-bottom: 200;
+    width: 1000px;
+    margin-top: 10px;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.pagination-form {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
+    position: center;
+    align-items: center;
+    width: fit-content;
+    height:  100px;
+    margin-bottom: 200;
+
+    width: 1000px;
+    margin-top: 10px;
+    padding: 2rem;
+
+}
+
+.btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    min-width: 200px;
+    font-size: 21px;
+    padding: 5px 20px;
+    border: 0;
+    background-color: rgb(18, 183, 0);
+    color: #fff;
+    border-radius: 5px;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(212, 253, 13);
+    }
+    &:focus {
+      outline: none;
+    }
+  }

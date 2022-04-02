@@ -77,7 +77,9 @@ const Navbar = ({ BurgerColour }) => {
           
           <div className="Buscar" >
           <Box sx={{  width: 300, backgroundColor: 'grey', display: 'flex', alignItems: 'flex-end' }}>
-        <SearchOutlinedIcon sx={{ color: "green", mr: 1, my: 0.5 }} />
+          <Link to={"/busqueda/"} className="link">
+        <SearchOutlinedIcon sx={{ color: "green", mr: 1, my: 0.5 }} className= "btnBuscar"/>
+        </Link>
         <TextField id="Buscar"  fullWidth label="Buscar" variant="standard" color="success" focused onChange={(event)=>{SetsearchTerm(event.target.value)}}/>
       </Box>
 
