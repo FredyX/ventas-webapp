@@ -14,11 +14,12 @@
   }
 }
 
-.cards {
-  padding-block: 1rem;
-  cursor: pointer;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
-
 .ProductoContainer{
   margin-top: 50px;
   margin-bottom: 20px;
@@ -30,3 +31,5 @@
   outline: solid rgb(18, 183, 0);
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
  }
+
+ 

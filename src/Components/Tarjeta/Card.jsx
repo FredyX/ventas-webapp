@@ -12,8 +12,9 @@ const Card = ({info}) => {
       </div>
       <h3>{info.titulo}</h3>
       <h4>
-        <p className={styles.descripcion}>{info.descripcion}</p>
+      <p className={styles.descripcion}>{info.nombreUsuario}</p> 
       </h4>
+      <p className={styles.descripcion}>{info.descripcion}</p>
       <div className={styles.info}>
         <div className={styles.row_1}>
           <div className={styles.desc}>
@@ -31,11 +32,6 @@ const Card = ({info}) => {
           <div className={styles.desc}>
             
             <span>{`Puntaje: ${info.score} `}</span>
-          </div>
-
-          <div className={styles.desc}>
-            
-            <span>{info.nombreUsuario}</span>
           </div>
         </div>
       </div>

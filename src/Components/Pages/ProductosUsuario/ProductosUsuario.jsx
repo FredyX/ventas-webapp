@@ -62,11 +62,13 @@ const ProductosUsuario = () => {
         </div>
 
         <div className={styles.ProductoContainer}>
+        <div className={styles.grid}> 
           {ProductosUsuario.map((producto) => {
             return (
               <div key={producto.id} className={styles.cards}>
+                
                 <Card
-                  info={{
+                    info={{
                     id: producto.id,
                     imageSource: `http://localhost:3001/${producto.image_name}`,
                     descripcion: producto.product_description,
@@ -80,9 +82,11 @@ const ProductosUsuario = () => {
                     nombreUsuario: producto.first_name+" "+producto.last_name,
                   }}
                 />
-              </div>
+                </div>
+              
             );
           })}
+        </div>
         </div>
       </section>
       <Footer />
