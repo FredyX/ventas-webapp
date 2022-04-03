@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { validateForm } from "../../helpers/validateForm";
 import { useForm } from '../../hooks/useFormRegistro';
 import styles from "../../Components/Navbar/Navbar.module.scss"
+import Footer from "../../Components/Footer/Footer";
 
 export const CustomForm = (props) => {
 
@@ -42,7 +43,7 @@ export const CustomForm = (props) => {
   };
 
   return (
-    
+    <main>
     <div className={styles.navbar_container}>
     <nav>
       {/* LOGO */}
@@ -179,5 +180,7 @@ export const CustomForm = (props) => {
       </div>
     </div>
     </div>
+    <Footer/>
+    </main>
   );
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { useSearchParams } from "react-router-dom";
 import "./ModificarUsuario.scss";
+import Footer from "../../Components/Footer/Footer";
 
 
 const Column = styled.div`
@@ -26,6 +27,7 @@ const Row = styled.div`
 
 
     return(
+        <main>
         <div>
             <Row className="ro">
 
@@ -76,5 +78,7 @@ const Row = styled.div`
                 </Column>
             </Row>
         </div>
+        <Footer/>
+        </main>
     )
   }

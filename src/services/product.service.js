@@ -13,6 +13,10 @@ class productDataService {
     return http.get(`/products/detalle/${id}`);
   }
 
+  getProductUser(id,page){
+    return http.get(`/products/user/${id}/${page}`);
+  }
+
   add(data) {
     let headers = authHeader()
     headers["Content-Type"] = "multipart/form-data"
