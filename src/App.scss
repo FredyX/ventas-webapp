@@ -106,3 +106,28 @@ main > * {
     outline: none;
   }
 }
+
+.btndisable {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-width: 200px;
+  font-size: 21px;
+  padding: 5px 20px;
+  border: 0;
+  background-color: rgb(18, 183, 0);
+  color: #fff;
+  border-radius: 5px;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(212, 253, 13);
+  }
+  &:focus {
+    outline: none;
+  }
+  &:disabled {
+    background-color: rgb(155, 155, 153);
+    cursor:default;
+    outline: none;
+  }
+}

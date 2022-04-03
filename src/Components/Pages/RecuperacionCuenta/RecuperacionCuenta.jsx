@@ -48,7 +48,8 @@ export const RecuperacionCuenta = (props) => {
       />
     );
   
-  
+    const [disable, setDisable] = React.useState(false);
+
     return (
       <div>
         <div className={styles.navbar_container}>
@@ -77,7 +78,7 @@ export const RecuperacionCuenta = (props) => {
               </div>
           </div>
           <div className="footer">
-            <button type="button" className="btn" onClick={enviar} >
+            <button type="button" className="btndisable" disabled={disable} onClick={() => setDisable(true) & {enviar} }>
               Enviar Correo
             </button>
           </div>
