@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Card.module.scss";
 import { Link } from "react-router-dom";
 import imagenbase from "../../Assets/Logo1.jpg"
+import {numberWithCommas} from "../../helpers/numbers";
 
 const Card = ({info}) => {
 
@@ -38,7 +39,7 @@ const Card = ({info}) => {
 
       <div className={styles.card_precio}>
         <div className={styles.precio}>
-        <span>{`Lps. ${info.precio}`}</span>
+        <span>{`L ${numberWithCommas(info.precio)}`}</span>
         </div>
         <div className={styles.card_btn}>
           <Link to={`/detalles/${info.id}`}>Ver mas</Link>

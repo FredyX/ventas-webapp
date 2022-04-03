@@ -15,7 +15,7 @@ import styles from "../../Navbar/Navbar.module.scss";
 import { BsArrowRight, BsSearch } from "react-icons/bs";
 import { blueGrey, green, grey, lightGreen } from "@mui/material/colors";
 import Footer from "../../Footer/Footer";
-
+import { numberWithCommas } from "../../../helpers/numbers";
 
 
 const Column = styled.div`
@@ -99,7 +99,7 @@ export const DetallesProducto = () => {
         setNombreUsuario(producto[0].first_name + " " + producto[0].last_name);
         setScore(producto[0].score);
         setTitulo(producto[0].product_name);
-        setPrecio(producto[0].price);
+        setPrecio(numberWithCommas(producto[0].price));
         setDepartamento(producto[0].department_name);
         setState(producto[0].state, setEstado);
         setDescripcion(producto[0].product_description);
@@ -157,9 +157,9 @@ export const DetallesProducto = () => {
                                
                                     <p className="Titulo">{titulo}</p>
                                 
-                                    <p className="Estado">Estado: {estado}</p>
+                                    <p className="Estado">{estado}</p>
                               
-                                    <p className="Precio">Precio: {precio}</p>
+                                    <p className="Precio">L. {precio}</p>
                                
                                     <p className="Categorias">Categorias:  </p>
                                     <ul className="ul">
@@ -169,13 +169,13 @@ export const DetallesProducto = () => {
                                                 </li>
                                             )}
                                     </ul>
-                                    <p className="Departamento">Departamento: {departamento}</p>
+                                    <p className="Departamento">Ubicación: {departamento}</p>
                             </div>
                         </div>
                         <div className="basecontainer3">
                             <div className="descriptionform" >
 
-                            <p className="Descripcion">Descripción: {descripcion}</p>
+                            <p className="Descripcion">{descripcion}</p>
                             
                                 </div>
                             </div>
