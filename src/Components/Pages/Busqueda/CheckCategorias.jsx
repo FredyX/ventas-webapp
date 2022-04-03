@@ -18,6 +18,7 @@ import  "./Busqueda.scss";
 export default function CheckCategorias({ passCategoriesChange }) {
   const [cate, setCate] = useState({});
   const [checked, setChecked] = React.useState([]);
+  
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
