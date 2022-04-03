@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import {useEffect} from 'react';
 
+
 export const useFormCambio = (inicial, token, user_email, validateForm, userDataService) => {
     const URL = 'localhost'
     const [stateForm, setForm] = useState(inicial);
     const [errors, setErrors] = useState({});
+    
 
     const handleInputChange = ({ target }) => {
 		setForm({
@@ -28,7 +30,10 @@ export const useFormCambio = (inicial, token, user_email, validateForm, userData
             },token);
 
         }
+    
     }
+
+
     function isObjectEmpty(obj) {
 		for (let prop in obj) {
 			if (obj.hasOwnProperty(prop))
@@ -41,6 +46,6 @@ export const useFormCambio = (inicial, token, user_email, validateForm, userData
         handleInputChange,
         handleSubmit,
         handleBlur,
-        errors              
+        errors        
     }
 }

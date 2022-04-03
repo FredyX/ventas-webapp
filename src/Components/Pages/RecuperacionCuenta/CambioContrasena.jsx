@@ -4,6 +4,7 @@ import { useFormCambio } from '../../../hooks/useFormCambio';
 import styles from "../../Navbar/Navbar.module.scss";
 import {validateFormCambioPassword} from '../../../helpers/validateForm'
 import  userDataService  from '../../../services/users.service'
+
 export const CambioContrasena = (props) => {
 
     const queryString = window.location.search;
@@ -20,6 +21,7 @@ export const CambioContrasena = (props) => {
       } = useFormCambio({
         user_password: '',
         user_password2: ''  
+        
       },token, user_email, validateFormCambioPassword,userDataService);
     
     const style = {
@@ -41,7 +43,12 @@ export const CambioContrasena = (props) => {
     );
   
     const [disable, setDisable] = React.useState(false);
-    
+
+    const disableboton= () => {
+      setDisable(true)
+   }
+     
+
     return (
       <div>
         <div className={styles.navbar_container}>
@@ -87,9 +94,19 @@ export const CambioContrasena = (props) => {
               </div>
           </div>
           <div className="footer">
-            <button type="button" className="btndisable" disabled={disable} onClick={() => setDisable(true) & {handleSubmit} }>
+     
+               
+              
+            <button type="button" className="btndisable"  disabled={disable} 
+            onClick=
+               {
+                handleSubmit
+            }
+            
+            >
               Confirmar
             </button>
+    
           </div>
         </div>
       </div>

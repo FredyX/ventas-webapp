@@ -28,8 +28,15 @@ export const RecuperacionCuenta = (props) => {
         }else{
           alert('Correo invalido');
         }
-      
+        disableboton();
     }
+
+    const [disable, setDisable] = React.useState(false);
+
+    const disableboton= () => {
+       setDisable(true)
+    }
+
     const style = {
       fontWeight: "bold",
       color: "#dc3545"
@@ -48,8 +55,9 @@ export const RecuperacionCuenta = (props) => {
       />
     );
   
-    const [disable, setDisable] = React.useState(false);
-
+    
+   
+    
     return (
       <div>
         <div className={styles.navbar_container}>
@@ -78,7 +86,9 @@ export const RecuperacionCuenta = (props) => {
               </div>
           </div>
           <div className="footer">
-            <button type="button" className="btndisable" disabled={disable} onClick={() => setDisable(true) & {enviar} }>
+            <button type="button" className="btndisable" disabled={disable} onClick={enviar} 
+            >
+
               Enviar Correo
             </button>
           </div>
