@@ -99,7 +99,7 @@ import Footer from "../../../Components/Footer/Footer";
         <Navbar></Navbar>
         <div className="grid-container">
           <div className="grid-item tall">
-            <div className="columns">
+            <div className="columns1">
 
     <div className='base-containersearch'>
 
@@ -184,7 +184,7 @@ import Footer from "../../../Components/Footer/Footer";
         </div>
         
     </div>
-  
+    
     <Footer/>
       </main>
 
