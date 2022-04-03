@@ -13,7 +13,7 @@ import { PerfilUsuario } from "./Components/Pages/PerfilUsuario/PerfilUsuario";
 import { PerfilUsuarioTercero } from "./Components/Pages/PerfilUsuario/PerfilUsuarioTercero";
 import { RecuperacionCuenta } from "./Components/Pages/RecuperacionCuenta/RecuperacionCuenta";
 import { CambioContrasena } from "./Components/Pages/RecuperacionCuenta/CambioContrasena";
-import { Busqueda } from "./Components/Pages/Busqueda/Busqueda";
+import { BusquedaProducto } from "./Components/Pages/Busqueda/Busqueda";
 import ProductosUsuario from "./Components/Pages/ProductosUsuario/ProductosUsuario";
 
 
@@ -35,7 +35,7 @@ function App() {
       <Route path="/perfilusuario/visitante/" element= {<PerfilUsuarioTercero />} />
       <Route path="/iniciosesion/recuperacioncuenta/" element={<RecuperacionCuenta/>} />
       <Route path="/iniciosesion/recuperacioncuenta/cambiocontrasena/" element={<CambioContrasena/>} />
-      <Route path="/busqueda/" element= {<Busqueda />} />   
+      <Route path="/busqueda/" element= {<BusquedaProducto />} />   
       <Route path="/productosusuario/" element= {<ProductosUsuario />} />
       </Routes>
 

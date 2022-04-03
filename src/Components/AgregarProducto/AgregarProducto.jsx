@@ -64,7 +64,6 @@ export const AgregarProducto = (props) => {
       <ColoredLine color="black" />
       </div>
       <br />
-      <div className="cajaimagen">
         <div className="grid-container">
           <div className="grid-item tall">
             <div className="columns">
@@ -191,7 +190,7 @@ export const AgregarProducto = (props) => {
 
           </div>
         </div>
-      </div>
+     
     </div>
     <Footer/>
     </main>

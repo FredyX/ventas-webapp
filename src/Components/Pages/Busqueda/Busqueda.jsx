@@ -9,33 +9,13 @@ import CheckDepartamento from '../Busqueda/CheckDepartamento';
 import { CenterFocusStrong } from '@mui/icons-material';
 import { faLeftLong } from '@fortawesome/free-solid-svg-icons';
 import PuntuacionVendedor from './PuntuaciónVendedor';
-import styled from 'styled-components';
 import Paginacion from './Paginacion';
 import Card from "../../Tarjeta/Card";
 import styles from "../../Pages/ProductosUsuario/ProductosUsuario.module.scss";
 import { useSearchParams } from "react-router-dom";
+import Footer from "../../../Components/Footer/Footer";
 
 
-
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  position: center;
-  width: fit-content;
-  background-color: #ffffff; 
-
-  `;
-
-const Row = styled.div`
-  display: flex;
-  grid-template-columns: auto-fill;
-  grid-gap: 5px;
-  background-color: #ffffff; 
-  position: center;
-  bottom: 0;
-  width: 100%;
-  `;
 
   const setState = (state, callback) => {
     if (state === "N") {
@@ -49,14 +29,13 @@ const Row = styled.div`
     }
   }
   
-  
-  export const Busqueda = () => {
+  export const BusquedaProducto = () => {
     const [searchParams, setSearchParams] = useSearchParams();
-    const [ProductosUsuario, setProductosUsuario] = useState([]);
+    const [BusquedaProducto, setBusquedaProducto] = useState([]);
   
   
     useEffect(() => {
-      setProductosUsuario([]);
+      setBusquedaProducto([]);
       ProductsApi();
     }, [])
   
@@ -68,7 +47,7 @@ const Row = styled.div`
       console.log(response);
       if (response.status === 200) {
         const { data } = response.data;
-        setProductosUsuario(data);
+        setBusquedaProducto(data);
         console.log(data);
       }
     }
@@ -110,11 +89,18 @@ const Row = styled.div`
     />
   );
 
+  const style = {
+    fontWeight: "bold",
+    color: "#dc3545"
+  };
+
     return (
       <main>
         <Navbar></Navbar>
-    <Row className="ro">
-        <Column className="col">
+        <div className="grid-container">
+          <div className="grid-item tall">
+            <div className="columns">
+
     <div className='base-containersearch'>
 
         <div className="busqueda-form">
@@ -148,16 +134,15 @@ const Row = styled.div`
    
 
     </div>
-    </Column>
-                <Column className="col">
-    <div className='base-containersearch1'>
+
+
     <div className="header">Resultados</div>
     <div className="resultados-form1">
  
  
     <div className={styles.ProductoContainer}>
         <div className={styles.grid}> 
-          {ProductosUsuario.map((producto) => {
+          {BusquedaProducto.map((producto) => {
             return (
               <div key={producto.id} className={styles.cards}>
                 
@@ -187,13 +172,23 @@ const Row = styled.div`
         <div className='pagination-form'>
         <Paginacion /> 
         </div>
- 
+        <div className="grid-item tall">
 
+</div>
+<div className="grid-item tall">
+
+
+</div>
+        </div>
+       
+        </div>
+        
     </div>
-    </Column>
-    </Row>
+  
+    <Footer/>
       </main>
 
     )
   
   }
+  
