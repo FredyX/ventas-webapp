@@ -40,7 +40,8 @@ export const CambioContrasena = (props) => {
       />
     );
   
-  
+    const [disable, setDisable] = React.useState(false);
+    
     return (
       <div>
         <div className={styles.navbar_container}>
@@ -86,7 +87,7 @@ export const CambioContrasena = (props) => {
               </div>
           </div>
           <div className="footer">
-            <button type="button" className="btn" onClick={handleSubmit}>
+            <button type="button" className="btndisable" disabled={disable} onClick={() => setDisable(true) & {handleSubmit} }>
               Confirmar
             </button>
           </div>
