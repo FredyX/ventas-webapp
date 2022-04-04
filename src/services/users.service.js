@@ -22,7 +22,7 @@ class userDataService {
   }
 
   update(id, data) {
-    return http.put(`/users/${id}`, data , { headers: authHeader() });
+    return http.put(`/users/update/${id}`, data , { headers: authHeader() });
   }
 
   delete(id) {
@@ -35,6 +35,11 @@ class userDataService {
   forgotPassword(data){
     return http.put("/users/forgot_password",data, { headers: authHeader() }); 
   }
+
+  getProfileModificate(id) {
+    return http.get(`/users/personal/${id}`, { headers: authHeader()});
+  }
+
 }
 
 export default new userDataService();

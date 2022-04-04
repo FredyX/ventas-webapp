@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import productDataService from "../../../services/product.service";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../Navbar/Navbar";
+import authService from "../../../services/auth.service";
 
 const setState = (state, callback) => {
   if (state === "N") {
@@ -30,7 +31,7 @@ const ProductosUsuario = () => {
   }, [])
 
   const ProductsApi = async () => {
-    let id = searchParams.get('id');
+    let id = authService.getCurrentUser().user.user_id;
     let page = searchParams.get('page')
     const response = await productDataService.getProductUser(id, page)
     console.log(response);

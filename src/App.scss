@@ -63,9 +63,7 @@ main > * {
   &:hover {
     background-color: rgb(212, 253, 13);
   }
-  &:focus {
-    outline: none;
-  }
+ 
 }
 .btn2 {
   margin-top: 10px;
@@ -81,9 +79,7 @@ main > * {
     background-color: #ffffff;
     outline: solid rgb(18, 183, 0);
   }
-  &:focus {
-    outline: none;
-  }
+  
 }
 
 
@@ -102,9 +98,7 @@ main > * {
     background-color: #ffffff;
     outline: solid rgb(18, 183, 0);
   }
-  &:focus {
-    outline: none;
-  }
+
 }
 
 .btndisable {
