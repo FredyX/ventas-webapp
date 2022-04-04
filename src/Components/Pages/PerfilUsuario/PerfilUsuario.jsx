@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import "./PerfilUsuario.scss";
-import { useSearchParams } from "react-router-dom";
 import userDataService from "../../../services/users.service";
 import departmentsService from "../../../services/departments.service";
 import profile_picturesService from "../../../services/profile_pictures.service";
@@ -10,12 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Navbar from "../../Navbar/Navbar"
 import { NavLink, Link } from "react-router-dom";
-import Box from '@mui/material/Box';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { TextField } from "@mui/material";
 import styles from "../../Navbar/Navbar.module.scss";
-import { BsArrowRight, BsSearch } from "react-icons/bs";
-import { blueGrey, green, grey, lightGreen } from "@mui/material/colors";
 import Swal from 'sweetalert2';
 import AuthService from "../../../services/auth.service";
 
@@ -42,7 +36,7 @@ const Row = styled.div`
 
 
 export const PerfilUsuario = () => {
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const MensajeEliminar = (e) => {
     Swal.fire({
@@ -82,7 +76,7 @@ export const PerfilUsuario = () => {
       }}
     />
   );
-  
+
 
   const [id, setId] = useState(0);
   const [first_name, setFirst_Name] = useState('');
@@ -117,7 +111,7 @@ export const PerfilUsuario = () => {
 
     const response3 = await profile_picturesService.get(user.profile_picture_id);
     const pp = response3.data;
-    
+
     const urlCreator = window.URL || window.webkitURL;
     const imageUrl = urlCreator.createObjectURL(pp);
 
@@ -163,7 +157,7 @@ export const PerfilUsuario = () => {
                 <div className="detalleperfil" >
                   <p className="first_name">Nombre: {first_name}</p>
                 </div>
-                
+
                 <div className="detalleperfil" >
                   <p className="last_name">Apellido: {last_name}</p>
                 </div>
@@ -198,9 +192,11 @@ export const PerfilUsuario = () => {
                 </Link>
               </div>
               <div className="formbotons" >
-                <button type="button" className="btn7">
-                  Mis productos
-                </button>
+                <Link to={"/productosusuario/?page=1"}>
+                  <button type="button" className="btn7">
+                    Mis productos
+                  </button>
+                </Link>
               </div>
               <div className="formbotons" >
                 <button type="button" className="btn7">
