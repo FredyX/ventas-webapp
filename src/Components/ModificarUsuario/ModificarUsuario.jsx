@@ -1,84 +1,184 @@
 import React, { useEffect, useState } from "react";
-import styled from 'styled-components';
-import { useSearchParams } from "react-router-dom";
 import "./ModificarUsuario.scss";
+import userDataService from "../../services/users.service";
+import departmentService from "../../services/departments.service";
+import AuthService from "../../services/auth.service";
+import { useForm } from '../../hooks/useFormModificarUsuario';
+import { validateForm } from "../../helpers/validateForm";
 import Footer from "../../Components/Footer/Footer";
+import Navbar from "../../Components/Navbar/Navbar";
 
 
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  position: center;
-  width: 100%;
-  `;
+  export const ModificarUsuario = (props) => {
 
-const Row = styled.div`
-  display: flex;
-  grid-template-columns: auto-fill;
-  grid-gap: 0px;
-  background-color: #ffffff; 
-  position: center;
-  bottom: 0;
-  width: 100%;
-  `;
+    const {
+        stateForm,
+        errors,
+        handleInputChange,
+        handleBlur,
+        handleSubmit,
+          } = useForm({
+        first_name: '',
+        last_name : '',
+        user_email: '',
+        department_id :'',
+        profile_picture_id : ''
+        
+      }, validateForm, userDataService);
+    
 
-  export const ModificarUsuario = () => {
+    const [firstNameus, setFirstName] = useState(' ');
+    const [lastNameus, setLastName] = useState(' ');
+    const [emailus, setEmail] =  useState(' ');
+    const [departamentous, setDepartamento] = useState(' ');
+    const [imagenus, setImagen] = useState(' ');
 
+    
+    useEffect(() => {
+        getDatos();
+    }, [])
+
+    
+    const getDatos  = async () => {
+        const user =  await AuthService.getCurrentUser();
+        const response = await userDataService.get(user.user.user_id);
+        const departaments = await departmentService.get(response.data.department_id);
+        const profile = await userDataService.getToProfile(user.user.user_id) ;
+        setFirstName(response.data.first_name);
+        setLastName(response.data.last_name);
+        setDepartamento(departaments.data.department_name);
+        setEmail(response.data.user_email);
+        setImagen(`http://localhost:3001/api/profile_pictures/${profile.data.profile_picture_id}`)
+    } 
 
     return(
-        <main>
         <div>
-            <Row className="ro">
-
-                <Column className="col">
-                <div className="basecontainer4" >
-                    <div className="basecontainer1">
-                        <div className="imageproductform" >
-                            <img src="C:\Users\Jonathan\Desktop\Probando.jpg"  className="image"  />
+            <Navbar></Navbar>
+             <div className="ro">
+             <div className="col"> </div>
+             <div className="col"> </div>
+                <div className="col"> 
+                    <div className="basecontainer4" >
+                        <div className="basecontainer1">
+                            <div className="imageproductform" >
+                                <img src={imagenus} className="image"  />
+                            </div>
                         </div>
                     </div>
-                    <div className="basecontainer3">
-                            <div className="detallevendedorform" >
-                                <p className="Score">Puntuacion del Vendedor:</p>
-                            </div>
+                    <div className="basecontainer2" >
+                            
+                    <div className="basecontainer3">    
                     </div>
-                  </div>
-                </Column>
-                <Column className="col">
+                            
+                    </div>
+                </div>
+                <div className="col">
                     <div className="basecontainer2" >
                         <div className="basecontainer2">
                         <div className="detallevendedorform2" >
-                            <div className="form-group" >
-
-                               
-                                    <input type="text" placeholder="Nombre" className="info"/>
+                                <div className="form-group" >
+                                    <p className="Titulo">Datos Actuales</p>
+                                    <p className="Datos">Nombre: {firstNameus}</p>
+                                    <p className="Datos">Apellido: {lastNameus} </p>
+                                    <p className="Datos">Correo: {emailus}</p>
+                                    <p className="Datos">Departamento:  {departamentous}</p>
+                                </div>
+                            </div>
+                            <div className="detallevendedorform2" >
+                                <div className="form-group" >
+                                        <input 
+                                            type="text" 
+                                            name = "first_name" 
+                                            value = {stateForm.first_name}
+                                            onChange = {handleInputChange}
+                                            onBlur={handleBlur}
+                                            placeholder="Nuevo Nombre" 
+                                            className="info"
+                                        />
+                                    
+                                        <input 
+                                            type="text" 
+                                            name = "last_name" 
+                                            value = {stateForm.last_name}
+                                            onChange = {handleInputChange} 
+                                            onBlur={handleBlur}
+                                            placeholder="Nuevo Apellido" 
+                                            className="info"
+                                        />
                                 
-                                    <input type="text" placeholder="Apellido" className="info"/>
-                              
-                                    <input type="text" placeholder="Correo" className="info"/>
-                               
-                                    <input type="text" placeholder="Pass" className="info"/>
-                                   
-                                    <input type="text" placeholder="Departamento" className="info"/>
-                            </div>
+                                        <input 
+                                            type="text" 
+                                            name = "user_email" 
+                                            value = {stateForm.user_email}
+                                            onChange = {handleInputChange} 
+                                            onBlur={handleBlur}
+                                            placeholder="Nuevo Correo" 
+                                            className="info"
+                                        />
+                                    
+                                        <div className="caja">
+                                            <select name="department_id"  value = {stateForm.department_id} onChange = {handleInputChange} >
+                                                <option >Departamento</option>
+                                                <option value={1}>Atlántida</option>
+                                                <option value={2}>Choluteca</option>
+                                                <option value={3}>Colón</option>
+                                                <option value={4}>Comayagua</option>
+                                                <option value={5}>Copán</option>
+                                                <option value={6}>Cortés</option>
+                                                <option value={7}>El Paraíso</option>
+                                                <option value={8}>Francisco Morazán</option>
+                                                <option value={9}>Gracias a Dios</option>
+                                                <option value={10}>Intibucá</option>
+                                                <option value={11}>Islas de la Bahía</option>
+                                                <option value={12}>La Paz</option>
+                                                <option value={13}>Lempira</option>
+                                                <option value={14}>Ocotepeque</option>
+                                                <option value={15}>Olancho</option>
+                                                <option value={16}>Santa Bárbara</option>
+                                                <option value={17}>Valle</option>
+                                                <option value={18}>Yoro </option>
+                                            </select>
+                                        </div>
 
-                            <div className="footer">
-                            <button type="button" className="btn">
-                                Guardar
-                            </button>
-
+                                        <div className="caja">
+                                            <select name="profile_picture_id"  value = {stateForm.profile_picture_id} onChange = {handleInputChange} >
+                                                <option >Foto de Perfil</option>
+                                                <option value={1}>1</option>
+                                                <option value={2}>2</option>
+                                                <option value={3}>3</option>
+                                                <option value={4}>4</option>
+                                                <option value={5}>5</option>
+                                                <option value={6}>6</option>
+                                                <option value={7}>7</option>
+                                                <option value={8}>8</option>
+                                                <option value={9}>9</option>
+                                                <option value={10}>10</option>
+                                                <option value={11}>11</option>
+                                                <option value={12}>12</option>
+                                                <option value={13}>13</option>
+                                                <option value={14}>14</option>
+                                                <option value={15}>15</option>
+                                                <option value={16}>16</option>
+                                            </select>
+                                        </div>
+                                </div>
+                                <div className="footer">
+                                    <button type="button" className="btn" onClick={handleSubmit}>
+                                        Guardar
+                                    </button>
+                                </div>
                             </div>
-                        </div>
                         <div className="basecontainer3">
                             
                         </div>
                         </div>
                     </div>
-                </Column>
-            </Row>
+                    
+                </div>
+            </div>
+            <div className="col"> </div>
+            <div className="col"> </div>
+            <Footer/>
         </div>
-        <Footer/>
-        </main>
     )
   }

@@ -22,7 +22,7 @@ class userDataService {
   }
 
   update(id, data) {
-    return http.put(`/users/${id}`, data , { headers: authHeader() });
+    return http.put(`/users/update/${id}`, data , { headers: authHeader() });
   }
 
   delete(id) {
