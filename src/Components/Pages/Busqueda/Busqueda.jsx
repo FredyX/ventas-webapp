@@ -34,7 +34,8 @@ import Footer from "../../../Components/Footer/Footer";
     const [BusquedaProducto, setBusquedaProducto] = useState([]);
     const [stateDepartments, setDepartaments] = useState([]);
     const [search, setSearch] = useState("");
-    const [score,setScore] = useState(1);
+    const [score,setScore] = useState(1);    
+    const [page, setPages] = useState("");
     const [url, setUrl] = useState('');
     
     useEffect(() => {
@@ -69,7 +70,8 @@ import Footer from "../../../Components/Footer/Footer";
     }
 
     const handledKeyPress = ({target}) =>{
-      let urlString = `localhost:3001/api/search${search}`
+      let urlBase = `localhost:3001/api/search`;
+      let urlParams = `${search}&${stateForm}&${stateDepartments}&{score}&${page}`;
     }
     
   const {
@@ -116,7 +118,9 @@ import Footer from "../../../Components/Footer/Footer";
 
         <div className="subheader">Categorías</div>
 
-            <CheckCategorias passCategoriesChange={handleCategories} /> 
+            <CheckCategorias 
+              passCategoriesChange={handleCategories}              
+            /> 
 
         </div>
 
@@ -176,7 +180,7 @@ import Footer from "../../../Components/Footer/Footer";
 
     </div>
         <div className='pagination-form'>
-        <Paginacion /> 
+        <Paginacion setPages={setPages} /> 
         </div>
         <div className="grid-item tall">
 

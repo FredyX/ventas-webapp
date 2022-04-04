@@ -15,7 +15,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import  "./Busqueda.scss";
 
 
-export default function CheckCategorias({ passCategoriesChange }) {
+export default function CheckCategorias({ passCategoriesChange, setCategorias}) {
   const [cate, setCate] = useState({});
   const [checked, setChecked] = React.useState([]);
   
