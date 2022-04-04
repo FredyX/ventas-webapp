@@ -27,6 +27,10 @@ class productDataService {
     return http.get(`/products/images/${id}`, { headers: authHeader() })
   }
 
+  delete(id) {
+    return http.delete(`/products/${id}`, { headers: authHeader() });
+  }
+
 }
 
 export default new productDataService();

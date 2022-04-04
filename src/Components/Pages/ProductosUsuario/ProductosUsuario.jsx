@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ProductosUsuario.module.scss";
 import Card from "../../../Components/Tarjeta/Card";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import productDataService from "../../../services/product.service";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../Navbar/Navbar";
 import authService from "../../../services/auth.service";
+import Swal from 'sweetalert2';
 
 const setState = (state, callback) => {
   if (state === "N") {
@@ -21,9 +22,39 @@ const setState = (state, callback) => {
 
 
 const ProductosUsuario = () => {
+
+
+  const MensajeEliminar = (e) => {
+    const id = e.target.value;
+    Swal.fire({
+      title: '¿Estas seguro que deseas eliminar el producto?',
+      text: "Si no estas seguro, click en cancelar",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#12b700',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, deseo eliminarlo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        productDataService.delete(id);
+        Swal.fire({
+          title: 'Eliminado',
+          text: "Tu producto ha sido eliminado!",
+          icon: 'success',
+          confirmButtonColor: '#12b700',
+          confirmButtonText: 'Listo'
+        });
+        navigate(0);
+      }
+    })
+  }
+
+
+
+
   const [searchParams, setSearchParams] = useSearchParams();
   const [ProductosUsuario, setProductosUsuario] = useState([]);
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     setProductosUsuario([]);
@@ -34,15 +65,13 @@ const ProductosUsuario = () => {
     let id = authService.getCurrentUser().user.user_id;
     let page = searchParams.get('page')
     const response = await productDataService.getProductUser(id, page)
-    console.log(response);
     if (response.status === 200) {
       const { data } = response.data;
       setProductosUsuario(data);
-      console.log(data);
     }
   }
 
-  const getEstado= (state) => {
+  const getEstado = (state) => {
     if (state === "N") {
       return "Nuevo";
     } else if (state === "U") {
@@ -63,31 +92,34 @@ const ProductosUsuario = () => {
         </div>
 
         <div className={styles.ProductoContainer}>
-        <div className={styles.grid}> 
-          {ProductosUsuario.map((producto) => {
-            return (
-              <div key={producto.id} className={styles.cards}>
-                
-                <Card
+          <div className={styles.grid}>
+            {ProductosUsuario.map((producto) => {
+              return (
+                <div key={producto.id} className={styles.cards} >
+
+                  <Card
                     info={{
-                    id: producto.id,
-                    imageSource: `http://localhost:3001/${producto.image_name}`,
-                    descripcion: producto.product_description,
-                    estado: getEstado(producto.state),
-                    fecha: producto.date_added,
-                    estadoVenta: producto.is_selling,
-                    departamento: producto.department_name,
-                    precio: producto.price,
-                    titulo: producto.product_name,
-                    score: producto.score,
-                    nombreUsuario: producto.first_name+" "+producto.last_name,
-                  }}
-                />
+                      id: producto.id,
+                      imageSource: `http://localhost:3001/${producto.image_name}`,
+                      descripcion: producto.product_description,
+                      estado: getEstado(producto.state),
+                      fecha: producto.date_added,
+                      estadoVenta: producto.is_selling,
+                      departamento: producto.department_name,
+                      precio: producto.price,
+                      titulo: producto.product_name,
+                      score: producto.score,
+                      nombreUsuario: producto.first_name + " " + producto.last_name,
+                    }}
+                  />
+                  <button type="button" className={styles.btnEliminarProducto} value= {producto.id} onClick={MensajeEliminar}>
+                    Eliminar
+                  </button>
                 </div>
-              
-            );
-          })}
-        </div>
+
+              );
+            })}
+          </div>
         </div>
       </section>
       <Footer />
