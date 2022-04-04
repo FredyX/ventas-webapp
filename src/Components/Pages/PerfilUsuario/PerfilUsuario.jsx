@@ -117,6 +117,7 @@ export const PerfilUsuario = () => {
 
     const response3 = await profile_picturesService.get(user.profile_picture_id);
     const pp = response3.data;
+    
     const urlCreator = window.URL || window.webkitURL;
     const imageUrl = urlCreator.createObjectURL(pp);
 
