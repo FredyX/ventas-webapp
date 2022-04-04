@@ -17,7 +17,7 @@ const labels = {
   5: '10',
 };
 
-export default function PuntuacionVendedor() {
+export default function PuntuacionVendedor({setScore}) {
   const [value, setValue] = React.useState(5);
   const [hover, setHover] = React.useState(-1);
 
@@ -37,6 +37,7 @@ export default function PuntuacionVendedor() {
         
         onChange={(event, newValue) => {
           setValue(newValue);
+          setScore(newValue);
         }}
         onChangeActive={(event, newHover) => {
           setHover(newHover);

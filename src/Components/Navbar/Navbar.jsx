@@ -11,9 +11,10 @@ import { useState } from "react";
 import useClickOutside from "../CustomHooks/ClickOutside";
 
 
-const Navbar = ({ BurgerColour }) => {
+const Navbar = ({ BurgerColour, setSearch }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [searchTerm, SetsearchTerm] = useState('')
+  
   const MenuLink = ({ url, path }) => {
     return (
       <li className={styles.navlink}>
@@ -43,7 +44,14 @@ const Navbar = ({ BurgerColour }) => {
     />
   );
 
+  const handleChange = ({target})=>{
+      SetsearchTerm(target.value);
+      setSearch(target.value);
+  }
 
+  const handleKeypress = ({target}) =>{
+    alert('Se busco en la api');
+  }
   return (
     <div className={styles.navbar_container}>
       <nav>
@@ -80,7 +88,12 @@ const Navbar = ({ BurgerColour }) => {
           <Link to={"/busqueda/"} className="link">
         <SearchOutlinedIcon sx={{ color: "green", mr: 1, my: 0.5 }} className= "btnBuscar"/>
         </Link>
-        <TextField id="Buscar"  fullWidth label="Buscar" variant="standard" color="success" focused onChange={(event)=>{SetsearchTerm(event.target.value)}}/>
+        <TextField id="Buscar"  fullWidth label="Buscar" 
+          variant="standard"
+          color="success" focused
+          onChange={handleChange}
+          onKeyPress={handleKeypress}
+        />
       </Box>
 
       {}

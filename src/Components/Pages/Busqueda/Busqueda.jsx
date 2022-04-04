@@ -32,13 +32,17 @@ import Footer from "../../../Components/Footer/Footer";
   export const BusquedaProducto = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [BusquedaProducto, setBusquedaProducto] = useState([]);
-  
-  
+    const [stateDepartments, setDepartaments] = useState([]);
+    const [search, setSearch] = useState("");
+    const [score,setScore] = useState(1);
+    const [url, setUrl] = useState('');
+    
     useEffect(() => {
       setBusquedaProducto([]);
-      ProductsApi();
-    }, [])
-  
+      ProductsApi();      
+    }, [url])
+    
+    
     const ProductsApi = async () => {
       /* cambiar las primeras 3 líneas*/
       let id = searchParams.get('id');
@@ -51,7 +55,7 @@ import Footer from "../../../Components/Footer/Footer";
         console.log(data);
       }
     }
-  
+    
     const getEstado= (state) => {
       if (state === "N") {
         return "Nuevo";
@@ -64,7 +68,9 @@ import Footer from "../../../Components/Footer/Footer";
       }
     }
 
-
+    const handledKeyPress = ({target}) =>{
+      let urlString = `localhost:3001/api/search${search}`
+    }
     
   const {
       
@@ -96,7 +102,7 @@ import Footer from "../../../Components/Footer/Footer";
 
     return (
       <main>
-        <Navbar></Navbar>
+        <Navbar setSearch={setSearch}></Navbar>
         <div className="grid-container">
           <div className="grid-item tall">
             <div className="columns1">
@@ -119,7 +125,7 @@ import Footer from "../../../Components/Footer/Footer";
         <div className="busqueda-form">
         <div className="subheader">Departamento</div>
         
-            <CheckDepartamento /> 
+            <CheckDepartamento setDepartaments={setDepartaments} /> 
         
         </div>
         
@@ -128,7 +134,7 @@ import Footer from "../../../Components/Footer/Footer";
         <div className="busqueda-form1">
        
         <span>Puntuación del vendedor</span>
-        <PuntuacionVendedor /> 
+        <PuntuacionVendedor setScore={setScore}/> 
         <ColoredLine color="green" />
         </div>
    
