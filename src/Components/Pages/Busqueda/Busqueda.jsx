@@ -30,17 +30,19 @@ import  searchDataService  from "../../../services/search.service";
   }
   
   export const BusquedaProducto = () => {
+
     const [searchParams, setSearchParams] = useSearchParams();
     const [BusquedaProducto, setBusquedaProducto] = useState([]);
     const [stateDepartments, setDepartaments] = useState([]);
     const [search, setSearch] = useState("");
-    const [score,setScore] = useState(1);    
-    const [page, setPages] = useState("");
+    const [score,setScore] = useState(5);    
+    const [page, setPages] = useState(1);
     const [url, setUrl] = useState('');
-    
+    const [producto, setProducto] = useState([]);
+
     useEffect(() => {
       setBusquedaProducto([]);
-      ProductsApi();      
+      ProductsApi();            
     }, [url])
     
     
@@ -78,9 +80,8 @@ import  searchDataService  from "../../../services/search.service";
         let urlParams = `/${search}&${categories}&${departamento}&${score}&${page}`;
         console.log(urlParams);
         setUrl(urlParams);
-        const productos = await searchDataService.getSearchProduct(urlParams);        
-        alert('Se presiona el intro');
-        console.log(productos);
+        const {data} = await searchDataService.getSearchProduct(urlParams);                                
+        setProducto(data.data);
       }      
     }
     
@@ -175,7 +176,7 @@ import  searchDataService  from "../../../services/search.service";
  
     <div className={styles.ProductoContainer}>
         <div className={styles.grid}> 
-          {BusquedaProducto.map((producto) => {
+          {producto.map((producto) => {
             return (
               <div key={producto.id} className={styles.cards}>
                 

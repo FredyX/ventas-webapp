@@ -43,8 +43,7 @@ export default function CheckDepartamento( {setDepartaments}) {
       });
       return arreglo;
     }
-    const handleCheckbox = ({target}) => {
-      console.log(target)
+    const handleCheckbox = ({target}) => {      
       let departamentosActualizados = [...departamentos];
       let index = departamentosActualizados.findIndex(x => x.name === target.name);
       if(index !== -1){
