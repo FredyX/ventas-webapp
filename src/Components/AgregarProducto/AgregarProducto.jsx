@@ -160,7 +160,7 @@ export const AgregarProducto = (props) => {
                     </div>
                   </div>
                   <div className="footer">
-                    <button type="button" className="btn">
+                    <button type="button" className="btn" onClick={handleSubmit}>
                       Agregar producto
                     </button>
                     <Link to={"/perfilusuario"}>

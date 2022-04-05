@@ -41,7 +41,7 @@ import Navbar from "../../Components/Navbar/Navbar";
     
     const getDatos  = async () => {
         const user =  await AuthService.getCurrentUser();
-        const response = await userDataService.get(user.user.user_id);
+        const response = await userDataService.getProfileModificate(user.user.user_id);
         const departaments = await departmentService.get(response.data.department_id);
         const profile = await userDataService.getToProfile(user.user.user_id) ;
         setFirstName(response.data.first_name);
