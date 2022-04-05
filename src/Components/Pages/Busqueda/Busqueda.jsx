@@ -69,7 +69,7 @@ import  searchDataService  from "../../../services/search.service";
       }
     }
 
-    const handledKeyPress = (event) =>{                              
+    const handledKeyPress = async(event) =>{                              
       if(event.keyCode === 13 && !event.shiftKey){
         event.preventDefault();        
         let categories = formatear(stateForm.categories);
@@ -78,8 +78,9 @@ import  searchDataService  from "../../../services/search.service";
         let urlParams = `/${search}&${categories}&${departamento}&${score}&${page}`;
         console.log(urlParams);
         setUrl(urlParams);
-        searchDataService.getSearchProduct(urlParams);        
+        const productos = await searchDataService.getSearchProduct(urlParams);        
         alert('Se presiona el intro');
+        console.log(productos);
       }      
     }
     

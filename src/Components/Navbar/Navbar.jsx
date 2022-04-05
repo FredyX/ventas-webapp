@@ -65,8 +65,7 @@ const Navbar = ({ BurgerColour, setSearch, handledKeyPress }) => {
     return <h1>onClick={UsuarioFuer} className={styles.login_container} style={{ color: BurgerColour }} Iniciar Sesion</h1>;
   }
 
-  function InicioSesion(props) {
-    console.log(user)
+  function InicioSesion(props) {    
   if (user) {
     return <UsuarioDentro />;
   } else {
