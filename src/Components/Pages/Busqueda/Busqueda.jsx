@@ -14,7 +14,7 @@ import Card from "../../Tarjeta/Card";
 import styles from "../../Pages/ProductosUsuario/ProductosUsuario.module.scss";
 import { useSearchParams } from "react-router-dom";
 import Footer from "../../../Components/Footer/Footer";
-
+import  searchDataService  from "../../../services/search.service";
 
 
   const setState = (state, callback) => {
@@ -69,11 +69,33 @@ import Footer from "../../../Components/Footer/Footer";
       }
     }
 
-    const handledKeyPress = ({target}) =>{
-      let urlBase = `localhost:3001/api/search`;
-      let urlParams = `${search}&${stateForm}&${stateDepartments}&{score}&${page}`;
+    const handledKeyPress = (event) =>{                              
+      if(event.keyCode === 13 && !event.shiftKey){
+        event.preventDefault();        
+        let categories = formatear(stateForm.categories);
+        let departamento = formatear(stateDepartments);
+        console.log(stateForm.categories);
+        let urlParams = `/${search}&${categories}&${departamento}&${score}&${page}`;
+        console.log(urlParams);
+        setUrl(urlParams);
+        searchDataService.getSearchProduct(urlParams);        
+        alert('Se presiona el intro');
+      }      
     }
     
+    function formatear (dataArreglo) {
+      let cadena = ``;
+      dataArreglo.map( (item, index) => {
+        if(index === 0){
+          cadena = cadena + `${item}`;
+        }else{
+          cadena = cadena + ',' + `${item}`;
+        }
+      });
+
+      return cadena;
+    }
+
   const {
       
     stateForm,
@@ -104,7 +126,7 @@ import Footer from "../../../Components/Footer/Footer";
 
     return (
       <main>
-        <Navbar setSearch={setSearch}></Navbar>
+        <Navbar setSearch={setSearch} handledKeyPress={handledKeyPress}></Navbar>
         <div className="grid-container">
           <div className="grid-item tall">
             <div className="columns1">

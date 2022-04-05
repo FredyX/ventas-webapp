@@ -11,7 +11,7 @@ import { useState } from "react";
 import useClickOutside from "../CustomHooks/ClickOutside";
 
 
-const Navbar = ({ BurgerColour, setSearch }) => {
+const Navbar = ({ BurgerColour, setSearch, handledKeyPress }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [searchTerm, SetsearchTerm] = useState('')
   
@@ -49,9 +49,6 @@ const Navbar = ({ BurgerColour, setSearch }) => {
       setSearch(target.value);
   }
 
-  const handleKeypress = ({target}) =>{
-    alert('Se busco en la api');
-  }
   return (
     <div className={styles.navbar_container}>
       <nav>
@@ -92,7 +89,7 @@ const Navbar = ({ BurgerColour, setSearch }) => {
           variant="standard"
           color="success" focused
           onChange={handleChange}
-          onKeyPress={handleKeypress}
+          onKeyDown={handledKeyPress}
         />
       </Box>
 
