@@ -6,14 +6,22 @@ import { TextField } from "@mui/material";
 
 import { BsArrowRight, BsSearch } from "react-icons/bs";
 import { FaBars, FaTimes } from "react-icons/fa";
+import {useNavigate} from 'react-router-dom';
 
-import { useState } from "react";
+import {useCallback, useState } from "react";
 import useClickOutside from "../CustomHooks/ClickOutside";
+import authService from "../../services/auth.service";
+
+const user =  authService.getCurrentUser()
+
 
 
 const Navbar = ({ BurgerColour, setSearch, handledKeyPress }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [searchTerm, SetsearchTerm] = useState('')
+  const navigate = useNavigate();
+  const UsuarioDentr = useCallback(() => navigate('/perfilusuario/', {replace: true}), [navigate]);
+  const UsuarioFuer = useCallback(() => navigate('/iniciosesion/', {replace: true}), [navigate]);
   
   const MenuLink = ({ url, path }) => {
     return (
@@ -47,6 +55,23 @@ const Navbar = ({ BurgerColour, setSearch, handledKeyPress }) => {
   const handleChange = ({target})=>{
       SetsearchTerm(target.value);
       setSearch(target.value);
+  }
+ 
+  function UsuarioDentro(props) {
+    return <span onClick={UsuarioDentr} className={styles.login_container} style={{ color: BurgerColour }} >Bienvenido {user.username}!</span>;
+  }
+  
+  function UsuarioFuera(props) {
+    return <h1>onClick={UsuarioFuer} className={styles.login_container} style={{ color: BurgerColour }} Iniciar Sesion</h1>;
+  }
+
+  function InicioSesion(props) {
+    console.log(user)
+  if (user) {
+    return <UsuarioDentro />;
+  } else {
+    return <UsuarioFuera />;
+  }
   }
 
   return (
@@ -98,7 +123,7 @@ const Navbar = ({ BurgerColour, setSearch, handledKeyPress }) => {
       </div>
 
           <Link to="/iniciosesion/" className={styles.login}>
-            <span>Iniciar Sesión</span>
+            <InicioSesion user={false} />
           </Link>
         </ul>
 
@@ -111,12 +136,8 @@ const Navbar = ({ BurgerColour, setSearch, handledKeyPress }) => {
         </Link>
 
         {/* Login */}
-        <Link to="/iniciosesion/" className={styles.login_container}>
-          <span style={{ color: BurgerColour }}>Iniciar Sesión</span>
-          <BsArrowRight style={{ color: BurgerColour }} />
-        </Link>
-
-
+        
+          <span ><InicioSesion user={false} /> <BsArrowRight style={{ color: BurgerColour }} /></span>
       </nav>
       <ColoredLine color="black" />
     </div>
