@@ -16,48 +16,21 @@ import { useSearchParams } from "react-router-dom";
 import Footer from "../../../Components/Footer/Footer";
 import  searchDataService  from "../../../services/search.service";
 
-
-  const setState = (state, callback) => {
-    if (state === "N") {
-      return callback("Nuevo");
-    } else if (state === "U") {
-      return callback("Usado");
-    } else if (state === "R") {
-      return callback("Reaccondicionado");
-    } else if (state === "D") {
-      return callback("Dañado");
-    }
-  }
-  
-  export const BusquedaProducto = () => {
+export const BusquedaProducto = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const [BusquedaProducto, setBusquedaProducto] = useState([]);
     const [stateDepartments, setDepartaments] = useState([]);
     const [search, setSearch] = useState("");
-    const [score,setScore] = useState(5);    
+    const [score,setScore] = useState(0);    
     const [page, setPages] = useState(1);
     const [url, setUrl] = useState('');
     const [producto, setProducto] = useState([]);
+    const [totalPages, setTotalPages] = useState(1);
 
     useEffect(() => {
-      setBusquedaProducto([]);
-      ProductsApi();            
+      setBusquedaProducto([]);         
     }, [url])
-    
-    
-    const ProductsApi = async () => {
-      /* cambiar las primeras 3 líneas*/
-      let id = searchParams.get('id');
-      let page = searchParams.get('page')
-      const response = await productDataService.getProductUser(id, page)
-      console.log(response);
-      if (response.status === 200) {
-        const { data } = response.data;
-        setBusquedaProducto(data);
-        console.log(data);
-      }
-    }
     
     const getEstado= (state) => {
       if (state === "N") {
@@ -76,13 +49,12 @@ import  searchDataService  from "../../../services/search.service";
         event.preventDefault();        
         let categories = formatear(stateForm.categories);
         let departamento = formatear(stateDepartments);
-        console.log(stateForm.categories);
         let urlParams = `/${search}&${categories}&${departamento}&${score}&${page}`;
-        console.log(urlParams);
         setUrl(urlParams);
-        const {data} = await searchDataService.getSearchProduct(urlParams);                                
+        const {data} = await searchDataService.getSearchProduct(urlParams);                             
         setProducto(data.data);
-      }      
+        setTotalPages(data.totalPages);
+      }
     }
     
     function formatear (dataArreglo) {
@@ -204,7 +176,7 @@ import  searchDataService  from "../../../services/search.service";
 
     </div>
         <div className='pagination-form'>
-        <Paginacion setPages={setPages} /> 
+        <Paginacion setPages={setPages} total={totalPages} handle = {handledKeyPress}/> 
         </div>
         <div className="grid-item tall">
 

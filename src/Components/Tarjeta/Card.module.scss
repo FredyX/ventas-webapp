@@ -89,8 +89,17 @@
     }
 
     .desc {
-      display: flex;
-      gap: 4px;
+      margin-top: 12px;
+      width: 25em;
+      height: 80px;
+      font-size: 16px;
+      text-align: center;
+      font-family: "Arsenal", sans-serif;
+      background-color: #f3f3f3;
+      border: 0;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      resize: none;
       svg {
         color: rgb(165, 165, 165);
         font-size: 1.1rem;
