@@ -103,49 +103,7 @@ export const BusquedaProducto = () => {
         <Navbar setSearch={setSearch} handledKeyPress={handledKeyPress}></Navbar>
         <div className="grid-container">
           <div className="grid-item tall">
-            <div className="columns1">
-
-    <div className='base-containersearch'>
-
-        <div className="busqueda-form">
-        <div className="header">Filtros</div>
-
-        <ColoredLine color="green" />
-
-        <div className="subheader">Categorías</div>
-
-            <CheckCategorias 
-              passCategoriesChange={handleCategories}              
-            /> 
-
-        </div>
-
-        <ColoredLine color="green" />
-
-        <div className="busqueda-form">
-        <div className="subheader">Departamento</div>
-        
-            <CheckDepartamento setDepartaments={setDepartaments} /> 
-        
-        </div>
-        
-        <ColoredLine color="green" />
- 
-        <div className="busqueda-form1">
-       
-        <span>Puntuación del vendedor</span>
-        <PuntuacionVendedor setScore={setScore}/> 
-        <ColoredLine color="green" />
-        </div>
-   
-
-    </div>
-
-
-    <div className="header">Resultados</div>
-    <div className="resultados-form1">
- 
- 
+          <div className="resultados-form1">
     <div className={styles.ProductoContainer}>
         <div className={styles.grid}> 
           {producto.map((producto) => {
@@ -173,8 +131,50 @@ export const BusquedaProducto = () => {
           })}
         </div>
         </div>
+    </div>
+            <div className="columns1">
+
+    <div className='base-containersearch'>
+
+        <div className="busqueda-form">
+        <div className="header">Filtros</div>
+
+        <ColoredLine color="green" />
+
+        <div className="subheader">Categorías</div>
+
+            <CheckCategorias 
+              passCategoriesChange={handleCategories}              
+            /> 
+
+        </div>
+
+        <ColoredLine color="green" />
+
+        <div className="busqueda-form">
+        <div className="subheader">Departamento</div>
+        
+            <CheckDepartamento setDepartaments={setDepartaments} /> 
+        
+        </div>
+        
+        <ColoredLine color="green" />
+
+        <div className="busqueda-form1">
+       
+        <span>Puntuación del vendedor</span>
+        <PuntuacionVendedor setScore={setScore}/> 
+        <ColoredLine color="green" />
+        
+        </div>
+   
 
     </div>
+
+
+    <div className="header">Resultados</div>
+  
+    
         <div className='pagination-form'>
         <Paginacion setPages={setPages} total={totalPages} handle = {handledKeyPress}/> 
         </div>

@@ -13,9 +13,9 @@ const Card = ({info}) => {
       </div>
       <h3>{info.titulo}</h3>
       <h4>
-      <p className={styles.descripcion}>{info.nombreUsuario}</p> 
+      <p className={styles.desc}>{info.nombreUsuario}</p> 
       </h4>
-      <p className={styles.descripcion}>{info.descripcion}</p>
+      <p className={styles.desc}>{info.desc}</p>
       <div className={styles.info}>
         <div className={styles.row_1}>
           <div className={styles.desc}>
@@ -42,7 +42,7 @@ const Card = ({info}) => {
         <span>{`L ${numberWithCommas(info.precio)}`}</span>
         </div>
         <div className={styles.card_btn}>
-          <Link to={`/detalles/${info.id}`}>Ver mas</Link>
+          <Link to={`/detalles/?id=${info.id}`}>Ver mas</Link>
         </div>
       </div>
     </div>
