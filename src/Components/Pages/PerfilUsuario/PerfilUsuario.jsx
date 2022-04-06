@@ -12,6 +12,7 @@ import { NavLink, Link } from "react-router-dom";
 import styles from "../../Navbar/Navbar.module.scss";
 import Swal from 'sweetalert2';
 import AuthService from "../../../services/auth.service";
+import Footer from "../../Footer/Footer";
 
 
 const Column = styled.div`
@@ -220,6 +221,7 @@ export const PerfilUsuario = () => {
 
         </Column>
       </Row>
+      <Footer/>
     </div>
 
   )
