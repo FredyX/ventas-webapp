@@ -27,7 +27,7 @@ const validateForm = (stateForm, check = null) => {
     if (!arrayMatch) {
       errors.user_password = 'No se cumplen los requisitos de seguridad';
     } else {
-      if (stateForm.user_password != stateForm.user_password2)
+      if (stateForm.user_password !== stateForm.user_password2)
         errors.user_password2 = 'No coinciden las contraseñas';
     }
   }
@@ -75,12 +75,25 @@ const validateFormProducts = (stateForm, check = null) => {
   // }
   return errors;
 }
+const validateFormCambioPassword = (stateForm) => {
+  let errors ={};
+  if (!stateForm.user_password) {
+    errors.user_password = 'El campo del título es obligatorio';
+  }else{
+    const { password } = regularExp;
+    let arrayMatch = password.exec(stateForm.user_password);
+    if (!arrayMatch) {
+      errors.user_password = 'No se cumplen los requisitos de seguridad';
+    } else {
+      if (stateForm.user_password !== stateForm.user_password2)
+        errors.user_password2 = 'No coinciden las contraseñas';
+    }
+  }
+  
+}  
 
 const validateFormModificate = (stateForm) => {
 
-<<<<<<< Updated upstream
-export { validateFormProducts ,validateForm, validateFormLogin };
-=======
   let errors = {};
 
   if (!stateForm.first_name) {
@@ -102,5 +115,4 @@ export { validateFormProducts ,validateForm, validateFormLogin };
   return errors;
 }
 
-export { validateFormProducts ,validateForm,validateFormModificate, validateFormLogin, validateFormCambioPassword };
->>>>>>> Stashed changes
+export { validateFormProducts ,validateForm, validateFormModificate, validateFormLogin, validateFormCambioPassword };

@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
-//import { useSearchParams } from "react-router-dom";
 import "./ModificarUsuario.scss";
 import userDataService from "../../services/users.service";
 import departmentService from "../../services/departments.service";
-<<<<<<< Updated upstream
-import { useForm } from '../../hooks/useFormProducts';
-import { validateForm } from "../../helpers/validateForm";
-=======
 import AuthService from "../../services/auth.service";
 import { useForm } from '../../hooks/useFormModificarUsuario';
 import { validateFormModificate } from "../../helpers/validateForm";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
->>>>>>> Stashed changes
 
 
   export const ModificarUsuario = (props) => {
@@ -23,37 +17,30 @@ import Navbar from "../../Components/Navbar/Navbar";
         handleInputChange,
         handleBlur,
         handleSubmit,
-        handleClick
           } = useForm({
         first_name: '',
         last_name : '',
         user_email: '',
-<<<<<<< Updated upstream
-        department_id : ''
-        
-      }, validateForm, userDataService);
-=======
         department_id :'',
       }, validateFormModificate, userDataService);
->>>>>>> Stashed changes
     
-    //const [searchParams, setSearchParams] = useSearchParams();
+
     const [firstNameus, setFirstName] = useState(' ');
     const [lastNameus, setLastName] = useState(' ');
     const [emailus, setEmail] =  useState(' ');
     const [departamentous, setDepartamento] = useState(' ');
 
-
- 
+    
     useEffect(() => {
         getDatos();
     }, [])
 
-    //let id = searchParams.get('id');
+    
     const getDatos  = async () => {
-
-        const response = await userDataService.get(27);
+        const user =  await AuthService.getCurrentUser();
+        const response = await userDataService.getProfileModificate(user.user.user_id);
         const departaments = await departmentService.get(response.data.department_id);
+        const profile = await userDataService.getToProfile(user.user.user_id) ;
         setFirstName(response.data.first_name);
         setLastName(response.data.last_name);
         setDepartamento(departaments.data.department_name);
@@ -62,17 +49,15 @@ import Navbar from "../../Components/Navbar/Navbar";
 
     return(
         <div>
+            <Navbar></Navbar>
              <div className="ro">
-                <div className="col"> 
-                    <div className="basecontainer4" >
-                        <div className="basecontainer1">
-                            <div className="imageproductform" >
-                                <img src="C:\Users\Jonathan\Desktop\Probando.jpg"  className="image"  />
-                            </div>
-                        </div>
-                    </div>
+
+             <div className="col"> </div>
+
+                <div className="col">
                     <div className="basecontainer2" >
-                            <div className="detallevendedorform2" >
+                        <div className="basecontainer2">
+                        <div className="detallevendedorform2" >
                                 <div className="form-group" >
                                     <p className="Titulo">Datos Actuales</p>
                                     <p className="Datos">Nombre: {firstNameus}</p>
@@ -81,19 +66,11 @@ import Navbar from "../../Components/Navbar/Navbar";
                                     <p className="Datos">Departamento:  {departamentous}</p>
                                 </div>
                             </div>
-                    <div className="basecontainer3">    
-                    </div>
-                            
-                    </div>
-                </div>
-                <div className="col">
-                    <div className="basecontainer2" >
-                        <div className="basecontainer2">
                             <div className="detallevendedorform2" >
                                 <div className="form-group" >
                                         <input 
                                             type="text" 
-                                            name = "firstname" 
+                                            name = "first_name" 
                                             value = {stateForm.first_name}
                                             onChange = {handleInputChange}
                                             onBlur={handleBlur}
@@ -103,7 +80,7 @@ import Navbar from "../../Components/Navbar/Navbar";
                                     
                                         <input 
                                             type="text" 
-                                            name = "lastname" 
+                                            name = "last_name" 
                                             value = {stateForm.last_name}
                                             onChange = {handleInputChange} 
                                             onBlur={handleBlur}
@@ -113,7 +90,7 @@ import Navbar from "../../Components/Navbar/Navbar";
                                 
                                         <input 
                                             type="text" 
-                                            name = "email" 
+                                            name = "user_email" 
                                             value = {stateForm.user_email}
                                             onChange = {handleInputChange} 
                                             onBlur={handleBlur}
@@ -144,6 +121,7 @@ import Navbar from "../../Components/Navbar/Navbar";
                                                 <option value={18}>Yoro </option>
                                             </select>
                                         </div>
+
                                 </div>
                                 <div className="footer">
                                     <button type="button" className="btn" onClick={handleSubmit}>
@@ -159,6 +137,9 @@ import Navbar from "../../Components/Navbar/Navbar";
                     
                 </div>
             </div>
+
+
+            
         </div>
     )
   }

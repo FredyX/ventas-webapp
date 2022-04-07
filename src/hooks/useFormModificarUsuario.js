@@ -1,56 +1,42 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthService from '../services/auth.service';
+import { validateFormModificate } from '../helpers/validateForm';
 
 export const useForm = (form = {},validateFormModificate, userDataService) => {
 	
 	const [stateForm, setForm] = useState(form);
 	const [errors, setErrors] = useState({});
-	const [stateCheck, setCheck] = useState(false);
 	const navigate = useNavigate();
 
 	const handleInputChange = ({ target }) => {
 		setForm({
 			...stateForm,
-			[target.name]: target.type === 'checkbox' ? target.checked : target.value
+			[target.name]: target.value
 		});
 	}
 
 	const handleBlur = (e) => {
 		handleInputChange(e);
-<<<<<<< Updated upstream
-		setErrors(validateForm(stateForm));
-	}
-
-	const handleClick = ({ target }) => {
-		setCheck(target.checked);
-=======
 		setErrors(validateFormModificate(stateForm));
->>>>>>> Stashed changes
 	}
 
 	const handleSubmit = (e) => {
-		if (isObjectEmpty(errors) && stateCheck) {
+		if (isObjectEmpty(errors)) {
 			let data = {
-				...stateForm,
-				is_company: false
+				...stateForm
 			}
+			const id =  AuthService.getCurrentUser().user.user_id
 
-			userDataService.register(data)
+			userDataService.update(id,data)
 				.then(response => {
 					setForm({
 						first_name: '',
 						last_name: '',
 						user_email: '',
-<<<<<<< Updated upstream
-						user_password: '',
-						user_password2: '',
-=======
->>>>>>> Stashed changes
-						department_id: '',
+						department_id: ''
 					});
-					setCheck(false);
-					navigate("/iniciosesion");
+					navigate(0);
 				})
 				.catch(e => {
 					console.log(e);
@@ -74,8 +60,6 @@ export const useForm = (form = {},validateFormModificate, userDataService) => {
 		errors,
 		handleInputChange,
 		handleBlur,
-		handleSubmit,
-		handleClick,
-		stateCheck
+		handleSubmit
 	};
 }
