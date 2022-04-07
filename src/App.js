@@ -13,6 +13,8 @@ import { PerfilUsuario } from "./Components/Pages/PerfilUsuario/PerfilUsuario";
 import { PerfilUsuarioTercero } from "./Components/Pages/PerfilUsuario/PerfilUsuarioTercero";
 import { RecuperacionCuenta } from "./Components/Pages/RecuperacionCuenta/RecuperacionCuenta";
 import { CambioContrasena } from "./Components/Pages/RecuperacionCuenta/CambioContrasena";
+import { BusquedaProducto } from "./Components/Pages/Busqueda/Busqueda";
+import ProductosUsuario from "./Components/Pages/ProductosUsuario/ProductosUsuario";
 
 
 //semana 1
@@ -31,9 +33,12 @@ function App() {
       <Route path="/modificarusuario/" element= {<ModificarUsuario />} />
       <Route path="/perfilusuario/" element= {<PerfilUsuario />} />
       <Route path="/perfilusuario/visitante/" element= {<PerfilUsuarioTercero />} />
-      <Route path="/inisiosesion/recuperacioncuenta/" element={<RecuperacionCuenta/>} />
-      <Route path="/inisiosesion/recuperacioncuenta/cambiocontrasena/" element={<CambioContrasena/>} />
+      <Route path="/iniciosesion/recuperacioncuenta/" element={<RecuperacionCuenta/>} />
+      <Route path="/iniciosesion/recuperacioncuenta/cambiocontrasena/" element={<CambioContrasena/>} />
+      <Route path="/busqueda/" element= {<BusquedaProducto />} />   
+      <Route path="/productosusuario/" element= {<ProductosUsuario />} />
       </Routes>
+
 
     </div>
   );

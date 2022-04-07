@@ -212,9 +212,7 @@ height: 90px;
     &:hover {
       background-color: rgb(212, 253, 13);
     }
-    &:focus {
-      outline: none;
-    }
+  
   }
 
   .btn7 {
@@ -231,11 +229,9 @@ height: 90px;
   cursor: pointer;
   &:hover {
     background-color: #b7ffaf;
-   
+    outline: solid rgb(18, 183, 0);
   }
-  &:focus {
-    outline: none;
-  }
+ 
   }
 
   .btn6 {
@@ -254,9 +250,7 @@ height: 90px;
     &:hover {
       background-color: rgb(167, 40, 40);
     }
-    &:focus {
-      outline: none;
-    }
+    
   
   }
 
@@ -276,9 +270,7 @@ height: 90px;
     &:hover {
       background-color: rgb(167, 40, 40);
     }
-    &:focus {
-      outline: none;
-    }
+    
   
   }
 
@@ -299,7 +291,5 @@ height: 90px;
     &:hover {
       background-color: rgb(212, 253, 13);
     }
-    &:focus {
-      outline: none;
-    }
+    
   }

@@ -91,7 +91,6 @@ const validateFormCambioPassword = (stateForm) => {
   }
   
 }  
-
 const validateFormModificate = (stateForm) => {
 
   let errors = {};
@@ -114,5 +113,4 @@ const validateFormModificate = (stateForm) => {
 
   return errors;
 }
-
 export { validateFormProducts ,validateForm, validateFormModificate, validateFormLogin, validateFormCambioPassword };

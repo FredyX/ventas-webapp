@@ -1,0 +1,56 @@
+.ProductosUsuario {
+  margin-top: 2rem;
+  overflow-x: hidden;
+
+  .ProductosUsuario_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    h1 {
+      color: rgb(18, 183, 0);
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+
+}
+
+.ProductoContainer {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
+  outline: solid rgb(18, 183, 0);
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btnEliminarProducto {
+  margin-top: 20px;
+  margin-left: 20px;
+  min-width: 258px;
+  font-size: 21px;
+  padding: 5px 20px;
+  border: 0;
+  outline: solid #b70000;
+  background-color: #fff;
+  color: rgb(158, 1, 1);
+  border-radius: 0px;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(167, 40, 40);
+    color: #fff;
+  }
+}

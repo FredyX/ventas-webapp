@@ -1,9 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "../../Navbar/Navbar.module.scss";
-
+import  userDataService  from '../../../services/users.service';
+import { regularExp } from "../../../helpers/regularExp";
+import {useState} from 'react';
 
 export const RecuperacionCuenta = (props) => {
+    const [user_email, setUserEmail] = useState(null);
+    
+    const handleChange = ({target})=>{
+      setUserEmail(target.value);
+    }
+    const validatEmail = () =>{
+      const {email} = regularExp;
+      let arrayMatch = email.exec(user_email);      
+      return !arrayMatch ? false : true;
+    }
+    
+    const enviar = ({target}) => {      
+        if(validatEmail()){
+          userDataService.forgotPassword({user_email})
+            .then( res =>{
+              alert('Revise su correo electrónico');
+              setUserEmail('');
+            })
+            .catch(err => console.log(err));
+        }else{
+          alert('Correo invalido');
+        }
+        disableboton();
+    }
+
+    const [disable, setDisable] = React.useState(false);
+
+    const disableboton= () => {
+       setDisable(true)
+    }
 
     const style = {
       fontWeight: "bold",
@@ -23,7 +55,9 @@ export const RecuperacionCuenta = (props) => {
       />
     );
   
-  
+    
+   
+    
     return (
       <div>
         <div className={styles.navbar_container}>
@@ -47,11 +81,14 @@ export const RecuperacionCuenta = (props) => {
                   type="text"
                   name="user_email"
                   placeholder="Correo electrónico"
+                  onChange={handleChange}
                 />
               </div>
           </div>
           <div className="footer">
-            <button type="button" className="btn" >
+            <button type="button" className="btndisable" disabled={disable} onClick={enviar} 
+            >
+
               Enviar Correo
             </button>
           </div>

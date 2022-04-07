@@ -34,7 +34,7 @@ nav {
     flex-direction: column;
     gap: 1.5rem;
     font-size: 1.1rem;
-    background: var(--dark-green);
+    background: rgb(18, 183, 0);
     padding-top: 6rem;
     min-height: 100vh;
     transform: translateX(100%);
@@ -115,7 +115,7 @@ nav {
   }
 
   a {
-    color: var(--dark-green);
+    color: rgb(18, 183, 0);
     font-weight: 500;
   }
 
@@ -139,6 +139,7 @@ nav {
 .Buscar {
   width: 100%;
 }
+
 
 .brand_logob a {
   font-size: 2rem;

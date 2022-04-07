@@ -29,6 +29,13 @@ class userDataService {
     return http.delete(`/users/${id}`, { headers: authHeader() });
   }
 
+  resetPassword(data, token){
+    return http.put("/users/reset_password",data,{ headers: {'x-token': token} });
+  }
+  forgotPassword(data){
+    return http.put("/users/forgot_password",data, { headers: authHeader() }); 
+  }
+
   getProfileModificate(id) {
     return http.get(`/users/personal/${id}`, { headers: authHeader()});
   }

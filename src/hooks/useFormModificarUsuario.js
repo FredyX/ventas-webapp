@@ -4,7 +4,6 @@ import AuthService from '../services/auth.service';
 import { validateFormModificate } from '../helpers/validateForm';
 
 export const useForm = (form = {},validateFormModificate, userDataService) => {
-	
 	const [stateForm, setForm] = useState(form);
 	const [errors, setErrors] = useState({});
 	const navigate = useNavigate();

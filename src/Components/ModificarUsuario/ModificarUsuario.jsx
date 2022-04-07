@@ -137,8 +137,6 @@ import Navbar from "../../Components/Navbar/Navbar";
                     
                 </div>
             </div>
-
-
             
         </div>
     )

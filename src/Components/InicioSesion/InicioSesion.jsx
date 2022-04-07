@@ -3,7 +3,8 @@ import AuthService from "../../services/auth.service";
 import { Link } from "react-router-dom";
 import { validateFormLogin } from "../../helpers/validateForm";
 import { useForm } from '../../hooks/useFormInicioSesion';
-import styles from "../../Components/Navbar/Navbar.module.scss"
+import styles from "../../Components/Navbar/Navbar.module.scss";
+import Footer from "../../Components/Footer/Footer";
 
 export const InicioSesion = (props) => {
 
@@ -39,6 +40,7 @@ export const InicioSesion = (props) => {
 
 
   return (
+    <main>
     <div>
       <div className={styles.navbar_container}>
       <nav>
@@ -97,12 +99,15 @@ export const InicioSesion = (props) => {
             Registro
           </button>
           </Link>
-          <span>¿No recuerdas tu contraseña?, Click para {<Link to={"/inisiosesion/recuperacioncuenta/"} target="_blank" className="link">
+          <span> </span>
+          <span>¿No recuerdas tu contraseña?, {<Link to={"/iniciosesion/recuperacioncuenta/"} target="_blank" className="link">
                 <span>Recuperar Cuenta</span>
               </Link>}</span>
         </div>
       </div>
     </div>
     </div>
+    <Footer/>
+    </main>
   );
 }

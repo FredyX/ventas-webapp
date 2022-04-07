@@ -32,7 +32,7 @@ export const useForm = (form = {}, validateFormLogin, AuthService) => {
 						user_password: ''
 					});
 					
-					navigate("/agregarproducto");
+					navigate("/");
 
 				})
 				.catch(e => {

@@ -13,6 +13,10 @@ class productDataService {
     return http.get(`/products/detalle/${id}`);
   }
 
+  getProductUser(id){
+    return http.get(`/products/user/${id}`);
+  }
+
   add(data) {
     let headers = authHeader()
     headers["Content-Type"] = "multipart/form-data"
@@ -21,6 +25,10 @@ class productDataService {
 
   getImagen(id) {
     return http.get(`/products/images/${id}`, { headers: authHeader() })
+  }
+
+  delete(id) {
+    return http.delete(`/products/${id}`, { headers: authHeader() });
   }
 
 }
