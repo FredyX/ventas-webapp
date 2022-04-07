@@ -33,8 +33,7 @@ export const useForm = (form = {},validateForm, userDataService) => {
 						first_name: '',
 						last_name: '',
 						user_email: '',
-						department_id: '',
-						profile_picture_id : ''
+						department_id: ''
 					});
 					navigate(0);
 				})

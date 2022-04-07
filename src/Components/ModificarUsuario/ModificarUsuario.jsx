@@ -22,8 +22,6 @@ import Navbar from "../../Components/Navbar/Navbar";
         last_name : '',
         user_email: '',
         department_id :'',
-        profile_picture_id : ''
-        
       }, validateForm, userDataService);
     
 
@@ -31,7 +29,6 @@ import Navbar from "../../Components/Navbar/Navbar";
     const [lastNameus, setLastName] = useState(' ');
     const [emailus, setEmail] =  useState(' ');
     const [departamentous, setDepartamento] = useState(' ');
-    const [imagenus, setImagen] = useState(' ');
 
     
     useEffect(() => {
@@ -48,7 +45,6 @@ import Navbar from "../../Components/Navbar/Navbar";
         setLastName(response.data.last_name);
         setDepartamento(departaments.data.department_name);
         setEmail(response.data.user_email);
-        setImagen(`http://localhost:3001/api/profile_pictures/${profile.data.profile_picture_id}`)
     } 
 
     return(
@@ -57,21 +53,7 @@ import Navbar from "../../Components/Navbar/Navbar";
              <div className="ro">
              <div className="col"> </div>
              <div className="col"> </div>
-                <div className="col"> 
-                    <div className="basecontainer4" >
-                        <div className="basecontainer1">
-                            <div className="imageproductform" >
-                                <img src={imagenus} className="image"  />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="basecontainer2" >
-                            
-                    <div className="basecontainer3">    
-                    </div>
-                            
-                    </div>
-                </div>
+
                 <div className="col">
                     <div className="basecontainer2" >
                         <div className="basecontainer2">
@@ -140,27 +122,6 @@ import Navbar from "../../Components/Navbar/Navbar";
                                             </select>
                                         </div>
 
-                                        <div className="caja">
-                                            <select name="profile_picture_id"  value = {stateForm.profile_picture_id} onChange = {handleInputChange} >
-                                                <option >Foto de Perfil</option>
-                                                <option value={1}>1</option>
-                                                <option value={2}>2</option>
-                                                <option value={3}>3</option>
-                                                <option value={4}>4</option>
-                                                <option value={5}>5</option>
-                                                <option value={6}>6</option>
-                                                <option value={7}>7</option>
-                                                <option value={8}>8</option>
-                                                <option value={9}>9</option>
-                                                <option value={10}>10</option>
-                                                <option value={11}>11</option>
-                                                <option value={12}>12</option>
-                                                <option value={13}>13</option>
-                                                <option value={14}>14</option>
-                                                <option value={15}>15</option>
-                                                <option value={16}>16</option>
-                                            </select>
-                                        </div>
                                 </div>
                                 <div className="footer">
                                     <button type="button" className="btn" onClick={handleSubmit}>
