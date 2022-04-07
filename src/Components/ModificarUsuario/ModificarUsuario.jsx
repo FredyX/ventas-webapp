@@ -4,7 +4,7 @@ import userDataService from "../../services/users.service";
 import departmentService from "../../services/departments.service";
 import AuthService from "../../services/auth.service";
 import { useForm } from '../../hooks/useFormModificarUsuario';
-import { validateForm } from "../../helpers/validateForm";
+import { validateFormModificate } from "../../helpers/validateForm";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 
@@ -22,7 +22,7 @@ import Navbar from "../../Components/Navbar/Navbar";
         last_name : '',
         user_email: '',
         department_id :'',
-      }, validateForm, userDataService);
+      }, validateFormModificate, userDataService);
     
 
     const [firstNameus, setFirstName] = useState(' ');
@@ -51,7 +51,7 @@ import Navbar from "../../Components/Navbar/Navbar";
         <div>
             <Navbar></Navbar>
              <div className="ro">
-             <div className="col"> </div>
+
              <div className="col"> </div>
 
                 <div className="col">
@@ -137,9 +137,7 @@ import Navbar from "../../Components/Navbar/Navbar";
                     
                 </div>
             </div>
-            <div className="col"> </div>
-            <div className="col"> </div>
-            <Footer/>
+            
         </div>
     )
   }
