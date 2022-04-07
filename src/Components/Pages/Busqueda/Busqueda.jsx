@@ -6,19 +6,14 @@ import { validateFormProducts } from "../../../helpers/validateForm";
 import { useForm } from '../../../hooks/useFormProducts';
 import productDataService from "../../../services/product.service";
 import CheckDepartamento from '../Busqueda/CheckDepartamento';
-import { CenterFocusStrong } from '@mui/icons-material';
-import { faLeftLong } from '@fortawesome/free-solid-svg-icons';
 import PuntuacionVendedor from './PuntuaciónVendedor';
 import Paginacion from './Paginacion';
 import Card from "../../Tarjeta/Card";
 import styles from "../../Pages/ProductosUsuario/ProductosUsuario.module.scss";
-import { useSearchParams } from "react-router-dom";
 import Footer from "../../../Components/Footer/Footer";
 import  searchDataService  from "../../../services/search.service";
 
 export const BusquedaProducto = () => {
-
-    const [searchParams, setSearchParams] = useSearchParams();
     const [BusquedaProducto, setBusquedaProducto] = useState([]);
     const [stateDepartments, setDepartaments] = useState([]);
     const [search, setSearch] = useState("");
@@ -49,7 +44,7 @@ export const BusquedaProducto = () => {
         event.preventDefault();        
         let categories = formatear(stateForm.categories);
         let departamento = formatear(stateDepartments);
-        let urlParams = `/${search}&${categories}&${departamento}&${score}&${page}`;
+        let urlParams = `/${search}&${categories}&${departamento}&${score}`;
         setUrl(urlParams);
         const {data} = await searchDataService.getSearchProduct(urlParams);                             
         setProducto(data.data);
@@ -59,6 +54,10 @@ export const BusquedaProducto = () => {
     
     function formatear (dataArreglo) {
       let cadena = ``;
+      if (dataArreglo.length === 0){
+        cadena = `null`;
+        return cadena;
+      }
       dataArreglo.map( (item, index) => {
         if(index === 0){
           cadena = cadena + `${item}`;

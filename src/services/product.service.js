@@ -13,8 +13,8 @@ class productDataService {
     return http.get(`/products/detalle/${id}`);
   }
 
-  getProductUser(id,page){
-    return http.get(`/products/user/${id}/${page}`);
+  getProductUser(id){
+    return http.get(`/products/user/${id}`);
   }
 
   add(data) {
