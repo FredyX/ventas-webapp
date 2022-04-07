@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthService from '../services/auth.service';
 
-export const useForm = (form = {},validateForm, userDataService) => {
+export const useForm = (form = {},validateFormModificate, userDataService) => {
 	
 	const [stateForm, setForm] = useState(form);
 	const [errors, setErrors] = useState({});
@@ -18,11 +18,15 @@ export const useForm = (form = {},validateForm, userDataService) => {
 
 	const handleBlur = (e) => {
 		handleInputChange(e);
+<<<<<<< Updated upstream
 		setErrors(validateForm(stateForm));
 	}
 
 	const handleClick = ({ target }) => {
 		setCheck(target.checked);
+=======
+		setErrors(validateFormModificate(stateForm));
+>>>>>>> Stashed changes
 	}
 
 	const handleSubmit = (e) => {
@@ -38,8 +42,11 @@ export const useForm = (form = {},validateForm, userDataService) => {
 						first_name: '',
 						last_name: '',
 						user_email: '',
+<<<<<<< Updated upstream
 						user_password: '',
 						user_password2: '',
+=======
+>>>>>>> Stashed changes
 						department_id: '',
 					});
 					setCheck(false);

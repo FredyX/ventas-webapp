@@ -3,8 +3,16 @@ import React, { useEffect, useState } from "react";
 import "./ModificarUsuario.scss";
 import userDataService from "../../services/users.service";
 import departmentService from "../../services/departments.service";
+<<<<<<< Updated upstream
 import { useForm } from '../../hooks/useFormProducts';
 import { validateForm } from "../../helpers/validateForm";
+=======
+import AuthService from "../../services/auth.service";
+import { useForm } from '../../hooks/useFormModificarUsuario';
+import { validateFormModificate } from "../../helpers/validateForm";
+import Footer from "../../Components/Footer/Footer";
+import Navbar from "../../Components/Navbar/Navbar";
+>>>>>>> Stashed changes
 
 
   export const ModificarUsuario = (props) => {
@@ -20,9 +28,14 @@ import { validateForm } from "../../helpers/validateForm";
         first_name: '',
         last_name : '',
         user_email: '',
+<<<<<<< Updated upstream
         department_id : ''
         
       }, validateForm, userDataService);
+=======
+        department_id :'',
+      }, validateFormModificate, userDataService);
+>>>>>>> Stashed changes
     
     //const [searchParams, setSearchParams] = useSearchParams();
     const [firstNameus, setFirstName] = useState(' ');

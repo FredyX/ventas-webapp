@@ -76,5 +76,31 @@ const validateFormProducts = (stateForm, check = null) => {
   return errors;
 }
 
+const validateFormModificate = (stateForm) => {
 
+<<<<<<< Updated upstream
 export { validateFormProducts ,validateForm, validateFormLogin };
+=======
+  let errors = {};
+
+  if (!stateForm.first_name) {
+    errors.first_name = 'El campo del nombre es obligatorio';
+  }
+  if (!stateForm.last_name) {
+    errors.last_name = 'El campo apellido es obligatorio';
+  }
+  if (!stateForm.user_email) {
+    errors.user_email = 'El email es obligatorio';
+  } else {
+    const { email } = regularExp;
+    let arrayMatch = email.exec(stateForm.user_email.trim());
+    if (!arrayMatch) {
+      errors.user_email = 'El correo electrónico no es válido';
+    }
+  }
+
+  return errors;
+}
+
+export { validateFormProducts ,validateForm,validateFormModificate, validateFormLogin, validateFormCambioPassword };
+>>>>>>> Stashed changes
