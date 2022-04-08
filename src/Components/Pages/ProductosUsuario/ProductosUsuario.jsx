@@ -8,6 +8,10 @@ import authService from "../../../services/auth.service";
 import Swal from 'sweetalert2';
 import {useNavigate} from 'react-router-dom';
 
+import { Link } from "react-router-dom";
+import KeyboardBackspaceRoundedIcon from '@mui/icons-material/KeyboardBackspaceRounded';
+import { green } from '@mui/material/colors';
+
 const setState = (state, callback) => {
   if (state === "N") {
     return callback("Nuevo");
@@ -82,6 +86,15 @@ const ProductosUsuario = () => {
     <main>
       <Navbar></Navbar>
       <section className={styles.ProductosUsuario}>
+        
+    <Link to={"/perfilusuario/"}>
+      <button type="button2" className="btnregresar" >
+      <div className="regresar">
+      <KeyboardBackspaceRoundedIcon fontSize="medium" sx={{ color: green[500] }} /> Regresar
+      </div>
+      </button>
+      </Link>
+
         <div className={styles.ProductosUsuario_title}>
           <h1>Productos</h1>
         </div>

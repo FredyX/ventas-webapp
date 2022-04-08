@@ -7,7 +7,9 @@ import { useForm } from '../../hooks/useFormModificarUsuario';
 import { validateFormModificate } from "../../helpers/validateForm";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
-
+import { Link } from "react-router-dom";
+import KeyboardBackspaceRoundedIcon from '@mui/icons-material/KeyboardBackspaceRounded';
+import { green } from '@mui/material/colors';
 
   export const ModificarUsuario = (props) => {
 
@@ -48,8 +50,15 @@ import Navbar from "../../Components/Navbar/Navbar";
     } 
 
     return(
-        <div>
+        <main>
             <Navbar></Navbar>
+            <Link to={"/perfilusuario/"}>
+                <button type="button2" className="btnregresar" >
+                <div className="regresar">
+                <KeyboardBackspaceRoundedIcon fontSize="medium" sx={{ color: green[500] }} /> Regresar
+                </div>
+                </button>
+                </Link>
              <div className="ro">
 
              <div className="col"> </div>
@@ -138,6 +147,6 @@ import Navbar from "../../Components/Navbar/Navbar";
                 </div>
             </div>
             
-        </div>
+        </main>
     )
   }

@@ -14,7 +14,7 @@ import Footer from "../../../Components/Footer/Footer";
 import  searchDataService  from "../../../services/search.service";
 
 import { Link } from "react-router-dom";
-import KeyboardBackspaceRoundedIcon from '@mui/icons-material/KeyboardBackspaceRounded';
+import SvgIcon from '@mui/material/SvgIcon';
 import { green } from '@mui/material/colors';
 
 export const BusquedaProducto = () => {
@@ -101,7 +101,13 @@ export const BusquedaProducto = () => {
     color: "#dc3545"
   };
 
-
+  function HomeIcon(props) {
+    return (
+      <SvgIcon {...props}>
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </SvgIcon>
+    );
+  }
 
 
     return (
@@ -115,10 +121,10 @@ export const BusquedaProducto = () => {
     <div className="basecontainer">
      
 
-    <Link to={"/"}>
+    <Link to={"/home/"}>
       <button type="button2" className="btnregresar" >
       <div className="regresar">
-      <KeyboardBackspaceRoundedIcon fontSize="medium" sx={{ color: green[500] }} /> Regresar
+      <HomeIcon fontSize="medium" sx={{ color: green[500] }} /> Inicio
       </div>
       </button>
       </Link>

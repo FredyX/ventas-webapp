@@ -12,6 +12,9 @@ import { useForm } from '../../hooks/useFormProducts';
 import productDataService from "../../services/product.service";
 import Footer from "../../Components/Footer/Footer";
 
+import KeyboardBackspaceRoundedIcon from '@mui/icons-material/KeyboardBackspaceRounded';
+import SvgIcon from '@mui/material/SvgIcon';
+import { green } from '@mui/material/colors';
 
 export const AgregarProducto = (props) => {
   const ColoredLine = ({ color }) => (
@@ -50,6 +53,13 @@ export const AgregarProducto = (props) => {
     color: "#dc3545"
   };
 
+  function HomeIcon(props) {
+    return (
+      <SvgIcon {...props}>
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </SvgIcon>
+    );
+  }
 
   return (
     <main>
@@ -63,6 +73,21 @@ export const AgregarProducto = (props) => {
         </nav>
       <ColoredLine color="black" />
       </div>
+      <Link to={"/"}>
+      <button type="button2" className="btnregresarAGG" >
+      <div className="regresar">
+      <HomeIcon fontSize="medium" sx={{ color: green[500] }} /> Inicio
+      </div>
+      </button>
+
+      </Link>
+      <Link to={"/perfilusuario/"}>
+      <button type="button2" className="btnregresarAGG" >
+      <div className="regresar">
+      <KeyboardBackspaceRoundedIcon fontSize="medium" sx={{ color: green[500] }} /> Perfil
+      </div>
+      </button>
+      </Link>
       <br />
         <div className="grid-container">
           <div className="grid-item tall">
