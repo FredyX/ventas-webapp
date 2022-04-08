@@ -54,8 +54,7 @@ import  searchDataService  from "../../../services/search.service";
       console.log(response);
       if (response.status === 200) {
         const { data } = response.data;
-        setBusquedaProducto(data);
-        console.log(data);
+        setBusquedaProducto(data);        
       }
     }
     
@@ -176,7 +175,7 @@ import  searchDataService  from "../../../services/search.service";
  
     <div className={styles.ProductoContainer}>
         <div className={styles.grid}> 
-          {producto.map((producto) => {
+          {BusquedaProducto.map((producto) => {
             return (
               <div key={producto.id} className={styles.cards}>
                 
