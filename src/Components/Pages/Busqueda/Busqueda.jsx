@@ -13,6 +13,10 @@ import styles from "../../Pages/ProductosUsuario/ProductosUsuario.module.scss";
 import Footer from "../../../Components/Footer/Footer";
 import  searchDataService  from "../../../services/search.service";
 
+import { BsArrowRight, BsSearch } from "react-icons/bs";
+
+
+
 export const BusquedaProducto = () => {
     const [BusquedaProducto, setBusquedaProducto] = useState([]);
     const [stateDepartments, setDepartaments] = useState([]);
@@ -98,92 +102,117 @@ export const BusquedaProducto = () => {
   };
 
     return (
+      
       <main>
         <Navbar setSearch={setSearch} handledKeyPress={handledKeyPress}></Navbar>
+          
         <div className="grid-container">
           <div className="grid-item tall">
-          <div className="resultados-form1">
-    <div className={styles.ProductoContainer}>
-        <div className={styles.grid}> 
-          {producto.map((producto) => {
-            return (
-              <div key={producto.id} className={styles.cards}>
-                
-                <Card
-                    info={{
-                    id: producto.id,
-                    imageSource: `http://localhost:3001/${producto.image_name}`,
-                    descripcion: producto.product_description,
-                    estado: getEstado(producto.state),
-                    fecha: producto.date_added,
-                    estadoVenta: producto.is_selling,
-                    departamento: producto.department_name,
-                    precio: producto.price,
-                    titulo: producto.product_name,
-                    score: producto.score,
-                    nombreUsuario: producto.first_name+" "+producto.last_name,
-                  }}
-                />
-                </div>
-              
-            );
-          })}
-        </div>
-        </div>
+          
+    <div className="basecontainer">
+ 
+    <div className="headerfiltro">Filtros</div>
+    <filtros>
+      <ul>
+        <li>
+        <div className="busqueda-form">
+
+
+<ColoredLine color="green" />
+
+<div className="subheader">Categorías</div>
+
+    <CheckCategorias 
+      passCategoriesChange={handleCategories}              
+    /> 
+
+</div>
+<ColoredLine color="green" />
+        </li>
+       
+       
+      </ul>
+
+      <ul >
+        <li>
+         
+<ColoredLine color="green" />
+
+<div className="busqueda-form">
+<div className="subheader">Departamento</div>
+
+    <CheckDepartamento setDepartaments={setDepartaments} /> 
+    <ColoredLine color="green" />
+</div>
+        </li>
+       
+      </ul>
+
+      <ul >
+        <li>
+        <div className='base-containersearch'>
+
+<ColoredLine color="green" />
+
+<div className="busqueda-form1">
+
+<span>Puntuación del vendedor</span>
+<PuntuacionVendedor setScore={setScore}/> 
+<ColoredLine color="green" />
+
+</div>
+
+
+</div>
+        </li>
+        
+      </ul>
+    </filtros>
     </div>
+          <div className="resultados-form1">
+              <div className={styles.ProductoContainer}>
+                  <div className={styles.grid}> 
+                    {producto.map((producto) => {
+                      return (
+                        <div key={producto.id} className={styles.cards}>
+                          
+                          <Card
+                              info={{
+                              id: producto.id,
+                              imageSource: `http://localhost:3001/${producto.image_name}`,
+                              descripcion: producto.product_description,
+                              estado: getEstado(producto.state),
+                              fecha: producto.date_added,
+                              estadoVenta: producto.is_selling,
+                              departamento: producto.department_name,
+                              precio: producto.price,
+                              titulo: producto.product_name,
+                              score: producto.score,
+                              nombreUsuario: producto.first_name+" "+producto.last_name,
+                            }}
+                          />
+                          </div>
+                        
+                      );
+                    })}
+                  </div>
+              </div>
+
+        </div>
             <div className="columns1">
 
-    <div className='base-containersearch'>
-
-        <div className="busqueda-form">
-        <div className="header">Filtros</div>
-
-        <ColoredLine color="green" />
-
-        <div className="subheader">Categorías</div>
-
-            <CheckCategorias 
-              passCategoriesChange={handleCategories}              
-            /> 
-
-        </div>
-
-        <ColoredLine color="green" />
-
-        <div className="busqueda-form">
-        <div className="subheader">Departamento</div>
-        
-            <CheckDepartamento setDepartaments={setDepartaments} /> 
-        
-        </div>
-        
-        <ColoredLine color="green" />
-
-        <div className="busqueda-form1">
-       
-        <span>Puntuación del vendedor</span>
-        <PuntuacionVendedor setScore={setScore}/> 
-        <ColoredLine color="green" />
-        
-        </div>
-   
-
-    </div>
 
 
-    <div className="header">Resultados</div>
+
+  
   
     
         <div className='pagination-form'>
+        <div className="header">Resultados</div>
         <Paginacion setPages={setPages} total={totalPages} handle = {handledKeyPress}/> 
         </div>
-        <div className="grid-item tall">
+       
 
-</div>
-<div className="grid-item tall">
-
-
-</div>
         </div>
        
         </div>
@@ -191,6 +220,7 @@ export const BusquedaProducto = () => {
     </div>
     
     <Footer/>
+
       </main>
 
     )
