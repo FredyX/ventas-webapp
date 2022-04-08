@@ -13,9 +13,9 @@ import styles from "../../Pages/ProductosUsuario/ProductosUsuario.module.scss";
 import Footer from "../../../Components/Footer/Footer";
 import  searchDataService  from "../../../services/search.service";
 
-import { BsArrowRight, BsSearch } from "react-icons/bs";
-
-
+import { Link } from "react-router-dom";
+import KeyboardBackspaceRoundedIcon from '@mui/icons-material/KeyboardBackspaceRounded';
+import { green } from '@mui/material/colors';
 
 export const BusquedaProducto = () => {
     const [BusquedaProducto, setBusquedaProducto] = useState([]);
@@ -101,6 +101,9 @@ export const BusquedaProducto = () => {
     color: "#dc3545"
   };
 
+
+
+
     return (
       
       <main>
@@ -110,7 +113,16 @@ export const BusquedaProducto = () => {
           <div className="grid-item tall">
           
     <div className="basecontainer">
- 
+     
+
+    <Link to={"/"}>
+      <button type="button2" className="btnregresar" >
+      <div className="regresar">
+      <KeyboardBackspaceRoundedIcon fontSize="medium" sx={{ color: green[500] }} /> Regresar
+      </div>
+      </button>
+      </Link>
+
     <div className="headerfiltro">Filtros</div>
     <filtros>
       <ul>

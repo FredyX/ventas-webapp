@@ -125,24 +125,34 @@
     align-items: flex-start;
 }
 
+.imagenPRODUCTO {
+    
+  height: 100%;
+  width: auto;
+  max-width: 450px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-left: 5px;
+  position: center;
+}
 
-.imageproductform {
-    height: 388px;
-    width: 700px;
+.imageproductoFORMULARIO {
+    height: 350px;
+    width: 500px;
     margin-top: 50px;
     background-color: white;
     padding: 2rem;
     border-radius: 5px;
     outline: solid #c4c4c4;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+    position: center;
 }
 
 .detallevendedorform {
 
   width: 700px;
   margin-bottom: 1px;
-  margin-top: 20px;
+  margin-top: 0px;
   margin-left: 0px;
   margin-right: 20px;
   background-color: white;
@@ -174,30 +184,22 @@
   padding: 2rem;
   border-radius: 5px;
   background-color: #ebe7e7;
-  height: 235px;
-}
-
-.image {
-    
-    height: 100%;
-    width: auto;
-    max-width: 730px;
-    margin-right: 5px;
-    margin-top: 5px;
-    margin-left: 5px;
-   
+  height: 310px;
 }
 
 
-.basecontainer1{
+
+
+.basecontainerDETALLE{
   
     width: 100%;
-    height: 388px;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: center;
     background-color: #ffffff;
     margin-bottom: 50px;
+
 }
 
 .basecontainer2{
@@ -213,7 +215,7 @@
 .basecontainer3{
    
     width: 100%;
-    margin-bottom: 300px;
+    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     align-items: left;
