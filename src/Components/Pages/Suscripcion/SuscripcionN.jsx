@@ -90,8 +90,8 @@ export const SuscripcionN = () => {
                       <select name="diapreferencia">
                         <option >Seleccionar día para recibir correo</option>
                         <option value={"L"}>Lunes</option>
-                        <option value={"Ma"}>Martes</option>
-                        <option value={"Mi"}>Miércoles</option>
+                        <option value={"M"}>Martes</option>
+                        <option value={"X"}>Miércoles</option>
                         <option value={"J"}>Jueves</option>
                         <option value={"V"}>Viernes</option>
                         <option value={"S"}>Sábado</option>
@@ -155,13 +155,11 @@ export const SuscripcionN = () => {
                             column
                             aria-labelledby="prioridad"
                             name="prioridadCorreo"
-                            sx={{
-                                fontSize: 5,
-                              }}
+                            
                         >
-                            <FormControlLabel  value="female" control={<Radio size="small" />} label="Precio del producto" />
-                            <FormControlLabel value="male" control={<Radio size="small"/>} label="Puntuación del vendedor" />
-                            <FormControlLabel  value="other" control={<Radio size="small"/>} label="Antiguedadd de la publicación" />
+                            <FormControlLabel  value="P" control={<Radio size="small" />} label="Precio del producto" />
+                            <FormControlLabel value="V" control={<Radio size="small"/>} label="Puntuación del vendedor" />
+                            <FormControlLabel  value="A" control={<Radio size="small"/>} label="Antiguedadd de la publicación" />
                         </RadioGroup>
                     </FormControl>
                     </div>

@@ -47,11 +47,10 @@ export const MiSuscripcion = () => {
         color: "#dc3545"
       };
 
-      
+      const navigate = useNavigate();
   const MensajeEliminar = (e) => {
     Swal.fire({
-      title: '¿Estas seguro que deseas eliminar el perfil?',
-      text: "Si no estas seguro, click en cancelar",
+      title: '¿Estas seguro que deseas eliminar la suscripción?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#12b700',
@@ -61,13 +60,12 @@ export const MiSuscripcion = () => {
       if (result.isConfirmed) {
      
         Swal.fire({
-          title: 'Eliminado',
-          text: "Tu perfil ha sido eliminado!",
+          title: 'Suscripción eliminada',
           icon: 'success',
           confirmButtonColor: '#12b700',
           confirmButtonText: 'Listo'
         });
-        
+        navigate("/perfilusuario/");
       }
     })
   }
