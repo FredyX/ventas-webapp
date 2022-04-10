@@ -15,6 +15,8 @@ import { RecuperacionCuenta } from "./Components/Pages/RecuperacionCuenta/Recupe
 import { CambioContrasena } from "./Components/Pages/RecuperacionCuenta/CambioContrasena";
 import { BusquedaProducto } from "./Components/Pages/Busqueda/Busqueda";
 import ProductosUsuario from "./Components/Pages/ProductosUsuario/ProductosUsuario";
+import { MiSuscripcion } from "./Components/Pages/Suscripcion/MiSuscripcion";
+import { SuscripcionN } from "./Components/Pages/Suscripcion/SuscripcionN";
 
 
 //semana 1
@@ -37,6 +39,8 @@ function App() {
       <Route path="/iniciosesion/recuperacioncuenta/cambiocontrasena/" element={<CambioContrasena/>} />
       <Route path="/busqueda/" element= {<BusquedaProducto />} />   
       <Route path="/productosusuario/" element= {<ProductosUsuario />} />
+      <Route path="/perfilusuario/Suscripcion/" element= {<MiSuscripcion />} />
+      <Route path="/perfilusuario/Suscripcion/SuscripcionN" element= {<SuscripcionN />} />
       </Routes>
 
 

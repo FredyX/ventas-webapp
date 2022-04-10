@@ -3,16 +3,16 @@ import styled from 'styled-components';
 import "./PerfilUsuario.scss";
 import userDataService from "../../../services/users.service";
 import departmentsService from "../../../services/departments.service";
-
 import { useNavigate } from 'react-router-dom';
-
 import Navbar from "../../Navbar/Navbar"
 import { NavLink, Link } from "react-router-dom";
 import styles from "../../Navbar/Navbar.module.scss";
 import Swal from 'sweetalert2';
 import AuthService from "../../../services/auth.service";
 import Footer from "../../Footer/Footer";
-
+import SvgIcon from '@mui/material/SvgIcon';
+import { green } from '@mui/material/colors';
+import "./PerfilUsuario.scss";
 
 const Column = styled.div`
   display: flex;
@@ -109,21 +109,34 @@ export const PerfilUsuario = () => {
     setDepartamento(departamento.department_name);
   }
 
+  function HomeIcon(props) {
+    return (
+      <SvgIcon {...props}>
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </SvgIcon>
+    );
+  }
+
 
   return (
-    <div>
+    <main>
       <div className={styles.navbar_container}>
         <nav>
           {/* LOGO */}
           <div className={styles.brand_logob}>
             <Link to="/">SWAPPER</Link>
-
           </div>
-
-
         </nav>
         <ColoredLine color="black" />
-      </div>
+
+        <Link to={"/"}>
+        <button type="button2" className="btnHOMEperfil" >
+        <div className="regresar">
+        <HomeIcon fontSize="medium" sx={{ color: green[500] }} /> Inicio
+        </div>
+        </button>
+        </Link>
+        </div>
 
       <Row className="ro">
         <Column className="col">
@@ -185,10 +198,11 @@ export const PerfilUsuario = () => {
                 </Link>
               </div>
               <div className="formbotons" >
+              <Link to={"/perfilusuario/suscripcion/"}>
                 <button type="button" className="btn7">
                   Suscripciones
                 </button>
-
+                </Link>
 
               </div>
               <div className="formbotons" >
@@ -207,7 +221,7 @@ export const PerfilUsuario = () => {
         </Column>
       </Row>
       <Footer />
-    </div>
+    </main>
 
   )
 }   
