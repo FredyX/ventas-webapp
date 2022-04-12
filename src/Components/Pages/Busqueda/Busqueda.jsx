@@ -119,71 +119,48 @@ export const BusquedaProducto = () => {
           <div className="grid-item tall">
           
     <div className="basecontainer">
-     
-
-    <Link to={"/home/"}>
+    <Link to={"/"}>
       <button type="button2" className="btnregresar" >
       <div className="regresar">
       <HomeIcon fontSize="medium" sx={{ color: green[500] }} /> Inicio
       </div>
       </button>
       </Link>
-
     <div className="headerfiltro">Filtros</div>
     <filtros>
       <ul>
         <li>
         <div className="busqueda-form">
-
-
-<ColoredLine color="green" />
-
-<div className="subheader">Categorías</div>
-
-    <CheckCategorias 
-      passCategoriesChange={handleCategories}              
-    /> 
-
-</div>
-<ColoredLine color="green" />
+        <ColoredLine color="green" />
+        <div className="subheader">Categorías</div>
+            <CheckCategorias 
+              passCategoriesChange={handleCategories}              
+            /> 
+        </div>
+        <ColoredLine color="green" />
         </li>
-       
-       
       </ul>
-
       <ul >
         <li>
-         
-<ColoredLine color="green" />
-
-<div className="busqueda-form">
-<div className="subheader">Departamento</div>
-
-    <CheckDepartamento setDepartaments={setDepartaments} /> 
-    <ColoredLine color="green" />
-</div>
+        <ColoredLine color="green" />
+        <div className="busqueda-form">
+        <div className="subheader">Departamento</div>
+            <CheckDepartamento setDepartaments={setDepartaments} /> 
+            <ColoredLine color="green" />
+        </div>
         </li>
-       
       </ul>
-
       <ul >
         <li>
         <div className='base-containersearch'>
-
-<ColoredLine color="green" />
-
-<div className="busqueda-form1">
-
-<span>Puntuación del vendedor</span>
-<PuntuacionVendedor setScore={setScore}/> 
-<ColoredLine color="green" />
-
-</div>
-
-
-</div>
+          <ColoredLine color="green" />
+          <div className="busqueda-form1">
+          <span>Puntuación del vendedor</span>
+          <PuntuacionVendedor setScore={setScore}/> 
+          <ColoredLine color="green" />
+          </div>
+          </div>
         </li>
-        
       </ul>
     </filtros>
     </div>

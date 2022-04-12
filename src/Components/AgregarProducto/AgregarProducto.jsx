@@ -11,7 +11,6 @@ import { validateFormProducts } from "../../helpers/validateForm";
 import { useForm } from '../../hooks/useFormProducts';
 import productDataService from "../../services/product.service";
 import Footer from "../../Components/Footer/Footer";
-
 import KeyboardBackspaceRoundedIcon from '@mui/icons-material/KeyboardBackspaceRounded';
 import SvgIcon from '@mui/material/SvgIcon';
 import { green } from '@mui/material/colors';
@@ -73,13 +72,13 @@ export const AgregarProducto = (props) => {
         </nav>
       <ColoredLine color="black" />
       </div>
+
       <Link to={"/"}>
       <button type="button2" className="btnregresarAGG" >
       <div className="regresar">
       <HomeIcon fontSize="medium" sx={{ color: green[500] }} /> Inicio
       </div>
       </button>
-
       </Link>
       <Link to={"/perfilusuario/"}>
       <button type="button2" className="btnregresarAGG" >
@@ -88,6 +87,7 @@ export const AgregarProducto = (props) => {
       </div>
       </button>
       </Link>
+      
       <br />
         <div className="grid-container">
           <div className="grid-item tall">
@@ -162,7 +162,7 @@ export const AgregarProducto = (props) => {
                     <PinnedSubheaderList passCategoriesChange={handleCategories} />
                     <div className="caja">
                       <select name="department_id" value={stateForm.department_id} onChange={handleInputChange}>
-                        <option >Seleccione la ubicacio del producto</option>
+                        <option >Seleccione la ubicación del producto</option>
                         <option value={1}>Atlántida</option>
                         <option value={2}>Choluteca</option>
                         <option value={3}>Colón</option>
