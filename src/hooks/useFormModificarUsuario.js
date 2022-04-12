@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthService from '../services/auth.service';
+import { validateFormModificate } from '../helpers/validateForm';
 
-export const useForm = (form = {},validateForm, userDataService) => {
-	
+export const useForm = (form = {},validateFormModificate, userDataService) => {
 	const [stateForm, setForm] = useState(form);
 	const [errors, setErrors] = useState({});
 	const navigate = useNavigate();
@@ -17,7 +17,7 @@ export const useForm = (form = {},validateForm, userDataService) => {
 
 	const handleBlur = (e) => {
 		handleInputChange(e);
-		//setErrors(validateForm(stateForm));
+		setErrors(validateFormModificate(stateForm));
 	}
 
 	const handleSubmit = (e) => {
@@ -33,8 +33,7 @@ export const useForm = (form = {},validateForm, userDataService) => {
 						first_name: '',
 						last_name: '',
 						user_email: '',
-						department_id: '',
-						profile_picture_id : ''
+						department_id: ''
 					});
 					navigate(0);
 				})

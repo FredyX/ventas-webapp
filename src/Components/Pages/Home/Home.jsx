@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from "../../Navbar/Navbar";
-import Card from "../../Tarjeta/Card";
 import styles from "../../Tarjeta/Card.module.scss";
 import Footer from "../../Footer/Footer";
 
@@ -9,7 +8,29 @@ export const Home = () => {
     <main>
       <Navbar></Navbar>
       <div className={styles.Card}>
-      <Card/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
       </div>
       <Footer />
     </main>

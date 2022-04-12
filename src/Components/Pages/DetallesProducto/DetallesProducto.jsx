@@ -6,16 +6,13 @@ import productDataService from "../../../services/product.service"
 // import usersService from "../../../services/users.service";
 // import categoriesService from "../../../services/categories.service";
 // import departmentService from "../../../services/departments.service";
-import Navbar from "../../Navbar/Navbar"
-import { NavLink, Link } from "react-router-dom";
-import Box from '@mui/material/Box';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { TextField } from "@mui/material";
+
 import styles from "../../Navbar/Navbar.module.scss";
-import { BsArrowRight, BsSearch } from "react-icons/bs";
-import { blueGrey, green, grey, lightGreen } from "@mui/material/colors";
 import Footer from "../../Footer/Footer";
 import { numberWithCommas } from "../../../helpers/numbers";
+import { Link } from "react-router-dom";
+import KeyboardBackspaceRoundedIcon from '@mui/icons-material/KeyboardBackspaceRounded';
+import { green } from '@mui/material/colors';
 
 
 const Column = styled.div`
@@ -110,34 +107,34 @@ export const DetallesProducto = () => {
     return (
         <main> 
         <div>
-               <div className={styles.navbar_container}>
+        <div className={styles.navbar_container}>
       <nav>
         {/* LOGO */}
         <div className={styles.brand_logob}>
           <Link to="/">SWAPPER</Link>
-          
-        </div>          
-          <div className="Buscar" >
-          <Box sx={{  width: 300, backgroundColor: 'grey', display: 'flex', alignItems: 'flex-end' }}>
-        <SearchOutlinedIcon sx={{ color: "green", mr: 1, my: 0.5 }} />
-        <TextField id="Buscar"  fullWidth label="Buscar" variant="standard" color="success" focused/>
-      </Box>
-      {}
-      </div>
-                  {/* TEMPORAL ----- Agregar producto */}
-                  <Link to="/AgregarProducto/" className={styles.login_containerb}>
-        <span style={{ color: "#000000" }}>Agregar producto</span>
-        <BsArrowRight style={{ color: "#000000" }} />
-        </Link>  
-      </nav>
+        </div>
+        </nav>
       <ColoredLine color="black" />
-    </div>
+
+        <div>
+          <br />
+        </div>
+
+      <Link to={"/busqueda/"}>
+      <button type="button2" className="btnregresar" >
+      <div className="regresar">
+      <KeyboardBackspaceRoundedIcon fontSize="medium" sx={{ color: green[500] }} /> Regresar
+      </div>
+      </button>
+      </Link>
+
+      </div>
             <Row className="ro">
                 <Column className="col">
                 <div className="basecontainer4" >
-                    <div className="basecontainer1">
-                        <div className="imageproductform" >
-                            <img src={imagen} className="image"/>
+                    <div className="basecontainerDETALLE">
+                        <div className="imageproductoFORMULARIO" >
+                            <img src={imagen} className="imagenPRODUCTO"/>
                         </div>
                     </div>
                     <div className="basecontainer3">

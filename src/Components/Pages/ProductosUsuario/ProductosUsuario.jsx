@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ProductosUsuario.module.scss";
 import Card from "../../../Components/Tarjeta/Card";
-import { useSearchParams, useNavigate } from "react-router-dom";
 import productDataService from "../../../services/product.service";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../Navbar/Navbar";
 import authService from "../../../services/auth.service";
 import Swal from 'sweetalert2';
+import {useNavigate} from 'react-router-dom';
+
+import { Link } from "react-router-dom";
+import KeyboardBackspaceRoundedIcon from '@mui/icons-material/KeyboardBackspaceRounded';
+import { green } from '@mui/material/colors';
 
 const setState = (state, callback) => {
   if (state === "N") {
@@ -49,10 +53,6 @@ const ProductosUsuario = () => {
     })
   }
 
-
-
-
-  const [searchParams, setSearchParams] = useSearchParams();
   const [ProductosUsuario, setProductosUsuario] = useState([]);
   const navigate = useNavigate();
 
@@ -63,8 +63,7 @@ const ProductosUsuario = () => {
 
   const ProductsApi = async () => {
     let id = authService.getCurrentUser().user.user_id;
-    let page = searchParams.get('page')
-    const response = await productDataService.getProductUser(id, page)
+    const response = await productDataService.getProductUser(id)
     if (response.status === 200) {
       const { data } = response.data;
       setProductosUsuario(data);
@@ -87,6 +86,15 @@ const ProductosUsuario = () => {
     <main>
       <Navbar></Navbar>
       <section className={styles.ProductosUsuario}>
+        
+    <Link to={"/perfilusuario/"}>
+      <button type="button2" className="btnregresar" >
+      <div className="regresar">
+      <KeyboardBackspaceRoundedIcon fontSize="medium" sx={{ color: green[500] }} /> Regresar
+      </div>
+      </button>
+      </Link>
+
         <div className={styles.ProductosUsuario_title}>
           <h1>Productos</h1>
         </div>

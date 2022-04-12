@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import "./PerfilUsuario.scss";
 import userDataService from "../../../services/users.service";
 import departmentsService from "../../../services/departments.service";
-import profile_picturesService from "../../../services/profile_pictures.service";
 
 import { useNavigate } from 'react-router-dom';
 
@@ -12,6 +11,7 @@ import { NavLink, Link } from "react-router-dom";
 import styles from "../../Navbar/Navbar.module.scss";
 import Swal from 'sweetalert2';
 import AuthService from "../../../services/auth.service";
+import Footer from "../../Footer/Footer";
 
 
 const Column = styled.div`
@@ -84,7 +84,6 @@ export const PerfilUsuario = () => {
   const [score, setScore] = useState('');
   const [is_company, setIs_Company] = useState(' ');
   const [departamento, setDepartamento] = useState(' ');
-  const [imagen, setImagen] = useState('');
 
   useEffect(() => {
     UsersApi();
@@ -108,14 +107,6 @@ export const PerfilUsuario = () => {
     const response2 = await departmentsService.get(user.department_id);
     const departamento = response2.data;
     setDepartamento(departamento.department_name);
-
-    const response3 = await profile_picturesService.get(user.profile_picture_id);
-    const pp = response3.data;
-
-    const urlCreator = window.URL || window.webkitURL;
-    const imageUrl = urlCreator.createObjectURL(pp);
-
-    setImagen(imageUrl);
   }
 
 
@@ -138,11 +129,6 @@ export const PerfilUsuario = () => {
         <Column className="col">
 
           <div className="basecontainer2" >
-
-            <div className="imageproductform1" >
-              <img src={imagen} className="image" />
-            </div>
-
             <div className="detallevendedorform1" >
               <p className="score">Puntuación: {score}</p>
             </div>
@@ -220,6 +206,7 @@ export const PerfilUsuario = () => {
 
         </Column>
       </Row>
+      <Footer />
     </div>
 
   )
