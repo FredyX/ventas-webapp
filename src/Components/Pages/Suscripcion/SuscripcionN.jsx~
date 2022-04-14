@@ -16,9 +16,8 @@ import FormControl from '@mui/material/FormControl';
 import suscriptionsDataService from "../../../services/suscriptions.service";
 
 export const SuscripcionN = () => {    
-    const [disable, setDisable] = useState(false);
     const [dia, setDia] = useState(null);
-    const [puntuacion, setPuntacion] = useState(1);
+    const [puntuacion, setPuntacion] = useState(null);
     let re = new RegExp('"user_id":[0-9]{1,}');
 	  let cat = localStorage.getItem('user');
     let arreglo = re.exec(cat);
@@ -30,7 +29,8 @@ export const SuscripcionN = () => {
       setCheckBox,      
       stateCheckBox,
       stateSelect,
-      stateRadio,                 
+      stateRadio,
+      formatear           
       } = useForm(validateFormProducts, suscriptionsDataService);
       
       const handleChangeDia = ({target}) => {
@@ -41,26 +41,16 @@ export const SuscripcionN = () => {
         setPuntacion(target.value);
       }
       const handledSubmit = async (e)=>{
-        e.preventDefault();
         const data = {
           user_id,
           department_id:stateSelect,
           order_prior: stateRadio,
           min_seller_score: puntuacion,
           preferred_day: dia
-        }
-        setDisable(true);               
-        const {data:suscription} = await suscriptionsDataService.addSuscrip(data);                
-        const {data:status}  = await suscriptionsDataService.addSuscripCategories({          
-          suscription_id: suscription.id,
-          categorie_id: stateCheckBox
-        });        
-        if(status.status==="Ok"){
-          alert('La suscripción se realizo correctamente');
-        }else{
-          alert('Error en al intentar suscribirse');
-          setDisable(true);
-        }
+        }               
+        const {data:r} = await suscriptionsDataService.add(data);
+        console.log('hola');
+        console.log(r);
       }
       
       const ColoredLine = ({ color }) => (
@@ -190,14 +180,9 @@ export const SuscripcionN = () => {
                     </FormControl>
                     </div>
                     <div className="formSB" >
-                    <button 
-                      type="button"
-                      className="btn"
-                      disabled={disable}
-                      onClick={handledSubmit}                      
-                    >
+                    <button type="button" className="btn" onClick={handledSubmit}>
                         Confirmar
-                    </button>
+                      </button>
                       <div>
                       <Link to={"/perfilusuario/suscripcion/"}>
                       <button type="button" className="btn2">
