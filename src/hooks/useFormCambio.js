@@ -20,16 +20,18 @@ export const useFormCambio = (inicial, token, user_email, validateForm, userData
 		setErrors(validateForm(stateForm));
 	}
 
-    const handleSubmit = ({target}) => {
+    const handleSubmit = async ({target}) => {
         if(isObjectEmpty(errors)){           
         const {user_password} = stateForm;
-        userDataService.resetPassword(
+        await userDataService.resetPassword(
             {
                 user_password,
                 user_email                
             },token);
 
         }
+
+        alert('Nueva contraseña establecida');
     
     }
 
