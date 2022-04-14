@@ -96,6 +96,18 @@ height: 90px;
     outline: solid #ffffff;
     align-items: center;
   }
+  .formbotons11 {
+
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 20px;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 5px;
+    outline: solid #ffffff;
+    align-items: center;
+  }
 
   .formbotons2 {
     margin-bottom: 5px;
@@ -127,7 +139,6 @@ height: 90px;
     outline: solid #ffffff;
     align-items: center;
   }
-
 .detalleuser {
    width: 100%;
    height: 400px;
@@ -233,7 +244,25 @@ height: 90px;
   }
  
   }
-
+  .btn77 {
+    
+    margin-right: 3px;
+    min-width: 200px;
+    font-size: 21px;
+    padding: 5px 20px;
+  border: 0;
+  color: #5a5a5a;
+  border-radius: 5px;
+  background-color: #b7ffaf;
+  cursor: pointer;
+  &:hover {
+  
+    color: #5a5a5a;
+  background-color: #fefffe;
+    outline: solid rgb(18, 183, 0);
+  }
+ 
+  }
   .btn6 {
     
     margin-right: 3px;

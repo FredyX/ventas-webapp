@@ -17,6 +17,7 @@ import { BusquedaProducto } from "./Components/Pages/Busqueda/Busqueda";
 import ProductosUsuario from "./Components/Pages/ProductosUsuario/ProductosUsuario";
 import { MiSuscripcion } from "./Components/Pages/Suscripcion/MiSuscripcion";
 import { SuscripcionN } from "./Components/Pages/Suscripcion/SuscripcionN";
+import { PerfilAdmin } from "./Components/Pages/Administrador/PerfilAdmin";
 
 
 //semana 1
@@ -41,6 +42,7 @@ function App() {
       <Route path="/productosusuario/" element= {<ProductosUsuario />} />
       <Route path="/perfilusuario/Suscripcion/" element= {<MiSuscripcion />} />
       <Route path="/perfilusuario/Suscripcion/SuscripcionN" element= {<SuscripcionN />} />
+      <Route path="/perfiladmin/" element= {<PerfilAdmin />} />
       </Routes>
 
 
