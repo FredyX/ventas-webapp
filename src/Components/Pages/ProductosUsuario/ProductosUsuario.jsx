@@ -87,13 +87,14 @@ const ProductosUsuario = () => {
       <Navbar></Navbar>
       <section className={styles.ProductosUsuario}>
         
-    <Link to={"/perfilusuario/"}>
+
       <button type="button2" className="btnregresar" >
       <div className="regresar">
-      <KeyboardBackspaceRoundedIcon fontSize="medium" sx={{ color: green[500] }} /> Regresar
+      <KeyboardBackspaceRoundedIcon  fontSize="medium" sx={{ color: green[500] }} />  <a href="javascript:history.back()">  Regresar
+      </a>
       </div>
       </button>
-      </Link>
+     
 
         <div className={styles.ProductosUsuario_title}>
           <h1>Productos</h1>

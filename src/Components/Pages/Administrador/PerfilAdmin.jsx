@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
-import "./PerfilUsuario.scss";
 import userDataService from "../../../services/users.service";
 import departmentsService from "../../../services/departments.service";
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +11,7 @@ import AuthService from "../../../services/auth.service";
 import Footer from "../../Footer/Footer";
 import SvgIcon from '@mui/material/SvgIcon';
 import { green } from '@mui/material/colors';
-import "./PerfilUsuario.scss";
+import "./PerfilAdmin.scss";
 
 const Column = styled.div`
   display: flex;
@@ -35,7 +34,7 @@ const Row = styled.div`
 
 
 
-export const PerfilUsuario = () => {
+export const PerfilAdmin = () => {
   const navigate = useNavigate();
 
   const MensajeEliminar = (e) => {
@@ -140,13 +139,7 @@ export const PerfilUsuario = () => {
         <div className="titulo1">Mi perfil</div>
 
       <Row className="ro">
-      <Column className="col">
 
-<div className="basecontainer2" >
-  
-
-</div>
-</Column>
         <Column className="col">
           <div className="basecontainer5">
             <div className="formbotons3" >
@@ -226,13 +219,52 @@ export const PerfilUsuario = () => {
      
           </div>
         </Column>
-        <Column className="col">
-
-<div className="basecontainer2" >
   
+        <Column className="col">
+          <div className="basecontainer5">
+            <div className="formbotons3" >
+              <div className="formbotons11" >
 
-</div>
-</Column>
+                <Link to={""}>
+                  <button type="button" className="btn77">
+                    Reportes
+                  </button>
+                </Link>
+              </div>
+              <div className="formbotons11" >
+                <Link to={""}>
+                  <button type="button" className="btn77">
+                   Denuncias
+                  </button>
+                </Link>
+              </div>
+              <div className="formbotons11" >
+              <Link to={""}>
+                <button type="button" className="btn77">
+                  Categorías
+                </button>
+                </Link>
+
+              </div>
+              <div className="formbotons11" >
+                <button type="button" className="btn77" >
+                  Publicaciones
+                </button>
+              </div>
+              <div className="formbotons11" >
+              <Link to={""}>
+                <button type="button" className="btn77">
+                  Usuarios
+                </button>
+                </Link>
+
+              </div>
+            </div>
+
+          </div>
+
+        </Column>
+        
       </Row>
       <Footer />
     </main>

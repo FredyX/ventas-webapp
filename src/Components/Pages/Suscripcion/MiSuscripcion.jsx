@@ -136,13 +136,12 @@ export const MiSuscripcion = () => {
                 <ColoredLine color="black" />
             </div>
 
-            <Link to={"/perfilusuario/"}>
+        
                 <button type="button2" className="btnregresarAGG" >
                 <div className="regresar">
-                <KeyboardBackspaceRoundedIcon fontSize="medium" sx={{ color: green[500] }} /> Regresar
-                </div>
+                <KeyboardBackspaceRoundedIcon  fontSize="medium" sx={{ color: green[500] }} />  <a href="javascript:history.back()">  Regresar
+      </a> </div>
                 </button>
-            </Link>
 
         <div className="basecontainerMisSus" > 
        

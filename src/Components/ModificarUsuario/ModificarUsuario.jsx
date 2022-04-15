@@ -52,13 +52,11 @@ import { green } from '@mui/material/colors';
     return(
         <main>
             <Navbar></Navbar>
-            <Link to={"/perfilusuario/"}>
                 <button type="button2" className="btnregresar" >
                 <div className="regresar">
-                <KeyboardBackspaceRoundedIcon fontSize="medium" sx={{ color: green[500] }} /> Regresar
-                </div>
+                <KeyboardBackspaceRoundedIcon  fontSize="medium" sx={{ color: green[500] }} />  <a href="javascript:history.back()">  Regresar
+      </a></div>
                 </button>
-                </Link>
              <div className="ro">
 
              <div className="col"> </div>
