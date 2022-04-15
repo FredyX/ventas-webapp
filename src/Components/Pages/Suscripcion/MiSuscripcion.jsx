@@ -14,6 +14,7 @@ import userDataService from "../../../services/users.service";
 import departmentsService from "../../../services/departments.service";
 import { useNavigate } from 'react-router-dom';
 import AuthService from "../../../services/auth.service";
+import suscriptionsDataService from "../../../services/suscriptions.service";
 import Swal from 'sweetalert2';
 
 export const MiSuscripcion = () => {
@@ -48,29 +49,7 @@ export const MiSuscripcion = () => {
       };
 
       const navigate = useNavigate();
-  const MensajeEliminar = (e) => {
-    Swal.fire({
-      title: '¿Estas seguro que deseas eliminar la suscripción?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#12b700',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, deseo eliminarlo!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-     
-        Swal.fire({
-          title: 'Suscripción eliminada',
-          icon: 'success',
-          confirmButtonColor: '#12b700',
-          confirmButtonText: 'Listo'
-        });
-        navigate("/perfilusuario/");
-      }
-    })
-  }
-
-    
+  
 
   const [id, setId] = useState(0);
   const [first_name, setFirst_Name] = useState('');
@@ -78,14 +57,45 @@ export const MiSuscripcion = () => {
   const [score, setScore] = useState('');
   const [is_company, setIs_Company] = useState(' ');
   const [departamento, setDepartamento] = useState(' ');
-
+  const [dia, setDia] = useState(' ');
+  const [categorias, setCategorias] = useState(' ');
+  const [puntuacion,setPuntacion] = useState(' ');
+  const [prioridad, setPrioridad] = useState(' ');
+  const [departs, setDeparts] = useState(' ');
   useEffect(() => {
     UsersApi();
-  }, [])
+  }, []);
 
+  const MensajeEliminar = (e) => {    
+    Swal.fire({
+      title: '¿Estas seguro que deseas eliminar la suscripción?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#12b700',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, deseo eliminarlo!'
+    }).then( async(result) => {
+      if (result.isConfirmed) {
+        const idLogged = AuthService.getCurrentUser().user.user_id;
+        const {data} = await suscriptionsDataService.getSubId(idLogged);        
+        const t = await suscriptionsDataService.deleteSuscrip(data.id);            
+        console.log(t);
+        Swal.fire({
+          title: 'Suscripción eliminada',
+          icon: 'success',
+          confirmButtonColor: '#12b700',
+          confirmButtonText: 'Listo'
+        });
+        
+        navigate("/perfilusuario/");
+      }
+    })
+  }
 
+//http://localhost:3001/api/suscriptions/suscriptions/6
   const UsersApi = async () => {
     const idLogged = AuthService.getCurrentUser().user.user_id;
+    console.log(idLogged);
     setId(idLogged);
     const response = await userDataService.getProfileModificate(idLogged)
     const user = response.data;
@@ -101,6 +111,15 @@ export const MiSuscripcion = () => {
     const response2 = await departmentsService.get(user.department_id);
     const departamento = response2.data;
     setDepartamento(departamento.department_name);
+    
+    // Actualización
+
+    const {data} = await suscriptionsDataService.getSubId(idLogged);    
+    setPrioridad(data.order_prior);
+    setDia(data.preferred_day);
+    setPuntacion(data.min_seller_score);
+    setCategorias(data.categorie_name);
+    setDeparts(data.department_name);
   }
 
       
@@ -159,23 +178,23 @@ export const MiSuscripcion = () => {
         <li>
         <div className="formdatos" >
           <div className="formdatos" >
-            <p className="first_name">Categorías:</p>
+            <p className="first_name">Categorías: {categorias}</p>
           </div>
 
           <div className="formdatos" >
-            <p className="last_name">Día para recibir correo:</p>
+            <p className="last_name">Día para recibir correo: {dia}</p>
           </div>
 
           <div className="formdatos" >
-            <p className="is_company">Departamento: </p>
+            <p className="is_company">Departamento: {departs}</p>
           </div>
 
           <div className="formdatos" >
-            <p className="departamento">Puntuación mínima del vendedor:</p>
+            <p className="departamento">Puntuación mínima del vendedor: {puntuacion}</p>
           </div>
 
           <div className="formdatos" >
-            <p className="departamento">Prioridad: </p>
+            <p className="departamento">Prioridad: {prioridad}</p>
           </div>
 
           </div>
@@ -195,9 +214,7 @@ export const MiSuscripcion = () => {
                   <button type="button" className="btnES" onClick={MensajeEliminar}>
                       Eliminar suscripción
                     </button>
-                  </div>
-                  
-             
+                  </div>                               
         </li>
       </ul>
     </styleColums>

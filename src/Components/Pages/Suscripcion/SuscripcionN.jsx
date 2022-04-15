@@ -14,6 +14,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import suscriptionsDataService from "../../../services/suscriptions.service";
+import AuthService from "../../../services/auth.service";
 
 export const SuscripcionN = () => {    
     const [disable, setDisable] = useState(false);
@@ -26,13 +27,31 @@ export const SuscripcionN = () => {
     console.log(user_id);
   const {                    
       handleSelect,
-      handleClickRadioButton,      
+      handleClickRadioButton,
+      setRadio,
+      setSelect,
       setCheckBox,      
       stateCheckBox,
       stateSelect,
       stateRadio,                 
       } = useForm(validateFormProducts, suscriptionsDataService);
       
+      useEffect(() => {
+        SuscripcionApi();
+      }, []);
+
+      const SuscripcionApi = async () => {
+        const idLogged = AuthService.getCurrentUser().user.user_id;
+        const datos = await suscriptionsDataService.getSubId(idLogged);        
+        const {data} = datos;
+        if(data){          
+          setRadio(data.order_prior);
+          setSelect(data.department_id);
+          setCheckBox(data.categorie_id);
+          setDia(data.preferred_day);
+          setPuntacion(data.min_seller_score);
+        }
+      }
       const handleChangeDia = ({target}) => {
         setDia(target.value);
       }
@@ -49,18 +68,29 @@ export const SuscripcionN = () => {
           min_seller_score: puntuacion,
           preferred_day: dia
         }
-        setDisable(true);               
-        const {data:suscription} = await suscriptionsDataService.addSuscrip(data);                
-        const {data:status}  = await suscriptionsDataService.addSuscripCategories({          
-          suscription_id: suscription.id,
-          categorie_id: stateCheckBox
-        });        
-        if(status.status==="Ok"){
-          alert('La suscripción se realizo correctamente');
+        const idLogged = AuthService.getCurrentUser().user.user_id;
+        const datos = await suscriptionsDataService.getSubId(idLogged);
+        console.log(datos);
+        const {data:dat} = datos;
+        if(dat){          
+          data.id = dat.id;
+          await suscriptionsDataService.updateSuscrip(data);
+          alert('La suscripción fue modificada');
         }else{
-          alert('Error en al intentar suscribirse');
-          setDisable(true);
-        }
+          setDisable(true);               
+          const {data:suscription} = await suscriptionsDataService.addSuscrip(data);                
+          const {data:status}  = await suscriptionsDataService.addSuscripCategories({          
+            suscription_id: suscription.id,
+            categorie_id: stateCheckBox
+          });
+          if(status.status==="Ok"){
+            alert('La suscripción se Creo correctamente');
+          }else{
+            alert('Error en al intentar suscribirse');
+            setDisable(true);
+          }
+
+        }                        
       }
       
       const ColoredLine = ({ color }) => (
