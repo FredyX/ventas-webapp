@@ -18,6 +18,7 @@ import ProductosUsuario from "./Components/Pages/ProductosUsuario/ProductosUsuar
 import { MiSuscripcion } from "./Components/Pages/Suscripcion/MiSuscripcion";
 import { SuscripcionN } from "./Components/Pages/Suscripcion/SuscripcionN";
 import { PerfilAdmin } from "./Components/Pages/Administrador/PerfilAdmin";
+import { Reportes } from "./Components/Pages/Administrador/Reportes";
 
 
 //semana 1
@@ -43,6 +44,7 @@ function App() {
       <Route path="/perfilusuario/Suscripcion/" element= {<MiSuscripcion />} />
       <Route path="/perfilusuario/Suscripcion/SuscripcionN" element= {<SuscripcionN />} />
       <Route path="/perfiladmin/" element= {<PerfilAdmin />} />
+      <Route path="/perfiladmin/reportes" element= {<Reportes />} />
       </Routes>
 
 

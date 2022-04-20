@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import AuthService from "../../../services/auth.service";
 import suscriptionsDataService from "../../../services/suscriptions.service";
 import Swal from 'sweetalert2';
+import SvgIcon from '@mui/material/SvgIcon';
 
 export const MiSuscripcion = () => {
 
@@ -121,7 +122,14 @@ export const MiSuscripcion = () => {
     setCategorias(data.categorie_name);
     setDeparts(data.department_name);
   }
-
+  
+  function HomeIcon(props) {
+    return (
+      <SvgIcon {...props}>
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </SvgIcon>
+    );
+  }
       
    
     return (
@@ -136,12 +144,21 @@ export const MiSuscripcion = () => {
                 <ColoredLine color="black" />
             </div>
 
-        
-                <button type="button2" className="btnregresarAGG" >
-                <div className="regresar">
-                <KeyboardBackspaceRoundedIcon  fontSize="medium" sx={{ color: green[500] }} />  <a href="javascript:history.back()">  Regresar
-      </a> </div>
-                </button>
+            <Link to={"/"}>
+      <button type="button2" className="btnregresarP" >
+      <div className="regresar">
+      <HomeIcon fontSize="medium" sx={{ color: green[500] }} /> Inicio
+      </div>
+      </button>
+      </Link>
+      <Link to={"/perfilusuario"}>
+      <button type="button2" className="btnregresarP" >
+      <div className="regresar">
+      <KeyboardBackspaceRoundedIcon  fontSize="medium" sx={{ color: green[500] }} />  <a href="javascript:history.back()">  Perfil
+      </a>
+      </div>
+      </button>
+      </Link>
 
         <div className="basecontainerMisSus" > 
        
