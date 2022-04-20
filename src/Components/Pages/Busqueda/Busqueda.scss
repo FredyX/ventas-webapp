@@ -115,5 +115,40 @@ filtros {
   }
 }
 
+ul li {
+  span {
+    color: rgb(0, 0, 0);
+    font-weight: 1;
+    font-size: 2;
+  }
+}
 
+.envolviendo-colummnas {
+margin: 15px;
+
+}
+
+.row {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+width: 100%;
+}
+
+.column {
+display: flex;
+flex-direction: column;
+flex-basis: 100%;
+flex: 1;
+}
+
+.filtro-column {
+
+height:auto;
+}
+
+.producto-column {
+
+height: auto;
+}
 

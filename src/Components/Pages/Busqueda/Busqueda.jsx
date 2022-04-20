@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import SvgIcon from '@mui/material/SvgIcon';
 import { green } from '@mui/material/colors';
 
+
 export const BusquedaProducto = () => {
     const [BusquedaProducto, setBusquedaProducto] = useState([]);
     const [stateDepartments, setDepartaments] = useState([]);
@@ -114,10 +115,9 @@ export const BusquedaProducto = () => {
       
       <main>
         <Navbar setSearch={setSearch} handledKeyPress={handledKeyPress}></Navbar>
-          
-        <div className="grid-container">
-          <div className="grid-item tall">
-          
+        <div class='envolviendo-colummnas'>
+                <div class='row'>
+
     <div className="basecontainer">
     <Link to={"/"}>
       <button type="button2" className="btnregresar" >
@@ -126,9 +126,10 @@ export const BusquedaProducto = () => {
       </div>
       </button>
       </Link>
+      <div class='column'>
+    <div class='filtro-column'>
     <div className="headerfiltro">Filtros</div>
-    <filtros>
-      <ul>
+        <ul>
         <li>
         <div className="busqueda-form">
         <ColoredLine color="green" />
@@ -162,8 +163,14 @@ export const BusquedaProducto = () => {
           </div>
         </li>
       </ul>
-    </filtros>
+
+      
+      </div>
+      </div>
     </div>
+
+        <div class='column'>
+          <div class='producto-column'>
           <div className="resultados-form1">
               <div className={styles.ProductoContainer}>
                   <div className={styles.grid}> 
@@ -194,26 +201,17 @@ export const BusquedaProducto = () => {
               </div>
 
         </div>
-            <div className="columns1">
+        </div>
+        
+      </div>
+    </div>
+  </div>
 
-
-
-
-  
-  
-    
         <div className='pagination-form'>
         <div className="header">Resultados</div>
         <Paginacion setPages={setPages} total={totalPages} handle = {handledKeyPress}/> 
         </div>
-       
-
-        </div>
-       
-        </div>
-        
-    </div>
-    
+         
     <Footer/>
 
       </main>

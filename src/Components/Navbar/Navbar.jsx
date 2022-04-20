@@ -12,16 +12,17 @@ import {useCallback, useState } from "react";
 import useClickOutside from "../CustomHooks/ClickOutside";
 import authService from "../../services/auth.service";
 
-const user =  authService.getCurrentUser()
 
-
+const logoutuser = authService.logout()
+const user = authService.getCurrentUser()
+console.log(user)
 
 const Navbar = ({ BurgerColour, setSearch, handledKeyPress }) => {
-  const [loggedIn, setLoggedIn] = useState(false);
   const [searchTerm, SetsearchTerm] = useState('')
   const navigate = useNavigate();
   const UsuarioDentr = useCallback(() => navigate('/perfilusuario/', {replace: true}), [navigate]);
   const UsuarioFuer = useCallback(() => navigate('/iniciosesion/', {replace: true}), [navigate]);
+  const LogoutUser = useCallback(() => navigate('/iniciosesion/', {replace: true}), [navigate], logoutuser);
   
   const MenuLink = ({ url, path }) => {
     return (
@@ -57,21 +58,38 @@ const Navbar = ({ BurgerColour, setSearch, handledKeyPress }) => {
       setSearch(target.value);
   }
  
-  function UsuarioDentro(props) {
-    return <span onClick={UsuarioDentr} className={styles.login_container} style={{ color: BurgerColour }} >Bienvenido {user.username}!</span>;
+ function UsuarioDentro() {
+    return <span onClick={UsuarioDentr} className={styles.login_container} style={{ color: BurgerColour }} >Bienvenido {user}!
+    </span>;
   }
-  
-  function UsuarioFuera(props) {
-    return <h1>onClick={UsuarioFuer} className={styles.login_container} style={{ color: BurgerColour }} Iniciar Sesion</h1>;
+  function UsuarioLogOut() {
+    return <span onClick={LogoutUser} className={styles.btnlogout}> Cerrar Sesión
+    </span>;
+  }
+    
+  function UsuarioFuera() {
+    return <span onClick={UsuarioFuer} className={styles.btnlogout}> Iniciar Sesion
+    </span>;
   }
 
-  function InicioSesion(props) {    
-  if (user) {
-    return <UsuarioDentro />;
-  } else {
-    return <UsuarioFuera />;
-  }
-  }
+  function InicioSesion() {    
+    const user =  authService.getCurrentUser()
+      if (user) {
+        return <UsuarioDentro />;
+      } else {
+        return <UsuarioFuera />;
+      }
+  } 
+
+  function Logout() {    
+    const user =  authService.getCurrentUser()
+      if (user) {
+        return  <UsuarioLogOut/>;
+      } else {
+        return InicioSesion;
+      }
+  } 
+
 
   return (
     <div className={styles.navbar_container}>
@@ -136,7 +154,9 @@ const Navbar = ({ BurgerColour, setSearch, handledKeyPress }) => {
 
         {/* Login */}
         
-          <span ><InicioSesion user={false} /> <BsArrowRight style={{ color: BurgerColour }} /></span>
+          <span ><InicioSesion user={false} /> <BsArrowRight style={{ color: BurgerColour }} />
+          </span>
+          <span> <Logout user={false}/> </span>
       </nav>
       <ColoredLine color="black" />
     </div>
