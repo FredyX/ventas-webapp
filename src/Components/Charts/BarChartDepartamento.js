@@ -1,21 +1,29 @@
 import React, {useState, useEffect} from 'react';
-import {Chart as ChartJS,CategoryScale,LinearScale,BarElement} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import {
+    Chart as ChartJS,CategoryScale,
+    LinearScale,PointElement,
+    LineElement,Title,
+    Tooltip, Legend
+} from 'chart.js';
+
+import { Line } from 'react-chartjs-2';
 import reportDataService from "../../services/report.service";
 ChartJS.register(
 	CategoryScale,
 	LinearScale,
-	BarElement,
+	PointElement,
+    LineElement,Title,
+    Tooltip, Legend
 )
 
 
-const BarChartCategoria = ({/*arrayLabels, arrayData, bckgC, bC*/}) => {
+const BarChartDepartamento = ({/*arrayLabels, arrayData, bckgC, bC*/}) => {
 
     const [arrayLabels, setLabels] = useState([]);
     const [arrayData, setData] = useState([]);
     
     useEffect( async () => {
-        const {data:datos} = await reportDataService.getMasCategorias();
+        const {data:datos} = await reportDataService.getMasDepartamentos();
         const [Labels, Data] = obtenerArray(datos);
         setLabels(Labels);
         setData(Data);      
@@ -24,7 +32,7 @@ const BarChartCategoria = ({/*arrayLabels, arrayData, bckgC, bC*/}) => {
     let data = {
         labels: arrayLabels,
         datasets: [{
-            label: '# Categorias con más productos',
+            label: '# Departamentos con más productos en venta',
             data: arrayData,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -61,7 +69,7 @@ const BarChartCategoria = ({/*arrayLabels, arrayData, bckgC, bC*/}) => {
     }
     return(
 	<>
-		<Bar 
+		<Line 
 			data={data}
 			height={100}            
 			options={options}		
@@ -70,4 +78,4 @@ const BarChartCategoria = ({/*arrayLabels, arrayData, bckgC, bC*/}) => {
 	 </>);
 }
 
-export default BarChartCategoria;
+export default BarChartDepartamento;
