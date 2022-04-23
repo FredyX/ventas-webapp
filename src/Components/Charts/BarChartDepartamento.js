@@ -32,7 +32,7 @@ const BarChartDepartamento = ({/*arrayLabels, arrayData, bckgC, bC*/}) => {
     let data = {
         labels: arrayLabels,
         datasets: [{
-            label: '# Departamentos con más productos en venta',
+            label: 'Departamentos con más productos en venta',
             data: arrayData,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -50,13 +50,22 @@ const BarChartDepartamento = ({/*arrayLabels, arrayData, bckgC, bC*/}) => {
                 'rgba(153, 102, 255, 1)',
                 'rgba(255, 159, 64, 1)'                
             ],
-            borderWidth: 1
+            borderWidth: 1,
+            hoverBorderWidth: 5,
         }]
     }
-        let options = {
-            scales: {
-            }
-        }            
+    const options = {
+        plugins: {
+          legend: {
+            display: true,
+            labels: {
+              font: {
+                size: 14
+              },
+            },
+          },
+        },
+      };         
     	
     function obtenerArray(datos){        
         const arrayNombres = [];
