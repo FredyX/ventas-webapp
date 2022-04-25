@@ -70,10 +70,10 @@ export const PerfilUsuarioTercero = () => {
           Swal.fire(
             {
               input: 'textarea',
-            inputLabel: 'Message',
-            inputPlaceholder: 'Type your message here...',
+            inputLabel: 'Descripción',
+            inputPlaceholder: 'Escribe una descripción aqui...',
             inputAttributes: {
-              'aria-label': 'Type your message here'
+              'aria-label': 'Escribe una descripción aqui'
             },
             showCancelButton: true,
             confirmButtonColor: '#12b700',
