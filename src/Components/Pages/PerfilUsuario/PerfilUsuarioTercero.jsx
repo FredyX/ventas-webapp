@@ -55,35 +55,41 @@ export const PerfilUsuarioTercero = () => {
       const { value: accept } = await 
       Swal.fire({
           title: 'Motivo de la denuncia',
-  
-          html: 
-          '<input type="checkbox" id="razon1"/> Razón 1 <p/>' +
-         
-          '<input type="checkbox" id="razon2"/> Razón 2 <p/>' +
-       
-          '<input type="checkbox" id="razon3"/> Razón 3 <p/>' +
-        
-          '<input type="checkbox" id="razon4"/> Razón 4 <p/>', 
-
-          confirmButtonText: 'confirmar',
           confirmButtonColor: '#12b700',
-          focusConfirm: false,
-          preConfirm: () => {
-            var razon1 = Swal.getPopup().querySelector('#razon1').checked
-            var razon2 = Swal.getPopup().querySelector('#razon2').checked
-            var razon3 = Swal.getPopup().querySelector('#razon3').checked
-            var razon4 = Swal.getPopup().querySelector('#razon4').checked
-       
-          }
+          confirmButtonText:'Siguiente ',
+          input: 'select',
+          inputOptions: {
+            1: '1',
+          },
+        inputPlaceholder: 'Seleccionar'
         }).then((accept) => {
+
+          (async () => {
+
+          const { value: text } = await 
           Swal.fire(
             {
-            title: 'Denuncia realizada',
-            icon: 'success',
+              input: 'textarea',
+            inputLabel: 'Message',
+            inputPlaceholder: 'Type your message here...',
+            inputAttributes: {
+              'aria-label': 'Type your message here'
+            },
+            showCancelButton: true,
             confirmButtonColor: '#12b700',
             confirmButtonText: 'Listo'
           })
-        
+                      
+            if (text) {
+              Swal.fire({
+                title: 'Usuario denunciado',
+                icon: 'success',
+                confirmButtonColor: '#12b700',
+                confirmButtonText: 'Listo'
+              }
+               
+              )}
+            })()
         })
       })()
 
@@ -94,7 +100,6 @@ export const PerfilUsuarioTercero = () => {
       ) {
         Swal.fire({
           title: 'Denuncia Cancelada',
-          text: "Tu perfil ha sido eliminado!",
           icon: 'error',
           confirmButtonColor: '#12b700',
           confirmButtonText: 'Listo'
