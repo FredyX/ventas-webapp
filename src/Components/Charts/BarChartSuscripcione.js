@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {Chart as ChartJS,CategoryScale,LinearScale,BarElement} from 'chart.js';
+import {Chart as ChartJS,CategoryScale,LinearScale,BarElement, Legend} from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import reportDataService from "../../services/report.service";
 ChartJS.register(
 	CategoryScale,
 	LinearScale,
 	BarElement,
+    Legend
 )
 
 
@@ -24,7 +25,7 @@ const BarChartSuscripcione = ({/*arrayLabels, arrayData, bckgC, bC*/}) => {
     let data = {
         labels: arrayLabels,
         datasets: [{
-            label: '# Categorias con más suscripciones',
+            label: 'Suscripciones por Categorías',
             data: arrayData,
             backgroundColor: [
                 'rgba(255, 90, 122, 0.2)',
@@ -42,13 +43,23 @@ const BarChartSuscripcione = ({/*arrayLabels, arrayData, bckgC, bC*/}) => {
                 'rgba(153, 102, 255, 1)',
                 'rgba(255, 159, 64, 1)'                
             ],
-            borderWidth: 1
+            borderWidth: 1,
+            hoverBorderWidth: 3,
         }]
     }
-        let options = {
-            scales: {
-            }
-        }            
+    const options = {
+        plugins: {
+          legend: {
+            display: true,
+            labels: {
+              font: {
+                size: 14
+              },
+            },
+          },
+        },
+      };        
+            
     	
     function obtenerArray(datos){        
         const arrayNombres = [];

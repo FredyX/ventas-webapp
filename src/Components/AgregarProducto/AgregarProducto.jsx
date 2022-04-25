@@ -83,14 +83,14 @@ export const AgregarProducto = (props) => {
       </div>
       </button>
       </Link>
-      
+      <Link to={"/perfilusuario"}>
       <button type="button2" className="btnregresarAGG" >
       <div className="regresar">
       <KeyboardBackspaceRoundedIcon  fontSize="medium" sx={{ color: green[500] }} />  <a href="javascript:history.back()">  Perfil
       </a>
       </div>
       </button>
-     
+      </Link>
       <br />
         <div className="grid-container">
           <div className="grid-item tall">

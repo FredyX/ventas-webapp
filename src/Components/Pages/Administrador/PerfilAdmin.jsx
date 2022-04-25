@@ -225,7 +225,7 @@ export const PerfilAdmin = () => {
             <div className="formbotons3" >
               <div className="formbotons11" >
 
-                <Link to={""}>
+                <Link to={"/perfiladmin/reportes"}>
                   <button type="button" className="btn77">
                     Reportes
                   </button>

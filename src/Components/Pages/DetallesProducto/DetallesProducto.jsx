@@ -140,7 +140,7 @@ export const DetallesProducto = () => {
                     <div className="basecontainer3">
                             <div className="detallevendedorform" >
 
-                                <p className="NombreUsuario">Nombre del vendedor: {nombreUsuario}</p>
+                                <p className="Score">Nombre del vendedor:  <a href="/perfilusuario/visitante/" > {nombreUsuario} </a> </p>
 
 
                                 <p className="Score">Puntuación del Vendedor: {score}</p>

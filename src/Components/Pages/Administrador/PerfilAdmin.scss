@@ -344,3 +344,38 @@ height: 90px;
   border-radius: 0px;
   cursor: pointer;
 }
+
+.basecontainerReportes{
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+
+
+  .MisSus_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    color: rgb(0, 0, 0);
+    font-size: 2.2rem;
+    justify-content: center;
+    font-weight: bold;
+    font-family: "Arsenal", sans-serif;
+  }
+
+  .formRep {
+    height: 380px;
+    width: 1000px;
+    margin-bottom: 80px;
+    outline: solid rgb(209, 209, 209);
+    padding: 2rem;
+    border-radius: 5px;
+    background-color: #ffffff;
+    font-weight: bold;
+    font-family: "Arsenal", sans-serif;
+    }
+  
+}
