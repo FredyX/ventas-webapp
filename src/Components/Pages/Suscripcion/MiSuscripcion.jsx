@@ -57,15 +57,44 @@ export const MiSuscripcion = () => {
   const [score, setScore] = useState('');
   const [is_company, setIs_Company] = useState(' ');
   const [departamento, setDepartamento] = useState(' ');
-  const [dia, setDia] = useState(' ');
-  const [categorias, setCategorias] = useState(' ');
+  const [dia, setDia] = useState('L');
+  const [categorias, setCategorias] = useState('');
   const [puntuacion,setPuntacion] = useState(' ');
   const [prioridad, setPrioridad] = useState(' ');
   const [departs, setDeparts] = useState(' ');
+  const [diaString, setStringDia] = useState('Lunes');
   useEffect(() => {
-    UsersApi();
+     UsersApi();
   }, []);
 
+  const pintarDia = (state) =>{    
+      let p_dia = 'Lunes';
+      switch (state) {
+        case 'L':
+          p_dia = 'Lunes';
+          break;
+        case 'M':
+          p_dia = 'Martes';
+          break;
+        case 'X' :
+          p_dia = 'Miercoles';
+          break;
+        case 'J':
+          p_dia = 'Jueves';
+          break;
+        case 'V':
+          p_dia = 'Viernes';
+          break;
+        case 'S':
+          p_dia = 'Sabado';
+          break;
+        case 'D':
+          p_dia = 'Domingo';
+          break;
+      }
+
+      return p_dia;
+   }
   const MensajeEliminar = (e) => {    
     Swal.fire({
       title: '¿Estas seguro que deseas eliminar la suscripción?',
@@ -112,18 +141,16 @@ export const MiSuscripcion = () => {
     const departamento = response2.data;
     setDepartamento(departamento.department_name);
     
-    // Actualización
-
+    // Actualización    
+    //
     const {data} = await suscriptionsDataService.getSubId(idLogged);    
     setPrioridad(data.order_prior);
     setDia(data.preferred_day);
     setPuntacion(data.min_seller_score);
     setCategorias(data.categorie_name);
     setDeparts(data.department_name);
-  }
-
-      
-   
+    setStringDia(pintarDia(data.preferred_day));
+  }      
     return (
         <main>
             <div className={styles.navbar_container}>
@@ -181,7 +208,7 @@ export const MiSuscripcion = () => {
           </div>
 
           <div className="formdatos" >
-            <p className="last_name">Día para recibir correo: {dia}</p>
+            <p className="last_name">Día para recibir correo: {pintarDia(dia)}</p>
           </div>
 
           <div className="formdatos" >

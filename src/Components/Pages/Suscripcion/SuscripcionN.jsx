@@ -69,12 +69,24 @@ export const SuscripcionN = () => {
           preferred_day: dia
         }
         const idLogged = AuthService.getCurrentUser().user.user_id;
-        const datos = await suscriptionsDataService.getSubId(idLogged);
-        console.log(datos);
+        const datos = await suscriptionsDataService.getSubId(idLogged);        
         const {data:dat} = datos;
-        if(dat){          
+        console.log(dat);
+        if(dat){
+          dat.categorie_id = 
+          JSON.stringify(dat.categorie_id) === JSON.stringify(stateCheckBox)?
+            dat.categorie_id:stateCheckBox;
+          dat.department_id = stateSelect;
+          dat.order_prior = stateRadio;
+          dat.min_seller_score = puntuacion;
+          dat.preferred_day = dia;            
           data.id = dat.id;
-          await suscriptionsDataService.updateSuscrip(data);
+          console.log(dat.id);
+          await suscriptionsDataService.updateSuscrip(dat);
+          await suscriptionsDataService.updateSuscripCategories({
+            suscription_id:dat.id,
+            categorie_id: stateCheckBox
+          });          
           alert('La suscripción fue modificada');
         }else{
           setDisable(true);               
@@ -89,7 +101,6 @@ export const SuscripcionN = () => {
             alert('Error en al intentar suscribirse');
             setDisable(true);
           }
-
         }                        
       }
       
