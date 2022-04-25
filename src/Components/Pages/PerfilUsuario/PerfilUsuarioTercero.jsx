@@ -12,7 +12,8 @@ import styles from "../../Navbar/Navbar.module.scss";
 import { BsArrowRight, BsSearch } from "react-icons/bs";
 import { blueGrey, green, grey, lightGreen } from "@mui/material/colors";
 import Swal from 'sweetalert2';
-
+import Footer from "../../Footer/Footer";
+import SvgIcon from '@mui/material/SvgIcon';
 
 const Column = styled.div`
   display: flex;
@@ -50,22 +51,45 @@ export const PerfilUsuarioTercero = () => {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Escribe el motivo de tu denuncia',
-          input: 'text',
-          inputAttributes: {
-            autocapitalize: 'off'
-          },
-          showCancelButton: true,
-          confirmButtonText: 'Enviar',
-          confirmButtonColor: '#12b700',
-          showLoaderOnConfirm: true,
+      (async () => {
+      const { value: accept } = await 
+      Swal.fire({
+          title: 'Motivo de la denuncia',
+  
+          html: 
+          '<input type="checkbox" id="razon1"/> Razón 1 <p/>' +
+         
+          '<input type="checkbox" id="razon2"/> Razón 2 <p/>' +
+       
+          '<input type="checkbox" id="razon3"/> Razón 3 <p/>' +
+        
+          '<input type="checkbox" id="razon4"/> Razón 4 <p/>', 
 
-          allowOutsideClick: () => !Swal.isLoading()
+          confirmButtonText: 'confirmar',
+          confirmButtonColor: '#12b700',
+          focusConfirm: false,
+          preConfirm: () => {
+            var razon1 = Swal.getPopup().querySelector('#razon1').checked
+            var razon2 = Swal.getPopup().querySelector('#razon2').checked
+            var razon3 = Swal.getPopup().querySelector('#razon3').checked
+            var razon4 = Swal.getPopup().querySelector('#razon4').checked
+       
+          }
+        }).then((accept) => {
+          Swal.fire(
+            {
+            title: 'Denuncia realizada',
+            icon: 'success',
+            confirmButtonColor: '#12b700',
+            confirmButtonText: 'Listo'
+          })
+        
         })
+      })()
+
+
 
       } else if (
-        /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
       ) {
         Swal.fire({
@@ -80,6 +104,34 @@ export const PerfilUsuarioTercero = () => {
 
 
   }
+
+  const CalificarUsuario = (async () => {
+    const { value: CalificarUsuario } = await Swal.fire({
+      title: 'Selecciona la puntuación',
+      showCancelButton: true,
+      confirmButtonText: 'Calificar',
+      confirmButtonColor: '#12b700',
+      cancelButtonText: 'Cancelar',
+      icon: 'question',
+      input: 'range',
+      inputAttributes: {
+        min: 1,
+        max: 10,
+        step: 1
+      },
+      inputValue: 6
+    })
+if (CalificarUsuario) {
+  Swal.fire(
+    {
+    title: 'Usuario Calificado',
+    icon: 'success',
+    confirmButtonColor: '#12b700',
+    confirmButtonText: 'Listo'
+  })
+}
+  }
+)
 
 
   const ColoredLine = ({ color }) => (
@@ -121,76 +173,105 @@ export const PerfilUsuarioTercero = () => {
     setDepartamento(usuario[0].department_name);
   }
 
+  function HomeIcon(props) {
+    return (
+      <SvgIcon {...props}>
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </SvgIcon>
+    );
+  }
 
   return (
-    <div>
-      <div className={styles.navbar_container}>
+    <main>
+       <div className={styles.navbar_container}>
         <nav>
           {/* LOGO */}
           <div className={styles.brand_logob}>
             <Link to="/">SWAPPER</Link>
-
           </div>
-
-
         </nav>
         <ColoredLine color="black" />
-      </div>
 
-      <Row className="ro">
-        <Column className="col">
-          <div className="basecontainer2" >
-            <div className="detallevendedorform1" >
-              <p className="score">Puntuación de vendedor: {score}</p>
-            </div>
+        <Link to={"/"}>
+        <button type="button2" className="btnHOMEperfil" >
+        <div className="regresar">
+        <HomeIcon fontSize="medium" sx={{ color: green[500] }} /> Inicio
+        </div>
+        </button>
+        </Link>
+        </div>
+        <div className="titulo1">Perfil de Usuario</div>
 
-          </div>
-        </Column>
+        <Row className="ro">
         <Column className="col">
-          <div className="basecontainer2" >
-            <div className="titulo1">Perfil de Usuario</div>
+
+<div className="basecontainer2" >
+  
+
+</div>
+</Column>
+        <Column className="col">
+         
+           
             <div className="basecontainer2">
               <div className="detalleuser" >
                 <div className="detalleperfil" >
                   <p className="first_name">Nombre: {first_name}</p>
                 </div>
+
                 <div className="detalleperfil" >
                   <p className="last_name">Apellido: {last_name}</p>
                 </div>
+
+
                 <div className="detalleperfil" >
                   <p className="is_company">Es compañía: {is_company}</p>
                 </div>
 
                 <div className="detalleperfil" >
-                  <p className="departamento">Departamento: {departamento}</p>
+                  <p className="departamento">Ubicación: {departamento}</p>
                 </div>
-
-
+               
+                <div className="detalleperfil" >
+                <p className="score">Puntuación: {score}</p>
+                </div>
+          
+               
               </div>
-            </div>
+          
+     
           </div>
         </Column>
+      
         <Column className="col">
           <div className="basecontainer5">
             <div className="formbotons3" >
-
+              <div className="formbotons" >
+                  <button type="button" className="btn7"  onClick={CalificarUsuario}>
+                    Calificar
+                  </button>
+              </div>
+            
               <div className="formbotons" >
                 <button type="button" className="btn6" onClick={MensajeDenuncia}>
                   Denunciar
                 </button>
               </div>
-
-
+        
 
             </div>
 
-
           </div>
 
-
         </Column>
+        <Column className="col">
+          <div className="basecontainer2" >
+          </div>
+          </Column>
       </Row>
-    </div>
+      <Footer />
+
+    </main>
 
   )
 }   
