@@ -1,0 +1,74 @@
+.txtAgregar{
+  margin-top: 175px;
+  margin-left: 100px;
+  margin-right: 100px;
+  font-size: 16px;
+  text-align: center;
+  font-family: "Arsenal", sans-serif;
+  background-color: #f3f3f3;
+  border: 0;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  &:hover {
+    background-color: #ffffff;
+    outline: solid #12b700;
+  }
+  &:focus {
+    outline: none;
+    outline: solid rgb(18, 183, 0);
+  }
+}
+.btnAgregar {
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-top: 25px;
+  border: 0;
+  outline: solid rgb(18, 183, 0);
+  background-color: rgb(18, 183, 0);
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(18, 183, 0);
+  }
+}
+
+.estilotexto {
+  font-size: 10px;
+  font-weight: lighter;
+  font-family: "Arsenal", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+
+}
+
+  .formSP {
+    min-width: 20em;
+    margin-bottom: 30px;
+    height: fit-content;
+    text-align: center;
+    margin-top: 5px;
+    background-color: #ffffff;
+    padding: 1rem;
+    position: center;
+    justify-content:center;
+    align-items: center;
+  
+    }
+    .btnEliminar {
+
+        min-width: 150px;
+        font-size: 15px;
+
+ 
+      }
+      .btnModificar {
+        min-width: 150px;
+        font-size: 15px;
+      
+ 
+      }
