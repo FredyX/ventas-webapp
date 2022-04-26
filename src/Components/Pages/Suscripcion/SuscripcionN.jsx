@@ -87,6 +87,7 @@ export const SuscripcionN = () => {
             suscription_id:dat.id,
             categorie_id: stateCheckBox
           });          
+
           alert('La suscripción fue modificada');
         }else{
           setDisable(true);               
@@ -122,7 +123,6 @@ export const SuscripcionN = () => {
         fontWeight: "bold",
         color: "#dc3545"
       };
-   
     return (
         <main>
             <div className={styles.navbar_container}>
@@ -226,7 +226,7 @@ export const SuscripcionN = () => {
                         >
                             <FormControlLabel  value="P" control={<Radio size="small" />} label="Precio del producto" />
                             <FormControlLabel value="V" control={<Radio size="small"/>} label="Puntuación del vendedor" />
-                            <FormControlLabel  value="A" control={<Radio size="small"/>} label="Antiguedadd de la publicación" />
+                            <FormControlLabel  value="A" control={<Radio size="small"/>} label="Antigüedad de la publicación" />
                         </RadioGroup>
                     </FormControl>
                     </div>
