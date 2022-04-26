@@ -2,37 +2,37 @@ import React, {useState, useEffect} from 'react';
 import {
     Chart as ChartJS,CategoryScale,
     LinearScale,PointElement,
-    LineElement,Title,
+    BarElement,Title,
     Tooltip, Legend
 } from 'chart.js';
 
-import { Line } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import reportDataService from "../../services/report.service";
 ChartJS.register(
 	CategoryScale,
 	LinearScale,
 	PointElement,
-    LineElement,Title,
+    BarElement,Title,
     Tooltip, Legend
 )
 
 
-const BarChartDepartamento = ({/*arrayLabels, arrayData, bckgC, bC*/}) => {
+const BarChartDepartamento = ({idC}) => {
 
     const [arrayLabels, setLabels] = useState([]);
     const [arrayData, setData] = useState([]);
     
-    useEffect( async () => {
-        const {data:datos} = await reportDataService.getMasDepartamentos();
+    useEffect( async () => {        
+        const {data:datos} = await reportDataService.getMasDepartamentos(idC);
         const [Labels, Data] = obtenerArray(datos);
         setLabels(Labels);
         setData(Data);      
-    }, []);    
+    }, [idC]);    
         
     let data = {
         labels: arrayLabels,
         datasets: [{
-            label: 'Departamentos con más productos en venta',
+            label: 'Departamentos con más productos en venta en la categoría',
             data: arrayData,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -70,15 +70,17 @@ const BarChartDepartamento = ({/*arrayLabels, arrayData, bckgC, bC*/}) => {
     function obtenerArray(datos){        
         const arrayNombres = [];
         const arrayCantidad = [];
-        datos.map( (item) => {
-            arrayNombres.push(item.nombre);
-            arrayCantidad.push(item.cantidad);
-        });        
+        if(Array.isArray(datos)){
+            datos.map( (item) => {
+                arrayNombres.push(item.nombre);
+                arrayCantidad.push(item.cantidad);
+            });        
+        }        
         return [arrayNombres, arrayCantidad];
     }
     return(
 	<>
-		<Line 
+		<Bar 
 			data={data}
 			height={100}            
 			options={options}		

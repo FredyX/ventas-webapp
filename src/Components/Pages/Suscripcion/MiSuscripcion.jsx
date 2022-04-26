@@ -95,6 +95,15 @@ export const MiSuscripcion = () => {
 
       return p_dia;
    }
+
+   const pitarCategorias = (a_categoria) =>{
+    let sCategories = '';
+      a_categoria.map( cat => {
+        sCategories = sCategories+' '+cat;
+      });
+      return sCategories;
+   }
+
   const MensajeEliminar = (e) => {    
     Swal.fire({
       title: '¿Estas seguro que deseas eliminar la suscripción?',
@@ -222,7 +231,7 @@ export const MiSuscripcion = () => {
         <li>
         <div className="formdatos" >
           <div className="formdatos" >
-            <p className="first_name">Categorías: {categorias}</p>
+            <p className="first_name">Categorías: {pitarCategorias(categorias)}</p>
           </div>
 
           <div className="formdatos" >

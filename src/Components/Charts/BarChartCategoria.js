@@ -10,22 +10,21 @@ ChartJS.register(
 )
 
 
-const BarChartCategoria = ({/*arrayLabels, arrayData, bckgC, bC*/}) => {
-
+const BarChartCategoria = ({selePro}) => {
     const [arrayLabels, setLabels] = useState([]);
     const [arrayData, setData] = useState([]);
     
     useEffect( async () => {
-        const {data:datos} = await reportDataService.getMasCategorias();
+        const {data:datos} = await reportDataService.getMasCategorias(selePro);
         const [Labels, Data] = obtenerArray(datos);
         setLabels(Labels);
         setData(Data);      
-    }, []);    
+    }, [selePro]);    
         
     let data = {
         labels: arrayLabels,
         datasets: [{
-            label: 'Categorias con más productos',
+            label: 'Categoria con más productos',
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -63,10 +62,12 @@ const Options = {
     function obtenerArray(datos){        
         const arrayNombres = [];
         const arrayCantidad = [];
-        datos.map( (item) => {
+        if(Array.isArray(datos)){
+            datos.map( (item) => {
             arrayNombres.push(item.nombre);
             arrayCantidad.push(item.cantidad);
-        });        
+            });        
+        }        
         return [arrayNombres, arrayCantidad];
     }
     return(

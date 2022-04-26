@@ -9,10 +9,15 @@ import  "./PerfilAdmin.scss";
 import BarChartCategoria from '../../Charts/BarChartCategoria';
 import BarChartSuscripcione from '../../Charts/BarChartSuscripcione';
 import BarChartDepartamento from '../../Charts/BarChartDepartamento';
-
+import suscriptionsDataService from "../../../services/suscriptions.service";
+import categoriesService from "../../../services/categories.service.js";
+import reportDataService from "../../../services/report.service";
 export const Reportes = () => {
+    const [categorias, setCategorias] = useState({});
+    const [seleCat, setSeleCat] = useState(1);
+    const [selePro, setSelePro] = useState(5);
+    const [seleSus, setSeleSus] = useState(3);
 
-      
     const ColoredLine = ({ color }) => (
         <hr
           style={{
@@ -32,10 +37,27 @@ export const Reportes = () => {
         color: "#dc3545"
       };
 
-     
+    const getCategorias = async () => {
+        const {data} = await categoriesService.getAll();        
+        let cat = {};
+        data.map(c => {
+            cat[c.id] = c.categorie_name;
+        });
+        setCategorias(cat);        
+    }
+    useEffect( () =>{
+        getCategorias();
+    },[]);
 
-
-   
+   const handleSelectCat =  ({target}) => {    
+    setSeleCat(target.value);    
+   }
+   const handleSelectPro = ({target}) => {
+    setSelePro(target.value);
+   }
+   const handleSelectSus = ({target}) => {
+    setSeleSus(target.value);
+   }
     return (
         <main>
             <div className={styles.navbar_container}>
@@ -46,9 +68,7 @@ export const Reportes = () => {
                 </div>
                 </nav>
                 <ColoredLine color="black" />
-            </div>
-
-        
+            </div>        
                 <button type="button2" className="btnregresarAGG" >
                 <div className="regresar">
                 <KeyboardBackspaceRoundedIcon  fontSize="medium" sx={{ color: green[500] }} />  <a href="javascript:history.back()">  Regresar
@@ -62,31 +82,54 @@ export const Reportes = () => {
       <ul >
         <li>
         <div className="formRep" > 
-        <BarChartCategoria />
+        <select onChange={handleSelectPro}>
+            <option > Seleccione el limite</option>
+            <option value={1}>{'Limite en '+1}</option>
+            <option value={2}>{2}</option>
+            <option value={3}>{3}</option>
+            <option value={5}>{5}</option>
+        </select>
+        <BarChartCategoria selePro={selePro}/>
     </div>
                                                 
         </li>
         <li>
         <div className="formRep" > 
-    <BarChartSuscripcione />
-    </div>
-                                          
+        <select onChange={handleSelectSus}>
+            <option > Seleccione el limite</option>
+            <option value={1}>{1}</option>
+            <option value={2}>{2}</option>
+            <option value={3}>{3}</option>
+            <option value={4}>{4}</option>
+            <option value={5}>{5}</option>
+        </select>
+    <BarChartSuscripcione seleSus={seleSus}/>
+    </div>                                          
         </li>
         <li>
-      
+        <select onChange={handleSelectCat}>
+            <option >Seleccionar la categoría </option>
+            {
+                Object.keys(categorias).map(key => {
+                    let label = categorias[key];
+                    let value = key;
+                    return (                              
+                        <option value={value}>{label}</option>            
+                    )
+                })
+            }                        
+        </select>
     <div className="formRep" > 
-    <BarChartDepartamento />
+    
+    <BarChartDepartamento idC={seleCat}/>
+    
     </div>
-                                              
         </li>
       </ul>
     </styleColums>
   
     </div>
     <Footer/>
-   
-        
-   
     </main>
     )
 }

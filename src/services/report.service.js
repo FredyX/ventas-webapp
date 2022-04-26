@@ -1,15 +1,15 @@
 import http from "../http-common";
 import authHeader from "./auth-header";
 class reportDataService {
-  getMasCategorias() {
-    return http.get("/reporters/categorias");
+  getMasCategorias(limite) {
+    return http.get(`/reporters/categorias/${limite}`);
   }
 
-  getMasSuscripciones (){
-    return http.get("/reporters/suscripciones");
+  getMasSuscripciones (limite){
+    return http.get(`/reporters/suscripciones/${limite}`);
   }
-  getMasDepartamentos(){
-    return http.get("reporters/departamentos");
+  getMasDepartamentos(id){
+    return http.get(`reporters/departamentos/${id}`);
   }
 }
 
