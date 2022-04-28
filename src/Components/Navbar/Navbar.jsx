@@ -6,23 +6,27 @@ import { TextField } from "@mui/material";
 
 import { BsArrowRight, BsSearch } from "react-icons/bs";
 import { FaBars, FaTimes } from "react-icons/fa";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import {useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import useClickOutside from "../CustomHooks/ClickOutside";
 import authService from "../../services/auth.service";
 
-const user =  authService.getCurrentUser()
 
-
+const logoutuser = authService.logout()
+const user = authService.getCurrentUser()
+console.log(user)
 
 const Navbar = ({ BurgerColour, setSearch, handledKeyPress }) => {
-  const [loggedIn, setLoggedIn] = useState(false);
   const [searchTerm, SetsearchTerm] = useState('')
   const navigate = useNavigate();
-  const UsuarioDentr = useCallback(() => navigate('/perfilusuario/', {replace: true}), [navigate]);
-  const UsuarioFuer = useCallback(() => navigate('/iniciosesion/', {replace: true}), [navigate]);
-  
+  const UsuarioDentr = useCallback(() => navigate('/perfilusuario/', { replace: true }), [navigate]);
+  const UsuarioFuer = useCallback(() => navigate('/iniciosesion/', { replace: true }), [navigate]);
+  const LogoutUser = useCallback(() => {
+    authService.logout();
+    navigate('/iniciosesion/', { replace: true });
+  }, [navigate]);
+
   const MenuLink = ({ url, path }) => {
     return (
       <li className={styles.navlink}>
@@ -52,26 +56,43 @@ const Navbar = ({ BurgerColour, setSearch, handledKeyPress }) => {
     />
   );
 
-  const handleChange = ({target})=>{
-      SetsearchTerm(target.value);
-      setSearch(target.value);
-  }
- 
-  function UsuarioDentro(props) {
-    return <span onClick={UsuarioDentr} className={styles.login_container} style={{ color: BurgerColour }} >Bienvenido {user.username}!</span>;
-  }
-  
-  function UsuarioFuera(props) {
-    return <h1>onClick={UsuarioFuer} className={styles.login_container} style={{ color: BurgerColour }} Iniciar Sesion</h1>;
+  const handleChange = ({ target }) => {
+    SetsearchTerm(target.value);
+    setSearch(target.value);
   }
 
-  function InicioSesion(props) {    
-  if (user) {
-    return <UsuarioDentro />;
-  } else {
-    return <UsuarioFuera />;
+  function UsuarioDentro() {
+    return <span onClick={UsuarioDentr} className={styles.login_container} style={{ color: BurgerColour }} >Bienvenido {user}!
+    </span>;
   }
+  function UsuarioLogOut() {
+    return <span onClick={LogoutUser} className={styles.btnlogout}> Cerrar Sesión
+    </span>;
   }
+
+  function UsuarioFuera() {
+    return <span onClick={UsuarioFuer} className={styles.btnlogout}> Iniciar Sesion
+    </span>;
+  }
+
+  function InicioSesion() {
+    const user = authService.getCurrentUser()
+    if (user) {
+      return <UsuarioDentro />;
+    } else {
+      return <UsuarioFuera />;
+    }
+  }
+
+  function Logout() {
+    const user = authService.getCurrentUser()
+    if (user) {
+      return <UsuarioLogOut />;
+    } else {
+      return InicioSesion;
+    }
+  }
+
 
   return (
     <div className={styles.navbar_container}>
@@ -92,9 +113,8 @@ const Navbar = ({ BurgerColour, setSearch, handledKeyPress }) => {
 
         {/* NAV */}
         <ul
-          className={`${isNavOpen ? styles.ul_active : undefined} ${
-            styles.navbar_ul
-          }`}
+          className={`${isNavOpen ? styles.ul_active : undefined} ${styles.navbar_ul
+            }`}
           ref={domNode}
         >
           <div
@@ -103,23 +123,23 @@ const Navbar = ({ BurgerColour, setSearch, handledKeyPress }) => {
           >
             <FaTimes />
           </div>
-          
+
           <div className="Buscar" >
-          <Box sx={{  width: 300, backgroundColor: 'grey', display: 'flex', alignItems: 'flex-end' }}>
-          <Link to={"/busqueda/"} className="link">
-        <SearchOutlinedIcon sx={{ color: "green", mr: 1, my: 0.5 }} className= "btnBuscar"/>
-        </Link>
-        <TextField id="Buscar"  fullWidth label="Buscar" 
-          variant="standard"
-          color="success" focused
-          onChange={handleChange}
-          onKeyDown={handledKeyPress}
-        />
-      </Box>
+            <Box sx={{ width: 300, backgroundColor: 'grey', display: 'flex', alignItems: 'flex-end' }}>
+              <Link to={"/busqueda/"} className="link">
+                <SearchOutlinedIcon sx={{ color: "green", mr: 1, my: 0.5 }} className="btnBuscar" />
+              </Link>
+              <TextField id="Buscar" fullWidth label="Buscar"
+                variant="standard"
+                color="success" focused
+                onChange={handleChange}
+                onKeyDown={handledKeyPress}
+              />
+            </Box>
 
-      {}
+            { }
 
-      </div>
+          </div>
 
           <Link to="/iniciosesion/" className={styles.login}>
             <InicioSesion user={false} />
@@ -130,13 +150,15 @@ const Navbar = ({ BurgerColour, setSearch, handledKeyPress }) => {
 
         {/* TEMPORAL ----- Agregar producto */}
         <Link to="/AgregarProducto/" className={styles.login_container}>
-        <span style={{ color: BurgerColour }}>Agregar producto</span>
-        <BsArrowRight style={{ color: BurgerColour }} />
+          <span style={{ color: BurgerColour }}>Agregar producto</span>
+          <BsArrowRight style={{ color: BurgerColour }} />
         </Link>
 
         {/* Login */}
-        
-          <span ><InicioSesion user={false} /> <BsArrowRight style={{ color: BurgerColour }} /></span>
+
+        <span ><InicioSesion user={false} /> <BsArrowRight style={{ color: BurgerColour }} />
+        </span>
+        <span> <Logout user={false} /> </span>
       </nav>
       <ColoredLine color="black" />
     </div>

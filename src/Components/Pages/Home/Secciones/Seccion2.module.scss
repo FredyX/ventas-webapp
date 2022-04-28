@@ -1,0 +1,20 @@
+.seccion_2 {
+    margin-top: 8rem;
+    overflow-x: hidden;
+
+    .seccion_2_title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        h1 {
+            color: var(rgb(18, 183, 0));
+            font-size: 1.8rem;
+        }
+    }
+}
+
+.cards {
+    padding-block: 1rem;
+    cursor: pointer;
+}

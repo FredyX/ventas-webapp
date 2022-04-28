@@ -28,6 +28,7 @@
     "sass-loader": "^12.6.0",
     "styled-components": "^5.3.3",
     "sweetalert2": "^11.4.7",
+    "swiper": "^8.1.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

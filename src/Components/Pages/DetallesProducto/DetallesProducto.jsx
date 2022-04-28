@@ -70,6 +70,7 @@ export const DetallesProducto = () => {
     const [nombreUsuario, setNombreUsuario] = useState('');
     const [score, setScore] = useState('');
     const [categorias, setCategorias] = useState([]);
+    const [userSeller, setUserSeller] = useState('');
     const [searchParams, setSearchParams] = useSearchParams();
 
 
@@ -82,17 +83,15 @@ export const DetallesProducto = () => {
         let cat = [];
         let id = searchParams.get('id');
         const response = await productDataService.getDetalle(id)
-        console.log(response);
         const {producto,categorias,imagenesRes} = response.data;
 
         for (let i = 0; i < categorias.length; i++) {
             let nuevaCategoria = [categorias[i].id, categorias[i].categorie_name];
             cat.push(nuevaCategoria);
         }
-        
+        console.log(producto);
         setCategorias(cat);
-        console.log(cat);
-
+        setUserSeller(producto[0].user_seller_id);
         setNombreUsuario(producto[0].first_name + " " + producto[0].last_name);
         setScore(producto[0].score);
         setTitulo(producto[0].product_name);
@@ -140,7 +139,7 @@ export const DetallesProducto = () => {
                     <div className="basecontainer3">
                             <div className="detallevendedorform" >
 
-                                <p className="Score">Nombre del vendedor:  <a href="/perfilusuario/visitante/" > {nombreUsuario} </a> </p>
+                                <p className="Score">Nombre del vendedor:  <a href={`/perfilusuario/visitante/?id=${userSeller}`} > {nombreUsuario} </a> </p>
 
 
                                 <p className="Score">Puntuación del Vendedor: {score}</p>

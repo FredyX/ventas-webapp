@@ -52,47 +52,34 @@ export const PerfilUsuarioTercero = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         (async () => {
-          const { value: accept } = await
+          const { value: text } = await
+
+            Swal.fire(
+              {
+                input: 'textarea',
+                inputLabel: 'Descripción',
+                inputPlaceholder: 'Escribe una descripción aqui...',
+                inputAttributes: {
+                  'aria-label': 'Escribe una descripción aqui'
+                },
+                showCancelButton: true,
+                confirmButtonColor: '#12b700',
+                confirmButtonText: 'Listo'
+              })
+
+          if (text) {
+            
             Swal.fire({
-              title: 'Motivo de la denuncia',
+              title: 'Usuario denunciado',
+              icon: 'success',
               confirmButtonColor: '#12b700',
-              confirmButtonText: 'Siguiente ',
-              input: 'select',
-              inputOptions: {
-                1: '1',
-              },
-              inputPlaceholder: 'Seleccionar'
-            }).then((accept) => {
+              confirmButtonText: 'Listo'
+            }
 
-              (async () => {
-
-                const { value: text } = await
-                  Swal.fire(
-                    {
-                      input: 'textarea',
-                      inputLabel: 'Descripción',
-                      inputPlaceholder: 'Escribe una descripción aqui...',
-                      inputAttributes: {
-                        'aria-label': 'Escribe una descripción aqui'
-                      },
-                      showCancelButton: true,
-                      confirmButtonColor: '#12b700',
-                      confirmButtonText: 'Listo'
-                    })
-
-                if (text) {
-                  Swal.fire({
-                    title: 'Usuario denunciado',
-                    icon: 'success',
-                    confirmButtonColor: '#12b700',
-                    confirmButtonText: 'Listo'
-                  }
-
-                  )
-                }
-              })()
-            })
+            )
+          }
         })()
+
       } else if (
         result.dismiss === Swal.DismissReason.cancel
       ) {
