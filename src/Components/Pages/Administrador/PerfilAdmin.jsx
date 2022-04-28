@@ -119,23 +119,8 @@ export const PerfilAdmin = () => {
 
   return (
     <main>
-      <div className={styles.navbar_container}>
-        <nav>
-          {/* LOGO */}
-          <div className={styles.brand_logob}>
-            <Link to="/">SWAPPER</Link>
-          </div>
-        </nav>
-        <ColoredLine color="black" />
+      <Navbar />
 
-        <Link to={"/"}>
-          <button type="button2" className="btnHOMEperfil" >
-            <div className="regresar">
-              <HomeIcon fontSize="medium" sx={{ color: green[500] }} /> Inicio
-            </div>
-          </button>
-        </Link>
-      </div>
       <div className="titulo1">Mi perfil</div>
 
       <Row className="ro">

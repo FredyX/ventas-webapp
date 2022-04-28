@@ -13,6 +13,7 @@ import Footer from "../../Footer/Footer";
 import SvgIcon from '@mui/material/SvgIcon';
 import { green } from '@mui/material/colors';
 import "./PerfilUsuario.scss";
+import authService from "../../../services/auth.service";
 
 const Column = styled.div`
   display: flex;
@@ -86,6 +87,9 @@ export const PerfilUsuario = () => {
   const [departamento, setDepartamento] = useState(' ');
 
   useEffect(() => {
+    if (authService.getCurrentUser() && authService.getCurrentUser().user.is_admin) {
+      navigate(`/perfiladmin`);
+    }
     UsersApi();
   }, [])
 
@@ -120,33 +124,17 @@ export const PerfilUsuario = () => {
 
   return (
     <main>
-      <div className={styles.navbar_container}>
-        <nav>
-          {/* LOGO */}
-          <div className={styles.brand_logob}>
-            <Link to="/">SWAPPER</Link>
-          </div>
-        </nav>
-        <ColoredLine color="black" />
-
-        <Link to={"/"}>
-        <button type="button2" className="btnHOMEperfil" >
-        <div className="regresar">
-        <HomeIcon fontSize="medium" sx={{ color: green[500] }} /> Inicio
-        </div>
-        </button>
-        </Link>
-        </div>
-        <div className="titulo1">Mi perfil</div>
+      <Navbar />
+      <div className="titulo1">Mi perfil</div>
 
       <Row className="ro">
-      <Column className="col">
+        <Column className="col">
 
-<div className="basecontainer2" >
-  
+          <div className="basecontainer2" >
 
-</div>
-</Column>
+
+          </div>
+        </Column>
         <Column className="col">
           <div className="basecontainer5">
             <div className="formbotons3" >
@@ -166,10 +154,10 @@ export const PerfilUsuario = () => {
                 </Link>
               </div>
               <div className="formbotons" >
-              <Link to={"/perfilusuario/suscripcion/"}>
-                <button type="button" className="btn7">
-                  Suscripciones
-                </button>
+                <Link to={"/perfilusuario/suscripcion/"}>
+                  <button type="button" className="btn7">
+                    Suscripciones
+                  </button>
                 </Link>
 
               </div>
@@ -188,51 +176,51 @@ export const PerfilUsuario = () => {
 
         </Column>
         <Column className="col">
-         
-           
-            <div className="basecontainer2">
-              <div className="detalleuser" >
-                <div className="detalleperfil" >
-                  <p className="first_name">Nombre: {first_name}</p>
-                </div>
 
-                <div className="detalleperfil" >
-                  <p className="last_name">Apellido: {last_name}</p>
-                </div>
 
-                <div className="detalleperfil" >
-                  <p className="is_company">{is_company}</p>
-                </div>
-
-                <div className="detalleperfil" >
-                  <p className="departamento">Ubicación: {departamento}</p>
-                </div>
-               
-                <div className="detalleperfil" >
-                <p className="score">Puntuación: {score}</p>
-                </div>
-             
-           
-                <div className="formbotons2">
-                  <Link to={"/modificarusuario"}>
-                    <button type="button" className="btn3">
-                      Configurar perfil
-                    </button>
-                  </Link>
-                </div>
-               
+          <div className="basecontainer2">
+            <div className="detalleuser" >
+              <div className="detalleperfil" >
+                <p className="first_name">Nombre: {first_name}</p>
               </div>
-          
-     
+
+              <div className="detalleperfil" >
+                <p className="last_name">Apellido: {last_name}</p>
+              </div>
+
+              <div className="detalleperfil" >
+                <p className="is_company">{is_company}</p>
+              </div>
+
+              <div className="detalleperfil" >
+                <p className="departamento">Ubicación: {departamento}</p>
+              </div>
+
+              <div className="detalleperfil" >
+                <p className="score">Puntuación: {score}</p>
+              </div>
+
+
+              <div className="formbotons2">
+                <Link to={"/modificarusuario"}>
+                  <button type="button" className="btn3">
+                    Configurar perfil
+                  </button>
+                </Link>
+              </div>
+
+            </div>
+
+
           </div>
         </Column>
         <Column className="col">
 
-<div className="basecontainer2" >
-  
+          <div className="basecontainer2" >
 
-</div>
-</Column>
+
+          </div>
+        </Column>
       </Row>
       <Footer />
     </main>

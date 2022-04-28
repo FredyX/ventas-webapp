@@ -4,16 +4,13 @@ import "./PerfilUsuario.scss";
 import { useSearchParams } from "react-router-dom";
 import userDataService from "../../../services/users.service";
 import Navbar from "../../Navbar/Navbar"
-import { NavLink, Link } from "react-router-dom";
-import Box from '@mui/material/Box';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { TextField } from "@mui/material";
-import styles from "../../Navbar/Navbar.module.scss";
-import { BsArrowRight, BsSearch } from "react-icons/bs";
-import { blueGrey, green, grey, lightGreen } from "@mui/material/colors";
 import Swal from 'sweetalert2';
 import Footer from "../../Footer/Footer";
 import SvgIcon from '@mui/material/SvgIcon';
+
+import complaintsService from "../../../services/complaints.service";
+
+import AuthService from "../../../services/auth.service";
 
 const Column = styled.div`
   display: flex;
@@ -68,7 +65,14 @@ export const PerfilUsuarioTercero = () => {
               })
 
           if (text) {
-            
+            const data = {
+              complaint_description: text,
+              reason_id: 1,
+              creator_user_id: idLog,
+              reported_user_id: idUser,
+              admin_user_id: 9
+            }
+            complaintsService.add(data);
             Swal.fire({
               title: 'Usuario denunciado',
               icon: 'success',
@@ -141,8 +145,8 @@ export const PerfilUsuarioTercero = () => {
   const [last_name, setLast_Name] = useState('');
   const [score, setScore] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
-
-
+  const [idUser, setIdUser] = useState('');
+  const [idLog, setIdLog] = useState('');
   useEffect(() => {
     UsersApi();
   }, [])
@@ -150,6 +154,8 @@ export const PerfilUsuarioTercero = () => {
 
   const UsersApi = async () => {
     let id = searchParams.get('id');
+    setIdUser(id);
+    setIdLog(AuthService.getCurrentUser().user.user_id);
     const response = await userDataService.getToProfile(id);
     if (response.status === 200) {
       const { first_name, last_name, score } = response.data;
@@ -170,23 +176,7 @@ export const PerfilUsuarioTercero = () => {
 
   return (
     <main>
-      <div className={styles.navbar_container}>
-        <nav>
-          {/* LOGO */}
-          <div className={styles.brand_logob}>
-            <Link to="/">SWAPPER</Link>
-          </div>
-        </nav>
-        <ColoredLine color="black" />
-
-        <Link to={"/"}>
-          <button type="button2" className="btnHOMEperfil" >
-            <div className="regresar">
-              <HomeIcon fontSize="medium" sx={{ color: green[500] }} /> Inicio
-            </div>
-          </button>
-        </Link>
-      </div>
+      <Navbar/>
       <div className="titulo1">Perfil de Usuario</div>
 
       <Row className="ro">
