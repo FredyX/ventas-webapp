@@ -2,22 +2,22 @@ import React, { useEffect, useState } from "react";
 import "./ModificarCategorias.scss";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
+import { Link } from "react-router-dom";
 import categoriesService from "../../services/categories.service"
 import styled from 'styled-components';
 import { useForm } from '../../hooks/useFormProducts';
-//import { Link } from "react-router-dom";
-//import KeyboardBackspaceRoundedIcon from '@mui/icons-material/KeyboardBackspaceRounded';
 import PinnedSubheaderList from './checkboxlist';
 import Swal from 'sweetalert2';
-import SvgIcon from '@mui/material/SvgIcon';
 import { useNavigate } from 'react-router-dom';
 import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import ListItemButton from '@mui/material/ListItemButton';
-import Tooltip from '@mui/material/Tooltip';
 import { ListItem, ListItemIcon } from "@mui/material";
+import KeyboardBackspaceRoundedIcon from '@mui/icons-material/KeyboardBackspaceRounded';
+import SvgIcon from '@mui/material/SvgIcon';
+import { green } from '@mui/material/colors';
 
 const Column = styled.div`
   display: flex;
@@ -56,6 +56,14 @@ export const ModificarCategorias = (props) => {
     setNewCategorie(e.target.value)
   }
 
+  function HomeIcon(props) {
+    return (
+      <SvgIcon {...props}>
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </SvgIcon>
+    );
+  }
+    
   const getCategorias = async () => {
     const categoria = await categoriesService.getAll();
     console.log(categoria.data);
@@ -103,6 +111,21 @@ export const ModificarCategorias = (props) => {
   return (
     <main>
       <Navbar></Navbar>
+      <Link to={"/"}>
+      <button type="button2" className="btnregresarAGG" >
+      <div className="regresar">
+      <HomeIcon fontSize="medium" sx={{ color: green[500] }} /> Inicio
+      </div>
+      </button>
+      </Link>
+      <Link to={"/perfilusuario"}>
+      <button type="button2" className="btnregresarAGG" >
+      <div className="regresar">
+      <KeyboardBackspaceRoundedIcon  fontSize="medium" sx={{ color: green[500] }} />  <a href="javascript:history.back()">  Perfil
+      </a>
+      </div>
+      </button>
+      </Link>
       <Row>
         <Column>
           <List className='estilotexto' sx={{
