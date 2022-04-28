@@ -18,8 +18,11 @@ class categoriesService {
   }
 
   add(name){
-    let headers = authHeader()
-    return http.post(`/categories/`, name, { headers: headers })
+    let headers = authHeader();
+    const data = {
+      categorie_name : name
+    }
+    return http.post(`/categories/`, data, { headers: headers })
   }
 }
 

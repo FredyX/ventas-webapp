@@ -37,118 +37,116 @@ const Row = styled.div`
   width: 100%;
   `;
 
-  export const ModificarCategorias = (props) => {
-    const [newCategorie, setNewCategorie] = useState('');
-    const [cate, setCate] = useState({});
-    const navigate = useNavigate(); 
+export const ModificarCategorias = (props) => {
+  const [newCategorie, setNewCategorie] = useState('');
+  const [cate, setCate] = useState({});
+  const navigate = useNavigate();
 
-    useEffect(() => {
-      getCategorias();
-    }, [])
+  useEffect(() => {
+    getCategorias();
+  }, [])
 
-    const {   
-        setCheckBox,                     
-        stateCheckBox,
-        handleCheckBToggle       
-      } = useForm();
+  const {
+    setCheckBox,
+    stateCheckBox,
+    handleCheckBToggle
+  } = useForm();
 
-      const handleimput = (e) =>{
-        setNewCategorie(e.target.value)
-      }
-
-      const getCategorias = async () => {
-        const categoria = await categoriesService.getAll();
-        console.log(categoria.data);
-        let cat = {};
-        categoria.data.map(c => {
-        cat[c.id] = c.categorie_name;
-        })
-        setCate(cat);
-        console.log(cate)
-      }
-
-    const AgregarCategoria = async() => {
-      console.log(newCategorie)
-      await categoriesService.add(newCategorie);
-
-      navigate(0);
-    }
-  
-
-    const MensajeEliminar = (e) => {   
-        const id = e.target.id; 
-        console.log(id)
-        Swal.fire({
-          title: '¿Estas seguro que deseas eliminar la categoria?',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#12b700',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Si, deseo eliminarla!'
-        }).then( async(result) => {
-          if (result.isConfirmed) {
-            categoriesService.delete(id)      
-            Swal.fire({
-              title: 'Categoria eliminada',
-              icon: 'success',
-              confirmButtonColor: '#12b700',
-              confirmButtonText: 'Listo'
-            });
-            
-            navigate(0);
-          }
-        })
-      }
-
-    return(
-        <main>
-            <Navbar></Navbar>
-
-              <Row>
-                <Column>
-                  <List className='estilotexto' sx={{ 
- 
-                            marginLeft: 1,
-                            marginRight: 1,
-                            overflow: 'auto',
-                            display: 'flex',
-                            border: 2,
-                            borderColor: '#00B712',
-                            borderRadius: 1.5,
-                            color: '#5a5a5a',
-                            padding: '0 50px',
-                    
-                  }}
-                >
-                    {
-                      Object.keys(cate).map(key => {
-                        let label = cate[key];
-                        let value = key;
-                        return (
-                            <ListItem>
-                              <ListItemText className="textoList" primary={label}> </ListItemText>
-                              <IconButton edge="end" aria-label="delete">
-                              <DeleteIcon id={value} onClick={MensajeEliminar} />
-                              </IconButton>
-                            </ListItem>
-                        )
-                      })
-                    }
-                  </List>
-                </Column>
-
-                <Column>
-
-                    <input onChange={handleimput} value = {newCategorie} type="text" name="agregar" placeholder="Ingrese Nueva Categoria" id="" className="txtAgregar"/>
-                    <button  name="agregar" onClick={AgregarCategoria} className="btnAgregar">Agregar</button>
-
-                </Column>
-              </Row>
-
-
-
-
-            <Footer></Footer>
-        </main>
-    )
+  const handleimput = (e) => {
+    setNewCategorie(e.target.value)
   }
+
+  const getCategorias = async () => {
+    const categoria = await categoriesService.getAll();
+    console.log(categoria.data);
+    let cat = {};
+    categoria.data.map(c => {
+      cat[c.id] = c.categorie_name;
+    })
+    setCate(cat);
+    console.log(cate)
+  }
+
+  const AgregarCategoria = async () => {
+    console.log(newCategorie)
+    await categoriesService.add(newCategorie);
+
+    navigate(0);
+  }
+
+
+  const MensajeEliminar = (e) => {
+    const id = e.target.id;
+    console.log(id)
+    Swal.fire({
+      title: '¿Estas seguro que deseas eliminar la categoria?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#12b700',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, deseo eliminarla!'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        categoriesService.delete(id)
+        Swal.fire({
+          title: 'Categoria eliminada',
+          icon: 'success',
+          confirmButtonColor: '#12b700',
+          confirmButtonText: 'Listo'
+        });
+
+        navigate(0);
+      }
+    })
+  }
+
+  return (
+    <main>
+      <Navbar></Navbar>
+      <Row>
+        <Column>
+          <List className='estilotexto' sx={{
+            marginLeft: 1,
+            marginRight: 1,
+            overflow: 'auto',
+            display: 'flex',
+            border: 2,
+            borderColor: '#00B712',
+            borderRadius: 1.5,
+            color: '#5a5a5a',
+            padding: '0 50px',
+
+          }}
+          >
+            {
+              Object.keys(cate).map(key => {
+                let label = cate[key];
+                let value = key;
+                return (
+                  <ListItem key={value}>
+                    <ListItemText className="textoList" primary={label}> </ListItemText>
+                    <IconButton edge="end" aria-label="delete" onClick={MensajeEliminar}>
+                      <DeleteIcon id={value}  />
+                    </IconButton>
+                  </ListItem>
+                )
+              })
+            }
+          </List>
+        </Column>
+
+        <Column>
+
+          <input onChange={handleimput} value={newCategorie} type="text" name="agregar" placeholder="Ingrese Nueva Categoria" id="" className="txtAgregar" />
+          <button name="agregar" onClick={AgregarCategoria} className="btnAgregar">Agregar</button>
+
+        </Column>
+      </Row>
+
+
+
+
+      <Footer></Footer>
+    </main>
+  )
+}

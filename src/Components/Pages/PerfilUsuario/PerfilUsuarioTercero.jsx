@@ -51,50 +51,48 @@ export const PerfilUsuarioTercero = () => {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-      (async () => {
-      const { value: accept } = await 
-      Swal.fire({
-          title: 'Motivo de la denuncia',
-          confirmButtonColor: '#12b700',
-          confirmButtonText:'Siguiente ',
-          input: 'select',
-          inputOptions: {
-            1: '1',
-          },
-        inputPlaceholder: 'Seleccionar'
-        }).then((accept) => {
+        (async () => {
+          const { value: accept } = await
+            Swal.fire({
+              title: 'Motivo de la denuncia',
+              confirmButtonColor: '#12b700',
+              confirmButtonText: 'Siguiente ',
+              input: 'select',
+              inputOptions: {
+                1: '1',
+              },
+              inputPlaceholder: 'Seleccionar'
+            }).then((accept) => {
 
-          (async () => {
+              (async () => {
 
-          const { value: text } = await 
-          Swal.fire(
-            {
-              input: 'textarea',
-            inputLabel: 'Descripción',
-            inputPlaceholder: 'Escribe una descripción aqui...',
-            inputAttributes: {
-              'aria-label': 'Escribe una descripción aqui'
-            },
-            showCancelButton: true,
-            confirmButtonColor: '#12b700',
-            confirmButtonText: 'Listo'
-          })
-                      
-            if (text) {
-              Swal.fire({
-                title: 'Usuario denunciado',
-                icon: 'success',
-                confirmButtonColor: '#12b700',
-                confirmButtonText: 'Listo'
-              }
-               
-              )}
-            })()
-        })
-      })()
+                const { value: text } = await
+                  Swal.fire(
+                    {
+                      input: 'textarea',
+                      inputLabel: 'Descripción',
+                      inputPlaceholder: 'Escribe una descripción aqui...',
+                      inputAttributes: {
+                        'aria-label': 'Escribe una descripción aqui'
+                      },
+                      showCancelButton: true,
+                      confirmButtonColor: '#12b700',
+                      confirmButtonText: 'Listo'
+                    })
 
+                if (text) {
+                  Swal.fire({
+                    title: 'Usuario denunciado',
+                    icon: 'success',
+                    confirmButtonColor: '#12b700',
+                    confirmButtonText: 'Listo'
+                  }
 
-
+                  )
+                }
+              })()
+            })
+        })()
       } else if (
         result.dismiss === Swal.DismissReason.cancel
       ) {
@@ -126,17 +124,17 @@ export const PerfilUsuarioTercero = () => {
       },
       inputValue: 6
     })
-if (CalificarUsuario) {
-  Swal.fire(
-    {
-    title: 'Usuario Calificado',
-    icon: 'success',
-    confirmButtonColor: '#12b700',
-    confirmButtonText: 'Listo'
-  })
-}
+    if (CalificarUsuario) {
+      Swal.fire(
+        {
+          title: 'Usuario Calificado',
+          icon: 'success',
+          confirmButtonColor: '#12b700',
+          confirmButtonText: 'Listo'
+        })
+    }
   }
-)
+  )
 
 
   const ColoredLine = ({ color }) => (
@@ -155,8 +153,6 @@ if (CalificarUsuario) {
   const [first_name, setFirst_Name] = useState('');
   const [last_name, setLast_Name] = useState('');
   const [score, setScore] = useState('');
-  const [is_company, setIs_Company] = useState(' ');
-  const [departamento, setDepartamento] = useState(' ');
   const [searchParams, setSearchParams] = useSearchParams();
 
 
@@ -167,15 +163,14 @@ if (CalificarUsuario) {
 
   const UsersApi = async () => {
     let id = searchParams.get('id');
-    const response = await userDataService.getToProfile(id)
-    const { usuario, imagenesRes } = response.data;
+    const response = await userDataService.getToProfile(id);
+    if (response.status === 200) {
+      const { first_name, last_name, score } = response.data;
 
-    setFirst_Name(usuario[0].first_name)
-    setLast_Name(usuario[0].last_name);
-    setScore(usuario[0].score);
-    setIs_Company(usuario[0].is_company);
-
-    setDepartamento(usuario[0].department_name);
+      setFirst_Name(first_name)
+      setLast_Name(last_name);
+      setScore(score);
+    }
   }
 
   function HomeIcon(props) {
@@ -188,7 +183,7 @@ if (CalificarUsuario) {
 
   return (
     <main>
-       <div className={styles.navbar_container}>
+      <div className={styles.navbar_container}>
         <nav>
           {/* LOGO */}
           <div className={styles.brand_logob}>
@@ -198,71 +193,63 @@ if (CalificarUsuario) {
         <ColoredLine color="black" />
 
         <Link to={"/"}>
-        <button type="button2" className="btnHOMEperfil" >
-        <div className="regresar">
-        <HomeIcon fontSize="medium" sx={{ color: green[500] }} /> Inicio
-        </div>
-        </button>
+          <button type="button2" className="btnHOMEperfil" >
+            <div className="regresar">
+              <HomeIcon fontSize="medium" sx={{ color: green[500] }} /> Inicio
+            </div>
+          </button>
         </Link>
-        </div>
-        <div className="titulo1">Perfil de Usuario</div>
+      </div>
+      <div className="titulo1">Perfil de Usuario</div>
 
-        <Row className="ro">
+      <Row className="ro">
         <Column className="col">
 
-<div className="basecontainer2" >
-  
-
-</div>
-</Column>
-        <Column className="col">
-         
-           
-            <div className="basecontainer2">
-              <div className="detalleuser" >
-                <div className="detalleperfil" >
-                  <p className="first_name">Nombre: {first_name}</p>
-                </div>
-
-                <div className="detalleperfil" >
-                  <p className="last_name">Apellido: {last_name}</p>
-                </div>
+          <div className="basecontainer2" >
 
 
-                <div className="detalleperfil" >
-                  <p className="is_company">Es compañía: {is_company}</p>
-                </div>
-
-                <div className="detalleperfil" >
-                  <p className="departamento">Ubicación: {departamento}</p>
-                </div>
-               
-                <div className="detalleperfil" >
-                <p className="score">Puntuación: {score}</p>
-                </div>
-          
-               
-              </div>
-          
-     
           </div>
         </Column>
-      
+        <Column className="col">
+
+
+          <div className="basecontainer2">
+            <div className="detalleuser" >
+              <div className="detalleperfil" >
+                <p className="first_name">Nombre: {first_name}</p>
+              </div>
+
+              <div className="detalleperfil" >
+                <p className="last_name">Apellido: {last_name}</p>
+              </div>
+
+
+              <div className="detalleperfil" >
+                <p className="score">Puntuación: {score}</p>
+              </div>
+
+
+            </div>
+
+
+          </div>
+        </Column>
+
         <Column className="col">
           <div className="basecontainer5">
             <div className="formbotons3" >
               <div className="formbotons" >
-                  <button type="button" className="btn7"  onClick={CalificarUsuario}>
-                    Calificar
-                  </button>
+                <button type="button" className="btn7" onClick={CalificarUsuario}>
+                  Calificar
+                </button>
               </div>
-            
+
               <div className="formbotons" >
                 <button type="button" className="btn6" onClick={MensajeDenuncia}>
                   Denunciar
                 </button>
               </div>
-        
+
 
             </div>
 
@@ -272,7 +259,7 @@ if (CalificarUsuario) {
         <Column className="col">
           <div className="basecontainer2" >
           </div>
-          </Column>
+        </Column>
       </Row>
       <Footer />
 

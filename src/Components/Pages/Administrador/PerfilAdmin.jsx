@@ -129,14 +129,14 @@ export const PerfilAdmin = () => {
         <ColoredLine color="black" />
 
         <Link to={"/"}>
-        <button type="button2" className="btnHOMEperfil" >
-        <div className="regresar">
-        <HomeIcon fontSize="medium" sx={{ color: green[500] }} /> Inicio
-        </div>
-        </button>
+          <button type="button2" className="btnHOMEperfil" >
+            <div className="regresar">
+              <HomeIcon fontSize="medium" sx={{ color: green[500] }} /> Inicio
+            </div>
+          </button>
         </Link>
-        </div>
-        <div className="titulo1">Mi perfil</div>
+      </div>
+      <div className="titulo1">Mi perfil</div>
 
       <Row className="ro">
 
@@ -159,10 +159,10 @@ export const PerfilAdmin = () => {
                 </Link>
               </div>
               <div className="formbotons" >
-              <Link to={"/perfilusuario/suscripcion/"}>
-                <button type="button" className="btn7">
-                  Suscripciones
-                </button>
+                <Link to={"/perfilusuario/suscripcion/"}>
+                  <button type="button" className="btn7">
+                    Suscripciones
+                  </button>
                 </Link>
 
               </div>
@@ -181,45 +181,45 @@ export const PerfilAdmin = () => {
 
         </Column>
         <Column className="col">
-         
-           
-            <div className="basecontainer2">
-              <div className="detalleuser" >
-                <div className="detalleperfil" >
-                  <p className="first_name">Nombre: {first_name}</p>
-                </div>
 
-                <div className="detalleperfil" >
-                  <p className="last_name">Apellido: {last_name}</p>
-                </div>
 
-                <div className="detalleperfil" >
-                  <p className="is_company">{is_company}</p>
-                </div>
-
-                <div className="detalleperfil" >
-                  <p className="departamento">Ubicación: {departamento}</p>
-                </div>
-               
-                <div className="detalleperfil" >
-                <p className="score">Puntuación: {score}</p>
-                </div>
-             
-           
-                <div className="formbotons2">
-                  <Link to={"/modificarusuario"}>
-                    <button type="button" className="btn3">
-                      Configurar perfil
-                    </button>
-                  </Link>
-                </div>
-               
+          <div className="basecontainer2">
+            <div className="detalleuser" >
+              <div className="detalleperfil" >
+                <p className="first_name">Nombre: {first_name}</p>
               </div>
-          
-     
+
+              <div className="detalleperfil" >
+                <p className="last_name">Apellido: {last_name}</p>
+              </div>
+
+              <div className="detalleperfil" >
+                <p className="is_company">{is_company}</p>
+              </div>
+
+              <div className="detalleperfil" >
+                <p className="departamento">Ubicación: {departamento}</p>
+              </div>
+
+              <div className="detalleperfil" >
+                <p className="score">Puntuación: {score}</p>
+              </div>
+
+
+              <div className="formbotons2">
+                <Link to={"/modificarusuario"}>
+                  <button type="button" className="btn3">
+                    Configurar perfil
+                  </button>
+                </Link>
+              </div>
+
+            </div>
+
+
           </div>
         </Column>
-  
+
         <Column className="col">
           <div className="basecontainer5">
             <div className="formbotons3" >
@@ -234,37 +234,23 @@ export const PerfilAdmin = () => {
               <div className="formbotons11" >
                 <Link to={""}>
                   <button type="button" className="btn77">
-                   Denuncias
+                    Denuncias
                   </button>
                 </Link>
               </div>
               <div className="formbotons11" >
-              <Link to={""}>
-                <button type="button" className="btn77">
-                  Categorías
-                </button>
+                <Link to={"/Modificarcategorias"}>
+                  <button type="button" className="btn77">
+                    Categorías
+                  </button>
                 </Link>
-
-              </div>
-              <div className="formbotons11" >
-                <button type="button" className="btn77" >
-                  Publicaciones
-                </button>
-              </div>
-              <div className="formbotons11" >
-              <Link to={""}>
-                <button type="button" className="btn77">
-                  Usuarios
-                </button>
-                </Link>
-
               </div>
             </div>
 
           </div>
 
         </Column>
-        
+
       </Row>
       <Footer />
     </main>
